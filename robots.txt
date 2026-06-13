@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# 公開URL（例：https://ユーザー名.github.io/リポジトリ名/）が確定したら、
+# 下行のコメントを外して実URLに差し替えてください。
+# Sitemap: https://あなたの公開URL/sitemap.xml
