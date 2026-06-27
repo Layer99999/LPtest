@@ -673,14 +673,18 @@
 
     /* ─── SCROLL INDICATOR ─── */
     .scroll-line {
+      display: none;
       position: absolute;
       bottom: 2.5rem;
       left: 5%;
-      display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
       z-index: 2;
+    }
+    /* デスクトップ幅でのみ表示 */
+    @media (min-width: 900px) {
+      .scroll-line { display: flex; }
     }
     .scroll-text {
       font-family: var(--font-ui);
@@ -706,7 +710,6 @@
       .hero-right { display: flex; justify-content: center; }
       .hero-photo-wrap { max-width: 280px; }
       #hero { padding-bottom: 3rem; }
-      .scroll-line { display: none; }
       .reasons-grid { grid-template-columns: 1fr; }
       .reason-item { border-right: none; border-bottom: 1px solid var(--border); }
       .reason-item:last-child { border-bottom: none; }
