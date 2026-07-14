@@ -1,552 +1,1738 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>生成AIで業務効率化｜中小企業向けAI導入支援サービス（全国オンライン対応）</title>
-<meta name="description" content="人手不足やAI導入の第一歩に悩む中小企業経営者へ。業務フロー分析・AIツール選定・導入・社員研修・チャットボット構築まで、貴社業務に合わせてカスタマイズ。全国オンライン対応・月額3万円〜・初回相談無料。">
-<meta name="keywords" content="生成AI,業務効率化,AI導入支援,中小企業,AIコンサルタント,チャットボット構築,社員研修,DX,ChatGPT 活用">
-<meta name="author" content="Shinya">
-<meta name="robots" content="index, follow, max-image-preview:large">
-
-<!-- ▼ ドメイン未定のためcanonicalは一旦コメントアウト。公開URL確定後に有効化してください ▼ -->
-<!-- <link rel="canonical" href="https://あなたの公開URL/"> -->
-
-<!-- favicon（インラインSVG・差し替え不要でOK） -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a73e8'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='30' font-weight='bold' fill='white' text-anchor='middle'%3EAI%3C/text%3E%3C/svg%3E">
-
-<!-- OGP -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>タイガーラボ ｜ AIを、“なんとなく”で終わらせない。</title>
+<meta name="description" content="中小企業のためのAI活用パートナー。AI導入・活用、業務の省力化、開発・制作を、Light 20万円〜の明確な料金で支援。自社も“AI社員”で動かす実践者が伴走します。">
+<link rel="canonical" href="https://tigerlabo.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="生成AIで業務効率化｜中小企業向けAI導入支援サービス">
-<meta property="og:description" content="人手不足やAI導入の悩みを生成AIで解決。貴社の業務に合わせてカスタマイズする導入支援。全国オンライン対応・月額3万円〜・初回相談無料。">
-<meta property="og:site_name" content="非効率にこそチャンスあり！生成AIでチャンスを広げよう">
+<meta property="og:url" content="https://tigerlabo.com/">
+<meta property="og:title" content="タイガーラボ ｜ AIを、“なんとなく”で終わらせない。">
+<meta property="og:description" content="中小企業のためのAI活用パートナー。AI導入・活用、業務の省力化、開発・制作を、Light 20万円〜の明確な料金で支援します。">
+<meta property="og:site_name" content="株式会社タイガーラボ">
 <meta property="og:locale" content="ja_JP">
-<!-- ドメイン確定後に追記：<meta property="og:url" content="..."> / <meta property="og:image" content=".../ogp.png"> -->
-
-<!-- Twitter Card -->
+<meta property="og:image" content="https://tigerlabo.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="株式会社タイガーラボ ｜ AIを、“なんとなく”で終わらせない。">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="生成AIで業務効率化｜中小企業向けAI導入支援サービス">
-<meta name="twitter:description" content="人手不足やAI導入の悩みを生成AIで解決。全国オンライン対応・月額3万円〜・初回相談無料。">
-
-<!-- 構造化データ JSON-LD (ProfessionalService / 全国オンライン・住所非公開) -->
+<meta name="twitter:image" content="https://tigerlabo.com/assets/og-image.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 104'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%235DE0E6'/%3E%3Cstop offset='1' stop-color='%23004AAD'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='104' height='104' rx='22' fill='url(%23g)'/%3E%3Cg transform='translate(2,20)'%3E%3Cpolygon points='0,64 66,0 66,28 100,0 100,64' fill='white'/%3E%3C/g%3E%3C/svg%3E">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "株式会社タイガーラボ",
-  "alternateName": "非効率にこそチャンスあり！生成AIでチャンスを広げよう",
-  "description": "生成AIを活用した業務効率化の導入および支援サポートを行う、中小企業向けAIコンサルティングサービス。全国オンライン対応。",
-  "priceRange": "¥30,000〜",
-  "currenciesAccepted": "JPY",
-  "paymentAccepted": "銀行振込, クレジットカード",
-  "areaServed": { "@type": "Country", "name": "日本" },
-  "founder": {
-    "@type": "Person",
-    "name": "Shinya",
-    "jobTitle": "AIコンサルタント"
-  },
-  "knowsAbout": ["生成AI", "業務効率化", "DX", "チャットボット構築", "AI導入支援", "社員研修"],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "生成AI導入支援サービス",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "業務フローの分析" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AIツール選定" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "導入サポート" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "社員研修" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "チャットボット構築" } }
-    ]
-  }
-}
-</script>
-
-<!-- FAQ 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "AIの知識が全くなくても大丈夫ですか？", "acceptedAnswer": { "@type": "Answer", "text": "もちろん大丈夫です。専門用語を使わず、現状の業務をお伺いするヒアリングから始めますので、知識ゼロからでも安心してご相談いただけます。" } },
-    { "@type": "Question", "name": "どのくらいの期間で効果が出ますか？", "acceptedAnswer": { "@type": "Answer", "text": "業務内容によりますが、簡単な定型業務であれば導入後すぐに効果を実感いただけます。一般的には1〜3ヶ月で目に見える改善が現れます。" } },
-    { "@type": "Question", "name": "小さな会社でも依頼できますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。むしろ小回りがきく対応を強みとしており、少人数の企業様や個人事業主様こそ歓迎しています。" } },
-    { "@type": "Question", "name": "地方の会社でも依頼できますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。全国オンライン対応のため、地域を問わずご依頼いただけます。打ち合わせはオンライン会議で完結します。" } },
-    { "@type": "Question", "name": "料金はどのくらいかかりますか？", "acceptedAnswer": { "@type": "Answer", "text": "月額30,000円〜のサポートプランをご用意しています。初回相談は無料ですので、まずはお気軽にご相談ください。" } },
-    { "@type": "Question", "name": "途中で解約はできますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、可能です。長期契約の縛りはありません。ご状況に合わせて柔軟に対応いたします。" } }
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://tigerlabo.com/#org",
+      "name": "株式会社タイガーラボ",
+      "alternateName": "TIGERLABO",
+      "url": "https://tigerlabo.com/",
+      "email": "shinya.kato@tigerlabo.com",
+      "telephone": "+81-80-3739-9588",
+      "slogan": "AIを、“なんとなく”で終わらせない。",
+      "description": "中小企業向けのAI活用パートナー。AI導入・活用、業務の省力化、開発・制作を、Light 20万円〜の明確な料金で全国オンライン支援する。自社の運営そのものを自社のAI（AI社員）で回している実践者。",
+      "areaServed": "JP",
+      "founder": { "@id": "https://tigerlabo.com/#founder" },
+      "sameAs": [ "https://lit.link/tigerlabo_inc" ],
+      "address": {
+        "@type": "PostalAddress",
+        "postalCode": "150-0012",
+        "addressRegion": "東京都",
+        "addressLocality": "渋谷区",
+        "streetAddress": "広尾1丁目2番地1号 ヒカリビル4階",
+        "addressCountry": "JP"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://tigerlabo.com/#founder",
+      "name": "加藤慎也",
+      "jobTitle": "代表",
+      "worksFor": { "@id": "https://tigerlabo.com/#org" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tigerlabo.com/#webpage",
+      "url": "https://tigerlabo.com/",
+      "name": "タイガーラボ ｜ AIを、“なんとなく”で終わらせない。",
+      "inLanguage": "ja",
+      "datePublished": "2026-07-11",
+      "dateModified": "2026-07-14",
+      "isPartOf": { "@id": "https://tigerlabo.com/#org" },
+      "about": { "@id": "https://tigerlabo.com/#org" },
+      "author": { "@id": "https://tigerlabo.com/#founder" },
+      "publisher": { "@id": "https://tigerlabo.com/#org" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://tigerlabo.com/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://tigerlabo.com/" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://tigerlabo.com/#service",
+      "serviceType": "中小企業向けAI活用支援（AI導入・活用／業務の省力化／開発・制作）",
+      "provider": { "@id": "https://tigerlabo.com/#org" },
+      "areaServed": "JP",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "サービスパッケージ",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Light（まずは試す）",
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 200000, "priceCurrency": "JPY" }
+          },
+          {
+            "@type": "Offer",
+            "name": "Standard（ひと通り整える）",
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 600000, "priceCurrency": "JPY" }
+          },
+          {
+            "@type": "Offer",
+            "name": "Full（まるごと任せる）",
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1200000, "priceCurrency": "JPY" }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://tigerlabo.com/#faq",
+      "isPartOf": { "@id": "https://tigerlabo.com/#webpage" },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "株式会社タイガーラボとはどんな会社ですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "株式会社タイガーラボは、中小企業向けのAI活用パートナーです。ツールを渡して終わりにせず、成果につながる形まで一緒に整えます。自社の運営そのものを自社のAI（AI社員）で回している実践者で、全国オンライン対応です。" }
+        },
+        {
+          "@type": "Question",
+          "name": "どんなサービスがありますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "支援は大きく3つです。①AI導入・活用（AI活用診断／実践AI研修／AI顧問）、②業務の省力化（スプレッドシート・GAS自動化／定型業務の仕組み化／AIクローン）、③開発・制作（Web・LP／業務システム／アプリ）。何から手をつければという段階からご相談いただけます。" }
+        },
+        {
+          "@type": "Question",
+          "name": "料金はいくらですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "目的に合わせた3つのパッケージがあります（いずれも税別）。Light 20万円〜（まずは試す）、Standard 60万円〜（ひと通り整える）、Full 120万円〜（まるごと任せる）。パッケージは単発（1回ごと）が基本で長期の縛りはなく、まず1回だけ試せます。詳しいお見積りは無料相談で承ります。" }
+        },
+        {
+          "@type": "Question",
+          "name": "どのプランを選べばいいですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "目安として、まず試したいならLight、自動化やサイトまで欲しいならStandard、分身AIや開発まで一気に進めたいならFullです。最適なプランはお困りごと次第で変わるため、無料相談で作業を伺い、優先順位をつけてご提案します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "個人事業主や小規模の会社でも依頼できますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "個人事業主・小規模の会社も歓迎です。人数が少ないほど一人あたりの事務負担は重くなりがちで、AI・自動化の効果を感じやすいです。Lightより小さく始められる「始めやすい価格」の枠もあり、内容と価格は御社の状況に合わせて個別にご相談します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "自分でChatGPTを使うのと、依頼するのは何が違いますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "ツールを渡すだけならご自身でも始められます。タイガーラボの価値はその先で、①御社の課題を見える化し、②合う使い方・仕組みを設計し、③教材＋使い方の動画まで、ひと通り用意します。自社の運営をAIで回している実践者として、導入したのに形だけになる落とし穴も踏まえて支援します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "AI導入は失敗しませんか？ちゃんと定着しますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "AI導入がつまずくのは、目的が曖昧・現場を巻き込めていない・最初から完璧を狙う場合が多いです。そこで最初に目的と指標を握り、現場を巻き込み、小さく始めて効果を確かめながら広げます。いきなり作り込まないため、やってみたけれど無駄だった、になりにくい進め方です。" }
+        },
+        {
+          "@type": "Question",
+          "name": "導入後のサポートはありますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "導入して終わりにはせず、導入後のフォローアップまで対応します。実践AI研修では教材＋使い方の動画をお渡しし、従業員が使いたいけれど使えない状態にならないようにします。使い方や仕組みが手元に残り、困ったときの相談導線もご用意しています。" }
+        },
+        {
+          "@type": "Question",
+          "name": "どんな流れで進みますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "おおまかに5つのステップで進みます。①ヒアリング→②分析（AIで効率化できる所を見える化）→③提案（合うプランを優先順位つきで）→④導入（設定・構築・研修まで）→⑤フォローアップ。最初のヒアリングは無料相談から承ります。" }
+        },
+        {
+          "@type": "Question",
+          "name": "入力した情報がAIの学習に使われませんか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "業務で使う場合は、入力内容がAIの学習に使われない設定・プランを前提に組み立てます。法人向けの利用では入力内容が学習に回らない形が基本です。そのうえで扱う情報の範囲も一緒に決め、機密情報の扱い・アクセスできる範囲・成果物の管理方法を最初に取り決めてから進めます。" }
+        },
+        {
+          "@type": "Question",
+          "name": "導入事例や実績はありますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "守秘のため匿名になりますが、複数拠点をもつ組織の人事評価・シフト／勤怠を丸ごと自動化し毎月の運用まで継続支援した実績、自社アプリを企画・開発・審査・運用まで一貫した実績、複数のSNSアカウントを運用し認知・フォロワーを継続的に伸ばした実績があります。" }
+        },
+        {
+          "@type": "Question",
+          "name": "全国どこでも対応してもらえますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "全国オンライン対応です。所在地を問わずご依頼いただけ、ご相談・ヒアリングから研修・導入までオンラインで完結します。移動の負担がないぶん、気軽に始めていただけます。" }
+        }
+      ]
+    }
   ]
 }
 </script>
-
 <style>
-:root{
-  --blue:#1a73e8;
-  --blue-dark:#1557b0;
-  --blue-light:#e8f0fe;
-  --white:#ffffff;
-  --text:#202124;
-  --text-sub:#5f6368;
-  --bg-gray:#f7f9fc;
-  --radius:16px;
-  --shadow:0 8px 30px rgba(26,115,232,.10);
-  --max:1100px;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:"Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans","Meiryo",sans-serif;
-  color:var(--text);line-height:1.8;background:var(--white);-webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block;}
-a{color:inherit;text-decoration:none;}
-.container{width:90%;max-width:var(--max);margin:0 auto;}
-section{padding:90px 0;}
-.section-head{text-align:center;margin-bottom:54px;}
-.section-head .en{display:block;color:var(--blue);font-weight:700;letter-spacing:.15em;font-size:.85rem;margin-bottom:10px;}
-.section-head h2{font-size:2rem;font-weight:800;line-height:1.4;}
-.section-head p{color:var(--text-sub);margin-top:16px;}
+  :root{
+    --bg:#080d18; --bg-2:#0b1122; --panel:#101a30; --panel-2:#0d1526;
+    --hair:rgba(255,255,255,.08); --hair-2:rgba(255,255,255,.16);
+    --text:#eef3fc; --text-2:#a6b3cf; --text-3:#6d7c98;
+    --cyan:#6fe6ec; --blue:#3b8cff; --blue-deep:#004aad; --ink-navy:#0f1b2d;
+    --grad:linear-gradient(118deg,#7ceaef 0%,#3b8cff 52%,#1f5fe0 100%);
+    --grad-soft:linear-gradient(118deg,rgba(124,234,239,.16),rgba(59,140,255,.16));
+    --r-lg:20px; --r-md:14px; --r-pill:999px;
+    --sh-2:0 30px 70px -30px rgba(0,0,0,.75);
+    --glow:0 0 0 1px rgba(124,234,239,.25), 0 30px 80px -30px rgba(59,140,255,.55);
+    --maxw:1180px;
+    --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",Georgia,"Times New Roman",serif;
+    --sans:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --num:"Hiragino Mincho ProN","Yu Mincho",Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0; overflow-x:hidden; max-width:100%}
+  .page{font-family:var(--sans); color:var(--text); background:var(--bg); line-height:1.8; -webkit-font-smoothing:antialiased; overflow-x:clip; position:relative}
+  .page::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background:radial-gradient(60% 40% at 78% -5%, rgba(59,140,255,.16), transparent 60%),
+               radial-gradient(50% 40% at 8% 8%, rgba(124,234,239,.10), transparent 60%);}
+  a{color:inherit; text-decoration:none}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 clamp(20px,5vw,48px); position:relative; z-index:1}
 
-.btn{
-  display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:var(--white);
-  font-weight:700;font-size:1.05rem;padding:18px 40px;border-radius:50px;
-  box-shadow:0 10px 24px rgba(26,115,232,.35);transition:transform .25s, box-shadow .25s, background .25s;
-}
-.btn:hover{transform:translateY(-3px);background:var(--blue-dark);box-shadow:0 14px 30px rgba(26,115,232,.45);}
-.btn.ghost{background:var(--white);color:var(--blue);border:2px solid var(--blue);box-shadow:none;}
-.btn.ghost:hover{background:var(--blue-light);}
+  .btn{display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:14.5px; border-radius:var(--r-pill); padding:13px 26px; border:none; cursor:pointer; transition:transform .2s ease, box-shadow .2s ease, background .2s, border-color .2s; white-space:nowrap; line-height:1; letter-spacing:.02em}
+  .btn .ic{width:24px; height:24px; border-radius:7px; display:grid; place-items:center; flex:0 0 auto}
+  .btn .ic svg{width:14px; height:14px}
+  .btn-primary{background:var(--grad); color:#04122b; box-shadow:0 14px 34px -14px rgba(59,140,255,.8)}
+  .btn-primary .ic{background:rgba(4,18,43,.14)} .btn-primary .ic svg{color:#04122b}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 20px 44px -14px rgba(59,140,255,.95)}
+  .btn-line{background:transparent; color:var(--text); border:1px solid var(--hair-2)}
+  .btn-line .ic{background:rgba(255,255,255,.06)}
+  .btn-line:hover{transform:translateY(-2px); border-color:var(--cyan); color:#fff}
 
-header.site{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);box-shadow:0 2px 14px rgba(0,0,0,.05);}
-header.site .inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
-header.site .logo{font-weight:800;color:var(--blue);font-size:1.05rem;}
-header.site nav a{margin-left:24px;font-size:.9rem;color:var(--text-sub);transition:color .2s;}
-header.site nav a:hover{color:var(--blue);}
-header.site .nav-cta{margin-left:24px;background:var(--blue);color:#fff;padding:9px 20px;border-radius:50px;font-weight:700;font-size:.88rem;}
-@media(max-width:900px){header.site nav{display:none;}}
+  .eyebrow{display:inline-block; font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.32em; text-transform:uppercase; color:var(--cyan)}
+  .eyebrow.ja{letter-spacing:.14em; text-transform:none}
+  .band{padding:clamp(78px,11vw,140px) 0}
+  .sec-head{max-width:720px; margin-bottom:clamp(44px,5vw,68px)}
+  .sec-head.center{margin-left:auto; margin-right:auto; text-align:center}
+  .sec-head h2{font-family:var(--serif); font-size:clamp(30px,4.6vw,50px); font-weight:600; letter-spacing:.01em; line-height:1.36; margin:20px 0 16px; text-wrap:balance; color:#fff}
+  .sec-head p{font-size:16px; color:var(--text-2); margin:0; line-height:1.95}
 
-.hero{position:relative;padding:150px 0 110px;background:linear-gradient(135deg,#1a73e8 0%,#4a90e2 55%,#7fb3f5 100%);color:#fff;overflow:hidden;}
-.hero::before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;background:rgba(255,255,255,.12);border-radius:50%;}
-.hero::after{content:"";position:absolute;left:-90px;bottom:-110px;width:300px;height:300px;background:rgba(255,255,255,.10);border-radius:50%;}
-.hero .container{position:relative;z-index:2;max-width:820px;}
-.hero .badge{display:inline-block;background:rgba(255,255,255,.2);padding:7px 18px;border-radius:50px;font-size:.85rem;font-weight:600;margin-bottom:26px;}
-.hero h1{font-size:2.7rem;font-weight:900;line-height:1.45;}
-.hero h1 .hl{color:#ffd54a;}
-.hero .sub{font-size:1.15rem;margin-top:24px;opacity:.95;line-height:1.9;}
-.hero .actions{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;}
-.hero .note{margin-top:18px;font-size:.85rem;opacity:.85;}
-@media(max-width:768px){.hero h1{font-size:1.85rem;}.hero .sub{font-size:1rem;}.hero{padding:120px 0 80px;}}
+  .ribbon{background:#05090f; color:#8593b3; font-size:12px; letter-spacing:.04em; text-align:center; padding:9px 16px; border-bottom:1px solid var(--hair); position:relative; z-index:2}
+  .ribbon b{color:var(--cyan)}
 
-/* 実績バンド */
-.stats{background:#0f1b2d;color:#fff;padding:54px 0;}
-.stats .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:center;}
-.stats .num{font-size:2.6rem;font-weight:900;color:#ffd54a;line-height:1.2;}
-.stats .label{font-size:.95rem;opacity:.85;margin-top:6px;}
-@media(max-width:768px){.stats .grid{grid-template-columns:1fr;gap:24px;}}
+  .nav{position:sticky; top:0; z-index:60; background:rgba(8,13,24,.72); backdrop-filter:saturate(160%) blur(18px); -webkit-backdrop-filter:saturate(160%) blur(18px); border-bottom:1px solid var(--hair)}
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:76px; gap:20px}
+  .nav-logo{height:28px; width:auto; display:block}
+  .nav-links{display:flex; gap:34px; font-size:14px; font-weight:600; color:var(--text-2); letter-spacing:.04em}
+  .nav-links a{transition:color .16s} .nav-links a:hover{color:#fff}
+  .nav-cta{display:flex; gap:12px}
+  .nav-cta .btn{padding:10px 20px; font-size:13px}
+  @media(max-width:960px){ .nav-links{display:none} }
+  @media(max-width:560px){ .nav-cta .btn-line{display:none} }
 
-.worries{background:var(--bg-gray);}
-.worry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
-.worry-card{background:#fff;border-radius:var(--radius);padding:36px 28px;text-align:center;box-shadow:var(--shadow);border-top:4px solid var(--blue);}
-.worry-card .face{font-size:2.6rem;margin-bottom:14px;}
-.worry-card h3{font-size:1.12rem;margin-bottom:10px;}
-.worry-card p{color:var(--text-sub);font-size:.95rem;}
-.worries .bridge{text-align:center;margin-top:50px;font-size:1.3rem;font-weight:800;color:var(--blue);}
-@media(max-width:768px){.worry-grid{grid-template-columns:1fr;}}
+  .hero{padding:clamp(70px,10vw,132px) 0 clamp(72px,10vw,124px); position:relative; overflow:hidden}
+  .hero-grid{display:grid; grid-template-columns:1.08fr .92fr; gap:clamp(32px,5vw,72px); align-items:center}
+  .hero-badge{display:inline-flex; align-items:center; gap:10px; font-size:12px; font-weight:600; letter-spacing:.14em; color:var(--text-2); background:rgba(255,255,255,.03); border:1px solid var(--hair); border-radius:var(--r-pill); padding:9px 18px; margin-bottom:30px}
+  .hero-badge .pulse{width:7px; height:7px; border-radius:50%; background:var(--cyan); box-shadow:0 0 12px 1px var(--cyan); animation:pulse 2.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  h1.hero-title{font-family:var(--serif); font-size:clamp(30px,8.2vw,74px); font-weight:600; line-height:1.24; letter-spacing:.02em; margin:0 0 28px; color:#fff}
+  h1.hero-title .grad{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .hero-sub{font-size:clamp(15.5px,1.8vw,18px); color:var(--text-2); margin:0 0 38px; max-width:42ch; line-height:2}
+  .hero-cta{display:flex; gap:15px; flex-wrap:wrap}
 
-.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
-.service-card{background:#fff;border:1px solid #eaeef5;border-radius:var(--radius);padding:34px 28px;transition:transform .3s, box-shadow .3s;}
-.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--blue-light);}
-.service-card .icon{width:60px;height:60px;border-radius:14px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
-.service-card .icon svg{width:30px;height:30px;stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.service-card .num{font-size:.8rem;font-weight:700;color:var(--blue);letter-spacing:.1em;}
-.service-card h3{font-size:1.18rem;margin:6px 0 12px;}
-.service-card p{color:var(--text-sub);font-size:.95rem;}
-@media(max-width:900px){.service-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:600px){.service-grid{grid-template-columns:1fr;}}
+  .hero-vis{position:relative; aspect-ratio:1/1; max-width:470px; margin-left:auto; width:100%}
+  .hv-ring{position:absolute; inset:2%; border-radius:50%; border:1px solid var(--hair); }
+  .hv-ring::after{content:""; position:absolute; inset:14%; border-radius:50%; border:1px solid var(--hair)}
+  .hv-glow{position:absolute; inset:14% 16% 20% 14%; border-radius:32px; background:var(--grad); filter:blur(38px); opacity:.5}
+  .hv-card{position:absolute; border-radius:22px; box-shadow:var(--sh-2)}
+  .hv-1{width:48%; height:48%; left:9%; top:11%; background:var(--grad); box-shadow:var(--glow)}
+  .hv-2{width:34%; height:34%; right:10%; top:9%; border-radius:50%; background:var(--panel); border:1px solid var(--hair-2); display:grid; place-items:center; backdrop-filter:blur(6px)}
+  .hv-2 svg{width:54%; height:54%}
+  .hv-3{width:38%; height:38%; right:11%; bottom:11%; background:rgba(16,26,48,.72); border:1px solid var(--hair-2); display:grid; place-items:center; backdrop-filter:blur(6px)}
+  .hv-3 span{font-family:var(--serif); color:#fff; font-weight:600; font-size:clamp(13px,1.8vw,17px); letter-spacing:.06em; text-align:center; line-height:1.6}
+  .hv-3 span i{display:block; font-style:normal; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; font-size:1.7em; font-weight:600}
+  @media(max-width:880px){ .hero-grid{grid-template-columns:1fr} .hero-vis{max-width:340px; margin:6px auto 0} }
 
-.reasons{background:linear-gradient(180deg,var(--bg-gray),#fff);}
-.reason-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
-.reason-card{text-align:center;padding:20px;}
-.reason-card .big{width:72px;height:72px;margin:0 auto 18px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;box-shadow:0 10px 24px rgba(26,115,232,.3);}
-.reason-card h3{font-size:1.2rem;margin-bottom:12px;}
-.reason-card p{color:var(--text-sub);font-size:.96rem;}
-@media(max-width:768px){.reason-grid{grid-template-columns:1fr;}}
+  .cards3{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  .fcard{background:linear-gradient(180deg,var(--panel),var(--panel-2)); border:1px solid var(--hair); border-radius:var(--r-lg); padding:40px 34px; transition:transform .25s, border-color .25s, box-shadow .25s; position:relative; overflow:hidden}
+  .fcard::before{content:""; position:absolute; top:0; left:0; right:0; height:1px; background:var(--grad); opacity:0; transition:opacity .25s}
+  .fcard:hover{transform:translateY(-6px); border-color:var(--hair-2); box-shadow:var(--sh-2)}
+  .fcard:hover::before{opacity:1}
+  .fcard h3{font-family:var(--serif); font-size:25px; font-weight:600; letter-spacing:.03em; margin:0 0 6px; color:#fff}
+  .fsub{font-size:13px; font-weight:600; color:var(--cyan); letter-spacing:.05em; margin:0 0 12px}
+  .fcard ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column}
+  .fcard li{font-size:14.5px; color:var(--text-2); padding:15px 0; border-bottom:1px solid var(--hair)}
+  .fcard li:last-child{border-bottom:none}
 
-.flow-wrap{max-width:760px;margin:0 auto;}
-.flow-step{display:flex;gap:24px;align-items:flex-start;position:relative;padding-bottom:38px;}
-.flow-step:not(:last-child)::before{content:"";position:absolute;left:27px;top:56px;bottom:0;width:2px;background:var(--blue-light);}
-.flow-step .step-no{flex:0 0 56px;width:56px;height:56px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center;z-index:2;box-shadow:0 6px 16px rgba(26,115,232,.3);}
-.flow-step .step-body{padding-top:6px;}
-.flow-step .step-body h3{font-size:1.15rem;margin-bottom:6px;}
-.flow-step .step-body p{color:var(--text-sub);font-size:.95rem;}
+  .pricing{background:linear-gradient(180deg,var(--bg),#070b14)}
+  .tiers{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch}
+  .tier{background:linear-gradient(180deg,var(--panel),var(--panel-2)); border:1px solid var(--hair); border-radius:var(--r-lg); padding:40px 32px; display:flex; flex-direction:column; transition:transform .25s, box-shadow .25s, border-color .25s}
+  .tier:hover{transform:translateY(-6px); border-color:var(--hair-2); box-shadow:var(--sh-2)}
+  .tier.feat{border:1px solid transparent; background:linear-gradient(var(--panel),var(--panel)) padding-box, var(--grad) border-box; box-shadow:var(--glow); transform:translateY(-12px)}
+  .tier.feat:hover{transform:translateY(-16px)}
+  .tier-flag{align-self:flex-start; font-size:10.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#04122b; background:var(--grad); padding:6px 14px; border-radius:var(--r-pill); margin-bottom:20px}
+  .tier-name{font-family:var(--serif); font-size:15px; font-weight:600; letter-spacing:.26em; text-transform:uppercase; color:var(--cyan)}
+  .tier-tag{font-family:var(--serif); font-size:19px; font-weight:600; color:#fff; margin:10px 0 4px; letter-spacing:.03em}
+  .tier-for{font-size:13px; color:var(--text-3); min-height:42px; line-height:1.7}
+  .tier-price{display:flex; align-items:baseline; gap:3px; margin:22px 0 3px}
+  .tier-price .amt{font-family:var(--num); font-size:58px; font-weight:500; letter-spacing:.01em; line-height:.9; color:#fff}
+  .tier.feat .tier-price .amt{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .tier-price .man{font-family:var(--serif); font-size:19px; font-weight:600; color:var(--text); align-self:flex-end; margin-bottom:5px; letter-spacing:.04em}
+  .tier-price .tilde{font-size:15px; font-weight:500; color:var(--text-3); align-self:flex-end; margin-bottom:6px; font-family:var(--num)}
+  .tier-note{font-size:11px; color:var(--text-3); letter-spacing:.06em; margin-bottom:26px}
+  .tier hr{border:none; border-top:1px solid var(--hair); margin:0 0 24px}
+  .tier ul{list-style:none; margin:0 0 30px; padding:0; display:flex; flex-direction:column; gap:14px; flex:1}
+  .tier li{font-size:14px; color:var(--text-2); display:flex; align-items:flex-start; gap:11px}
+  .tier li svg{width:18px; height:18px; flex:0 0 auto; color:var(--cyan); margin-top:2px}
+  .tier .btn{width:100%; justify-content:center}
 
-/* お客様の声 */
-.voices{background:var(--bg-gray);}
-.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
-.voice-card{background:#fff;border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow);position:relative;}
-.voice-card .quote{font-size:3rem;color:var(--blue-light);line-height:1;font-weight:900;}
-.voice-card p{color:var(--text);font-size:.97rem;margin:8px 0 18px;}
-.voice-card .who{display:flex;align-items:center;gap:12px;border-top:1px solid #eee;padding-top:16px;}
-.voice-card .avatar{width:44px;height:44px;border-radius:50%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:800;}
-.voice-card .who .meta{font-size:.85rem;color:var(--text-sub);}
-.voice-card .who .meta strong{display:block;color:var(--text);font-size:.92rem;}
-@media(max-width:900px){.voice-grid{grid-template-columns:1fr;}}
+  /* 低価格エントリー枠＝ページ内で最も目立つ「光る一枚」（Standardと同じ発光ボーダー＋glow） */
+  .lowprice{margin-top:40px; display:flex; align-items:center; gap:clamp(24px,3.5vw,44px); flex-wrap:wrap; position:relative; overflow:hidden;
+    border:1px solid transparent; border-radius:var(--r-lg);
+    background:linear-gradient(var(--panel),var(--panel)) padding-box, var(--grad) border-box;
+    box-shadow:var(--glow); padding:clamp(30px,4vw,44px) clamp(26px,3.4vw,44px)}
+  .lowprice::before{content:""; position:absolute; inset:-40% 55% auto -10%; height:80%; background:var(--grad); filter:blur(70px); opacity:.16; pointer-events:none}
+  .lowprice>*{position:relative; z-index:1}
+  .lp-body{flex:1 1 360px}
+  .lp-badge{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--cyan); background:var(--grad-soft); border:1px solid var(--hair-2); border-radius:var(--r-pill); padding:5px 15px; margin-bottom:16px}
+  .lp-body b{font-family:var(--serif); font-weight:600; color:#fff; letter-spacing:.03em}
+  .lp-body p{margin:12px 0 0; font-size:14.5px; color:var(--text-2); line-height:1.9}
+  .lp-body em{font-style:normal; color:var(--cyan); font-weight:600}
+  .lp-act{flex:0 0 auto; display:flex; flex-direction:column; gap:12px; align-items:flex-start}
+  .lowprice .lp-cta{padding:16px 30px; font-size:15.5px}
+  .lp-reassure{margin:0; font-size:12px; color:var(--text-3); line-height:1.75; max-width:32ch}
+  @media(max-width:760px){ .lowprice{flex-direction:column; align-items:stretch} .lp-act{width:100%} .lowprice .lp-cta{width:100%; justify-content:center} .lp-reassure{text-align:center; max-width:none} }
 
-.pricing{background:#fff;}
-.price-card{max-width:480px;margin:0 auto;background:#fff;border-radius:24px;box-shadow:var(--shadow);padding:48px 40px;text-align:center;border:2px solid var(--blue);}
-.price-card .tag{display:inline-block;background:var(--blue);color:#fff;font-size:.85rem;font-weight:700;padding:6px 18px;border-radius:50px;margin-bottom:20px;}
-.price-card .amount{font-size:3rem;font-weight:900;color:var(--blue);line-height:1.2;}
-.price-card .amount small{font-size:1.1rem;font-weight:700;color:var(--text-sub);}
-.price-card .free{margin-top:8px;font-weight:700;color:#e8710a;}
-.price-card ul{text-align:left;margin:28px 0;list-style:none;}
-.price-card ul li{padding:9px 0 9px 30px;position:relative;color:var(--text-sub);border-bottom:1px dashed #eee;}
-.price-card ul li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:900;}
+  .monthly{margin-top:40px; background:rgba(255,255,255,.02); border:1px solid var(--hair); border-radius:var(--r-lg); padding:30px clamp(24px,3vw,38px)}
+  .monthly-h{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:5px}
+  .monthly-h h3{font-family:var(--serif); font-size:19px; font-weight:600; margin:0; color:#fff; letter-spacing:.03em}
+  .monthly-h .tagm{font-size:11px; font-weight:700; letter-spacing:.1em; color:var(--cyan); background:var(--grad-soft); border:1px solid var(--hair); border-radius:var(--r-pill); padding:4px 13px}
+  .monthly-desc{font-size:13px; color:var(--text-3); margin:0 0 22px}
+  .m-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .m-cell{border:1px solid var(--hair); border-radius:var(--r-md); padding:18px 20px; background:rgba(255,255,255,.015)}
+  .m-cell .mn{font-size:13px; font-weight:600; color:var(--text-2)}
+  .m-cell .mp{font-family:var(--num); font-size:17px; font-weight:500; color:#fff; margin-top:6px; letter-spacing:.02em}
+  .m-cell .mp small{font-family:var(--sans); font-size:12px; color:var(--text-3); font-weight:600}
 
-.faq{background:var(--bg-gray);}
-.faq-wrap{max-width:760px;margin:0 auto;}
-.faq-item{background:#fff;border:1px solid #eaeef5;border-radius:12px;margin-bottom:14px;overflow:hidden;}
-.faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;cursor:pointer;font-weight:700;font-size:1.02rem;}
-.faq-q .mark{color:var(--blue);font-size:1.4rem;transition:transform .3s;flex-shrink:0;}
-.faq-item.open .faq-q .mark{transform:rotate(45deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
-.faq-a p{padding:0 22px 22px;color:var(--text-sub);font-size:.96rem;}
+  .menu-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  .mcol{background:linear-gradient(180deg,var(--panel),var(--panel-2)); border:1px solid var(--hair); border-radius:var(--r-lg); padding:30px 30px 14px}
+  .mcol-h{margin-bottom:6px}
+  .mcol-h h3{font-family:var(--serif); font-size:19px; font-weight:600; margin:0; color:#fff; letter-spacing:.03em}
+  .mrow{display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:16px 0; border-bottom:1px solid var(--hair)}
+  .mrow:last-child{border-bottom:none}
+  .mrow .ml b{display:block; color:var(--text); font-weight:600; font-size:14.5px}
+  .mrow .ml span{font-size:12px; color:var(--text-3)}
+  .mrow .mv{font-family:var(--num); font-size:16px; font-weight:500; white-space:nowrap; color:var(--cyan); letter-spacing:.02em}
 
-.profile{background:linear-gradient(135deg,#1a73e8,#4a90e2);color:#fff;}
-.profile-card{max-width:780px;margin:0 auto;display:flex;gap:40px;align-items:center;background:rgba(255,255,255,.1);padding:44px;border-radius:24px;backdrop-filter:blur(6px);}
-.profile-photo{flex:0 0 150px;width:150px;height:150px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.2);}
-.profile-photo svg{width:90px;height:90px;}
-.profile-info h3{font-size:1.5rem;}
-.profile-info .role{opacity:.9;font-weight:600;margin:6px 0 16px;}
-.profile-info p{font-size:.98rem;opacity:.95;line-height:1.9;}
-@media(max-width:768px){.profile-card{flex-direction:column;text-align:center;padding:34px 26px;}}
+  .proof{background:#060a12; position:relative; overflow:hidden}
+  .proof::before{content:""; position:absolute; width:600px; height:600px; right:-160px; top:-200px; border-radius:50%; background:radial-gradient(circle, rgba(59,140,255,.14), transparent 62%)}
+  .proof .eyebrow{color:var(--cyan)}
+  .proof-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+  .pf{background:rgba(255,255,255,.025); border:1px solid var(--hair); border-radius:var(--r-md); padding:28px 30px; display:flex; gap:18px; align-items:flex-start}
+  .pf .n{font-family:var(--num); font-weight:500; font-size:30px; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; flex:0 0 auto; line-height:1}
+  .pf p{margin:0; font-size:14.5px; color:var(--text-2); line-height:1.85}
 
-.contact{text-align:center;}
-.contact .box{max-width:760px;margin:0 auto;background:var(--blue-light);border-radius:24px;padding:60px 40px;}
-.contact h2{font-size:2rem;margin-bottom:16px;}
-.contact p{color:var(--text-sub);margin-bottom:32px;}
-.contact .note{font-size:.85rem;margin-top:18px;color:var(--text-sub);}
+  .final .wrap{text-align:center}
+  .final-box{border:1px solid var(--hair-2); border-radius:clamp(22px,3vw,34px); padding:clamp(52px,7vw,92px) 28px; position:relative; overflow:hidden; background:linear-gradient(160deg,var(--panel),#070b14)}
+  .final-box::before{content:""; position:absolute; inset:-40% 20% auto 20%; height:70%; background:var(--grad); filter:blur(80px); opacity:.28}
+  .final-box>*{position:relative}
+  .final-box h2{font-family:var(--serif); font-size:clamp(28px,4.4vw,46px); font-weight:600; letter-spacing:.02em; margin:0 0 16px; color:#fff; text-wrap:balance}
+  .final-box p{font-size:16px; color:var(--text-2); margin:0 auto 32px; max-width:44ch; line-height:1.9}
 
-/* プライバシーポリシー */
-.privacy{background:#fff;border-top:1px solid #eee;}
-.privacy .container{max-width:820px;}
-.privacy h2{font-size:1.5rem;margin-bottom:8px;text-align:center;}
-.privacy .lead{text-align:center;color:var(--text-sub);margin-bottom:36px;}
-.privacy h3{font-size:1.05rem;margin:26px 0 8px;color:var(--blue);}
-.privacy p{color:var(--text-sub);font-size:.94rem;}
-.privacy ul{color:var(--text-sub);font-size:.94rem;padding-left:1.3em;margin-top:8px;}
+  .foot{background:#05080f; color:var(--text-3); padding:clamp(48px,6vw,76px) 0 46px; border-top:1px solid var(--hair)}
+  .foot .wrap{display:grid; grid-template-columns:1.2fr 1fr; gap:38px}
+  .foot-logo{height:28px; margin-bottom:16px}
+  .fnote{font-size:13px; line-height:1.9; max-width:38ch; color:var(--text-3)}
+  .foot h4{font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#5a688a; margin:0 0 16px}
+  .foot ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:11px}
+  .foot li{font-size:12.5px; color:var(--text-2); padding-left:18px; position:relative}
+  .foot li::before{content:"›"; position:absolute; left:0; color:var(--cyan)}
+  .foot li b{color:var(--text)}
+  .foot-base{border-top:1px solid var(--hair); margin-top:38px; padding-top:24px; font-size:11.5px; color:#4f5d7e; text-align:center; letter-spacing:.04em}
 
-footer.site{background:#0f1b2d;color:#9fb3c8;text-align:center;padding:40px 0;font-size:.9rem;}
-footer.site .logo{color:#fff;font-weight:800;margin-bottom:10px;font-size:1rem;}
-footer.site a{color:#9fb3c8;text-decoration:underline;}
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease}
+  .reveal.in{opacity:1; transform:none}
+  @media(max-width:900px){ .cards3,.tiers,.menu-grid,.proof-grid{grid-template-columns:1fr} .m-grid{grid-template-columns:repeat(2,1fr)} .tier.feat{transform:none} .tier.feat:hover{transform:translateY(-6px)} .foot .wrap{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important} .reveal{opacity:1; transform:none} }
 
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal.d1{transition-delay:.1s;}.reveal.d2{transition-delay:.2s;}.reveal.d3{transition-delay:.3s;}.reveal.d4{transition-delay:.4s;}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+  /* ===== 和文改行・約物の仕上げ（追記のみ・既存レイアウトは不変） ===== */
+  /* 明朝の大見出し：文節で折返し＋厳密禁則＋約物ツメ。Chromium系は auto-phrase、非対応環境でも無害 */
+  h1.hero-title, .sec-head h2, .final-box h2 { word-break:auto-phrase; line-break:strict; font-feature-settings:"palt"; }
+  .sec-head:not(.center) h2 { text-wrap:pretty; }
+  h1.hero-title { text-wrap:balance; }
+  @media (max-width:400px){ h1.hero-title .brpc{ display:none; } }
+  /* リード・説明文：文節折返し＋読みやすさ */
+  .hero-sub, .sec-head p, .lp-body p { word-break:auto-phrase; line-break:strict; }
+  .hero-sub { text-wrap:pretty; }
+  .final-box p { text-wrap:balance; }
+  /* 低価格枠：見出しは意味の切れ目で均等改行し「方へ」の孤立を防止／「始めやすい価格」を分断しない */
+  .lowprice .lp-body { word-break:auto-phrase; line-break:strict; }
+  .lp-body b { display:block; font-size:clamp(22px,2.6vw,27px); line-height:1.4; text-wrap:balance; }
+  .lp-body em { white-space:nowrap; }
+  /* 文節inline-block（span間に空白・改行を入れない） */
+  .tier-for .ph, .lp-body b .ph, .proof .sec-head h2 .l { display:inline-block; }
+  .tier-for { line-break:strict; }
+  .tier li, .fcard li { text-wrap:pretty; line-break:strict; }
+  /* ピル・金額の崩れ止め */
+  .hero-badge { white-space:nowrap; }
+  .m-cell .mp, .m-cell .mp small { white-space:nowrap; }
+  @media(max-width:560px){ .m-grid{ grid-template-columns:1fr; } }
+  /* 実績3枚を均等3列に（半端バランス解消。モバイル1列は既存ルールで担保） */
+  .proof-grid { grid-template-columns:repeat(3,1fr); }
+  .foot-memo{ margin-top:28px; border:1px dashed var(--hair-2); border-radius:var(--r-md); padding:14px 18px; font-size:11.5px; color:var(--text-3); line-height:1.85 }
+  .foot-memo b{ display:block; color:#c9a227; margin-bottom:4px; letter-spacing:.04em }
 
-.fixed-cta{display:none;position:fixed;bottom:0;left:0;width:100%;z-index:90;background:rgba(255,255,255,.96);box-shadow:0 -2px 14px rgba(0,0,0,.1);padding:10px 16px;}
-.fixed-cta a{display:block;text-align:center;}
-@media(max-width:768px){.fixed-cta{display:block;}body{padding-bottom:74px;}}
+  /* ===== H1直下の結論ブロック（AEO: 主要クエリへの直接回答を抜粋させる） ===== */
+  .hero-answer{ margin:0 0 34px; max-width:46ch; padding:16px 20px; border-left:2px solid var(--cyan);
+    background:linear-gradient(90deg, rgba(124,234,239,.06), transparent 90%); border-radius:0 var(--r-md) var(--r-md) 0;
+    font-size:clamp(14px,1.5vw,15.5px); color:var(--text-2); line-height:2; word-break:auto-phrase; line-break:strict; text-wrap:pretty }
+  .hero-answer b{ color:#fff; font-weight:700 }
+  @media(max-width:880px){ .hero-answer{ max-width:none } }
 </style>
 </head>
 <body>
 
-<header class="site">
-  <div class="container inner">
-    <div class="logo">生成AI導入支援</div>
-    <nav>
-      <a href="#worries">お悩み</a>
-      <a href="#services">サービス</a>
-      <a href="#reasons">選ばれる理由</a>
-      <a href="#flow">導入の流れ</a>
-      <a href="#voices">お客様の声</a>
-      <a href="#price">料金</a>
-      <a href="#faq">FAQ</a>
-      <a class="nav-cta" href="#contact">無料相談</a>
-    </nav>
-  </div>
-</header>
+<div class="page">
 
-<!-- 1. ファーストビュー -->
-<section class="hero">
-  <div class="container">
-    <span class="badge">中小企業の経営者さまへ｜全国オンライン対応｜AIコンサルタント Shinya</span>
-    <h1>非効率にこそ、<span class="hl">チャンス</span>あり。<br>生成AIで、会社の可能性を広げよう。</h1>
-    <p class="sub">「人手が足りない」「AIに興味はあるけど何から始めれば…」<br>そんな中小企業のために。貴社の業務に合わせてカスタマイズした生成AI活用を、はじめの一歩から伴走します。</p>
-    <div class="actions">
-      <a class="btn" href="#contact">無料相談はこちら →</a>
-      <a class="btn ghost" href="#services" style="background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.6);">サービスを見る</a>
-    </div>
-    <p class="note">※ 初回相談は無料です。全国オンライン対応・月額30,000円〜・長期契約の縛りなし。</p>
-  </div>
-</section>
-
-<!-- 実績バンド -->
-<section class="stats" aria-label="実績">
-  <div class="container">
-    <div class="grid">
-      <div class="reveal d1"><div class="num">11社</div><div class="label">中小企業の導入を支援</div></div>
-      <div class="reveal d2"><div class="num">144,000分</div><div class="label">年間トータル削減時間（約2,400時間）</div></div>
-      <div class="reveal d3"><div class="num">業界歴2年</div><div class="label">生成AI活用の専門知見</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 2. お悩み -->
-<section class="worries" id="worries">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="en">YOUR WORRIES</span>
-      <h2>こんなお悩み、ありませんか？</h2>
-      <p>ひとつでも当てはまるなら、生成AIが解決の糸口になります。</p>
-    </div>
-    <div class="worry-grid">
-      <div class="worry-card reveal d1"><div class="face">😵‍💫</div><h3>人手不足で業務が回らない</h3><p>毎日の事務作業や問い合わせ対応に追われ、本来やるべき仕事に手が回らない。</p></div>
-      <div class="worry-card reveal d2"><div class="face">🤔</div><h3>AIに興味はあるが始め方が不明</h3><p>「便利そう」とは思うものの、何を・どこから導入すればいいのか分からない。</p></div>
-      <div class="worry-card reveal d3"><div class="face">💸</div><h3>コストや失敗が不安</h3><p>高額なツールを入れて使いこなせなかったら…という不安で踏み出せない。</p></div>
-    </div>
-    <p class="bridge reveal">その「非効率」、実は伸びしろです。一緒に変えていきましょう。</p>
-  </div>
-</section>
-
-<!-- 3. サービス紹介 -->
-<section id="services">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="en">OUR SERVICES</span>
-      <h2>提供する5つのサービス</h2>
-      <p>分析から導入・定着まで、必要な工程をワンストップでサポートします。</p>
-    </div>
-    <div class="service-grid">
-      <div class="service-card reveal d1">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 4-5"/></svg></div>
-        <span class="num">SERVICE 01</span><h3>業務フローの分析</h3>
-        <p>現状の業務を丁寧にヒアリングし、AIで効率化できるポイントを可視化します。</p>
+  <nav class="nav">
+    <div class="wrap">
+      <a href="#" aria-label="TIGERLABO">
+        <svg class="nav-logo" viewBox="0 0 452 104" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TIGERLABO">
+          <defs><linearGradient id="tl" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7ceaef"/><stop offset="1" stop-color="#3b8cff"/></linearGradient></defs>
+          <g transform="translate(16,20)"><polygon points="0,64 66,0 66,28 100,0 100,64" fill="url(#tl)"/></g>
+          <text x="140" y="70" font-family="'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-serif" font-weight="800" font-size="46" letter-spacing="0.5" fill="#ffffff">TIGERLABO</text>
+        </svg>
+      </a>
+      <div class="nav-links">
+        <a href="#features">できること</a>
+        <a href="#pricing">料金</a>
+        <a href="#proof">実績</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform" target="_blank" rel="noopener">お問い合わせ</a>
       </div>
-      <div class="service-card reveal d2">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 16.5 7.1 18.2l.9-5.5-4-3.9 5.5-.8z"/></svg></div>
-        <span class="num">SERVICE 02</span><h3>AIツール選定</h3>
-        <p>数あるAIツールから、貴社の目的・予算に本当に合うものだけを厳選してご提案。</p>
-      </div>
-      <div class="service-card reveal d3">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v6"/><path d="M5 10l7-2 7 2"/><rect x="4" y="10" width="16" height="11" rx="2"/></svg></div>
-        <span class="num">SERVICE 03</span><h3>導入サポート</h3>
-        <p>設定や初期構築をハンズオンで支援。「導入したのに使われない」を防ぎます。</p>
-      </div>
-      <div class="service-card reveal d1">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 100-8 4 4 0 000 8z"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg></div>
-        <span class="num">SERVICE 04</span><h3>社員研修</h3>
-        <p>現場の社員が自走できるよう、実務に直結したAI活用研修を実施します。</p>
-      </div>
-      <div class="service-card reveal d2">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 01-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1121 11.5z"/><path d="M8 11h.01M12 11h.01M16 11h.01"/></svg></div>
-        <span class="num">SERVICE 05</span><h3>チャットボット構築</h3>
-        <p>問い合わせ対応や社内FAQを自動化するチャットボットをオーダーメイドで構築。</p>
-      </div>
-      <div class="service-card reveal d3" style="display:flex;flex-direction:column;justify-content:center;align-items:center;background:var(--blue);color:#fff;border:none;text-align:center;">
-        <h3 style="color:#fff;font-size:1.25rem;">まずは無料相談から</h3>
-        <p style="color:rgba(255,255,255,.9);margin-bottom:18px;">どのサービスが必要かも、一緒に整理します。</p>
-        <a class="btn ghost" href="#contact">相談してみる →</a>
+      <div class="nav-cta">
+        <a class="btn btn-line" href="#pricing">料金を見る</a>
+        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.5V4Z"/></svg></span>無料相談</a>
       </div>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- 4. 選ばれる理由 -->
-<section class="reasons" id="reasons">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="en">WHY CHOSEN</span>
-      <h2>選ばれる3つの理由</h2>
-      <p>大手にはない「ちょうどいい距離感」で、貴社だけの最適解を。</p>
-    </div>
-    <div class="reason-grid">
-      <div class="reason-card reveal d1"><div class="big">01</div><h3>小回りがきく対応力</h3><p>担当はコンサルタント直結。「ちょっと聞きたい」にすぐ応える、フットワークの軽さが強みです。</p></div>
-      <div class="reason-card reveal d2"><div class="big">02</div><h3>業務に合わせたカスタマイズ</h3><p>既存ツールをそのまま渡すのではなく、貴社の業務フローに合わせて調整。だから現場で本当に使えます。</p></div>
-      <div class="reason-card reveal d3"><div class="big">03</div><h3>はじめの一歩から伴走</h3><p>知識ゼロでもOK。何から始めるべきかの整理から導入後の定着まで、二人三脚でサポートします。</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 5. 導入の流れ -->
-<section id="flow">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="en">FLOW</span>
-      <h2>導入までの流れ</h2>
-      <p>ご相談から導入後のフォローまで、5つのステップで進めます。</p>
-    </div>
-    <div class="flow-wrap">
-      <div class="flow-step reveal d1"><div class="step-no">1</div><div class="step-body"><h3>ヒアリング</h3><p>現状の業務やお困りごとをじっくりお伺いします。専門知識は不要です。</p></div></div>
-      <div class="flow-step reveal d1"><div class="step-no">2</div><div class="step-body"><h3>分析</h3><p>業務フローを整理し、AIで効率化できる箇所と効果を見える化します。</p></div></div>
-      <div class="flow-step reveal d1"><div class="step-no">3</div><div class="step-body"><h3>提案</h3><p>最適なツールと活用プランを、優先順位とともにご提案します。</p></div></div>
-      <div class="flow-step reveal d1"><div class="step-no">4</div><div class="step-body"><h3>導入</h3><p>設定・構築・社員研修まで伴走し、現場で使える状態に仕上げます。</p></div></div>
-      <div class="flow-step reveal d1"><div class="step-no">5</div><div class="step-body"><h3>フォローアップ</h3><p>導入後も定期的に運用を確認し、さらなる改善を継続サポートします。</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- お客様の声 -->
-<section class="voices" id="voices">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="en">VOICE</span>
-      <h2>お客様の声</h2>
-      <p>導入いただいた企業さまから、たくさんのうれしいお声をいただいています。</p>
-    </div>
-    <div class="voice-grid">
-      <div class="voice-card reveal d1">
-        <div class="quote">“</div>
-        <p>属人的になっていた業務が構造化され、誰でも簡単に、そして人的なミスなく行えるようになりました。業務がスムーズになり、余計な修正もなくなって、本来やるべきことに集中できるようになりました。</p>
-        <div class="who"><div class="avatar">A</div><div class="meta"><strong>サービス業</strong>経営者さま</div></div>
-      </div>
-      <div class="voice-card reveal d2">
-        <div class="quote">“</div>
-        <p>何から始めればいいか分からない状態でしたが、現場目線で一つずつ導いてもらえました。問い合わせ対応の手間が大きく減り、社員の残業も削減できています。</p>
-        <div class="who"><div class="avatar">B</div><div class="meta"><strong>卸・小売業</strong>管理部門ご担当者さま</div></div>
-      </div>
-      <div class="voice-card reveal d3">
-        <div class="quote">“</div>
-        <p>社員研修のおかげで、社内で生成AIを使うことが当たり前になりました。少人数でも回せる体制になり、新しい仕事に時間を使えるようになっています。</p>
-        <div class="who"><div class="avatar">C</div><div class="meta"><strong>士業・専門サービス</strong>代表さま</div></div>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-badge"><span class="pulse"></span>中小企業の、AI活用パートナー</span>
+          <h1 class="hero-title">AIを、<span class="grad">“なんとなく”</span><br class="brpc">で終わらせない。</h1>
+          <p class="hero-sub">AIで、“人手”と“手間”を減らす。自社も“AI社員”で動かす実践者が、社長の「やってみたい」を、ちゃんと使える形にします。</p>
+          <p class="hero-answer"><b>株式会社タイガーラボは、中小企業向けのAI活用パートナーです。</b>AIの導入・活用、業務の省力化、開発・制作を、Light 20万円〜の明確な料金で全国オンライン支援します。自社の運営そのものを自社のAI（AI社員）で回している実践者が、最初の一歩から伴走します。</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.5V4Z"/></svg></span>まずは無料相談</a>
+            <a class="btn btn-line" href="#pricing"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4h4M14 3l6 6v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h9Z"/></svg></span>料金・サービスを見る</a>
+          </div>
+        </div>
+        <div class="hero-vis" aria-hidden="true">
+          <div class="hv-ring"></div>
+          <div class="hv-glow"></div>
+          <div class="hv-card hv-1"></div>
+          <div class="hv-card hv-2"><svg viewBox="0 0 100 64"><defs><linearGradient id="tlv" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7ceaef"/><stop offset="1" stop-color="#3b8cff"/></linearGradient></defs><polygon points="0,64 66,0 66,28 100,0 100,64" fill="url(#tlv)"/></svg></div>
+          <div class="hv-card hv-3"><span><i>AI</i>で動かす</span></div>
+        </div>
       </div>
     </div>
-    <p style="text-align:center;margin-top:36px;color:var(--text-sub);font-size:.95rem;" class="reveal">…ほかにも、多くの企業さまからお喜びの声をいただいています。</p>
-  </div>
-</section>
+  </header>
 
-<!-- 6. 料金プラン -->
-<section class="pricing" id="price">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="en">PRICE</span>
-      <h2>料金プラン</h2>
-      <p>分かりやすい月額制。まずは無料相談からお試しください。</p>
-    </div>
-    <div class="price-card reveal d1">
-      <span class="tag">スタンダードサポート</span>
-      <div class="amount">月額 30,000<small>円〜</small></div>
-      <p class="free">＼ 初回相談は無料！ ／</p>
-      <ul>
-        <li>業務フローの分析・課題整理</li>
-        <li>最適なAIツールのご提案・選定</li>
-        <li>導入サポート・初期構築</li>
-        <li>社員向けAI活用研修</li>
-        <li>導入後の継続フォロー</li>
-        <li>全国オンライン対応・長期契約の縛りなし</li>
-      </ul>
-      <a class="btn" href="#contact">無料相談はこちら →</a>
-      <p class="note" style="margin-top:14px;font-size:.82rem;color:var(--text-sub);">※ 業務内容・規模により最適なプランをご案内します。</p>
-    </div>
-  </div>
-</section>
-
-<!-- 7. FAQ -->
-<section class="faq" id="faq">
-  <div class="container">
-    <div class="section-head reveal"><span class="en">FAQ</span><h2>よくあるご質問</h2></div>
-    <div class="faq-wrap">
-      <div class="faq-item reveal d1"><div class="faq-q">AIの知識が全くなくても大丈夫ですか？<span class="mark">＋</span></div><div class="faq-a"><p>もちろん大丈夫です。専門用語を使わず、現状の業務をお伺いするヒアリングから始めますので、知識ゼロからでも安心してご相談いただけます。</p></div></div>
-      <div class="faq-item reveal d1"><div class="faq-q">どのくらいの期間で効果が出ますか？<span class="mark">＋</span></div><div class="faq-a"><p>業務内容によりますが、簡単な定型業務であれば導入後すぐに効果を実感いただけます。一般的には1〜3ヶ月で目に見える改善が現れます。</p></div></div>
-      <div class="faq-item reveal d1"><div class="faq-q">小さな会社でも依頼できますか？<span class="mark">＋</span></div><div class="faq-a"><p>はい。むしろ小回りがきく対応を強みとしており、少人数の企業様や個人事業主様こそ歓迎しています。</p></div></div>
-      <div class="faq-item reveal d1"><div class="faq-q">地方の会社でも依頼できますか？<span class="mark">＋</span></div><div class="faq-a"><p>はい。全国オンライン対応のため、地域を問わずご依頼いただけます。打ち合わせはオンライン会議で完結します。</p></div></div>
-      <div class="faq-item reveal d1"><div class="faq-q">料金はどのくらいかかりますか？<span class="mark">＋</span></div><div class="faq-a"><p>月額30,000円〜のサポートプランをご用意しています。初回相談は無料ですので、まずはお気軽にご相談ください。</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 8. 代表プロフィール -->
-<section class="profile">
-  <div class="container">
-    <div class="profile-card reveal">
-      <div class="profile-photo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg></div>
-      <div class="profile-info">
-        <h3>Shinya</h3>
-        <p class="role">AIコンサルタント／業界歴2年</p>
-        <p>「難しそう」で止まってしまう生成AIを、中小企業の現場で“本当に使える道具”に変えることを使命にしています。流行りのツールを押し付けるのではなく、お客様一社ごとの業務に寄り添い、はじめの一歩から伴走します。非効率なところにこそ、伸びしろとチャンスがあります。一緒に未来を広げましょう。</p>
+  <section class="band" id="features">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Services</span>
+        <h2>できることは、3つ。</h2>
+        <p>AIで、“人手”と“手間”を減らす。導入から仕組み化、開発・制作まで、まとめてご相談いただけます。</p>
+      </div>
+      <div class="cards3">
+        <article class="fcard reveal">
+          <h3>AI導入・活用</h3>
+          <p class="fsub">導入支援・社員のAI化</p>
+          <ul>
+            <li>AI活用診断・ロードマップ</li>
+            <li>実践AI研修（社長・社員向け）</li>
+            <li>AI顧問（毎月の伴走）</li>
+          </ul>
+        </article>
+        <article class="fcard reveal">
+          <h3>業務の省力化</h3>
+          <p class="fsub">ツールの仕組み化・自動化</p>
+          <ul>
+            <li>スプレッドシート・GAS自動化</li>
+            <li>定型業務の仕組み化</li>
+            <li>AIクローン（社長の分身）</li>
+          </ul>
+        </article>
+        <article class="fcard reveal">
+          <h3>開発・制作</h3>
+          <p class="fsub">LP・アプリ・ツール</p>
+          <ul>
+            <li>Web・LP制作</li>
+            <li>業務システム開発</li>
+            <li>アプリ開発</li>
+          </ul>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- 9. お問い合わせ -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="box reveal">
-      <span class="en" style="display:block;color:var(--blue);font-weight:700;letter-spacing:.15em;font-size:.85rem;margin-bottom:10px;">CONTACT</span>
-      <h2>まずは無料相談から、はじめませんか？</h2>
-      <p>「何から始めればいいか分からない」段階で大丈夫です。<br>貴社の状況をお聞かせいただければ、最適な一歩をご提案します。</p>
-      <!-- フォーム準備中。確定後、href を実URLに差し替え、aria-disabled / style を削除してください -->
-      <a class="btn" href="#" aria-disabled="true" style="opacity:.55;pointer-events:none;">受付フォームを準備中です</a>
-      <p class="note">※ お問い合わせ窓口は現在準備中です。まもなく公開いたします。</p>
+  <section class="band pricing" id="pricing">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2>まずは、パッケージで。</h2>
+        <p>いまの段階に合わせて選べる3つ。ここから、始めていきましょう。</p>
+      </div>
+      <div class="tiers">
+        <div class="tier reveal">
+          <span class="tier-name">Light</span>
+          <div class="tier-tag">まずは試す</div>
+          <div class="tier-for"><span class="ph">AIを触ってみたいが、</span><span class="ph">何からか分からない</span></div>
+          <div class="tier-price"><span class="amt">20</span><span class="man">万円</span><span class="tilde">〜</span></div>
+          <div class="tier-note">税別</div>
+          <hr>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>AI活用診断（棚卸し＋活用マップ）</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>実践AI研修 1回</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>90日ロードマップ</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>その他相談</li>
+          </ul>
+          <a class="btn btn-line" href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform?usp=pp_url&entry.1359052033=Light%EF%BC%88%E3%81%BE%E3%81%9A%E3%81%AF%E8%A9%A6%E3%81%99%E3%83%BB20%E4%B8%87%E5%86%86%E3%80%9C%EF%BC%89" target="_blank" rel="noopener">相談する</a>
+        </div>
+        <div class="tier feat reveal">
+          <span class="tier-flag">Most Popular</span>
+          <span class="tier-name">Standard</span>
+          <div class="tier-tag">ひと通り整える</div>
+          <div class="tier-for"><span class="ph">AIも仕組み化も、</span><span class="ph">まとめて立ち上げたい</span></div>
+          <div class="tier-price"><span class="amt">60</span><span class="man">万円</span><span class="tilde">〜</span></div>
+          <div class="tier-note">税別</div>
+          <hr>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Light の内容すべて</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>業務の自動化ツール作成</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>LP・ホームページ1本公開まで</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>その他相談</li>
+          </ul>
+          <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform?usp=pp_url&entry.1359052033=Standard%EF%BC%88%E3%81%B2%E3%81%A8%E9%80%9A%E3%82%8A%E6%95%B4%E3%81%88%E3%82%8B%E3%83%BB60%E4%B8%87%E5%86%86%E3%80%9C%EF%BC%89" target="_blank" rel="noopener" style="justify-content:center">相談する</a>
+        </div>
+        <div class="tier reveal">
+          <span class="tier-name">Full</span>
+          <div class="tier-tag">まるごと任せる</div>
+          <div class="tier-for"><span class="ph">社長の右腕として、</span><span class="ph">丸ごと任せたい</span></div>
+          <div class="tier-price"><span class="amt">120</span><span class="man">万円</span><span class="tilde">〜</span></div>
+          <div class="tier-note">税別</div>
+          <hr>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Standard の内容すべて</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>AIクローン（社長の分身）初期構築</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>業務システム・アプリ・Webツール開発</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>3か月の伴走サポート付き</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>その他相談</li>
+          </ul>
+          <a class="btn btn-line" href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform?usp=pp_url&entry.1359052033=Full%EF%BC%88%E3%81%BE%E3%82%8B%E3%81%94%E3%81%A8%E4%BB%BB%E3%81%9B%E3%82%8B%E3%83%BB120%E4%B8%87%E5%86%86%E3%80%9C%EF%BC%89" target="_blank" rel="noopener">相談する</a>
+        </div>
+      </div>
+
+      <div class="lowprice reveal" id="lowprice">
+        <div class="lp-body">
+          <span class="lp-badge">まずは、ここから</span>
+          <b>個人事業主・小規模の会社の方へ</b>
+          <p>Light・Standard・Full より小さく始められる、<em>始めやすい価格</em>のプランもあります。小さくはじめたい方は、まずここからで大丈夫です。</p>
+        </div>
+        <div class="lp-act">
+          <a class="btn btn-primary lp-cta" id="lp-cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform?usp=pp_url&entry.1359052033=%E5%80%8B%E4%BA%BA%E4%BA%8B%E6%A5%AD%E4%B8%BB%E3%83%BB%E5%B0%8F%E8%A6%8F%E6%A8%A1%E5%90%91%E3%81%91%EF%BC%88%E5%A7%8B%E3%82%81%E3%82%84%E3%81%99%E3%81%84%E4%BE%A1%E6%A0%BC%E3%81%8B%E3%82%89%EF%BC%89" target="_blank" rel="noopener">小さくはじめる相談をする</a>
+          <p class="lp-reassure">1回だけでも大丈夫。しつこい営業はしません。オンラインで完結します。</p>
+        </div>
+      </div>
+
+      <div class="monthly reveal">
+        <div class="monthly-h"><h3>続けたい方へ</h3><span class="tagm">Monthly</span></div>
+        <p class="monthly-desc">パッケージのあと、伴走を続けたい会社向け。必要になったら、で大丈夫です。</p>
+        <div class="m-grid">
+          <div class="m-cell"><div class="mn">AI顧問（伴走）</div><div class="mp">5万円〜<small>／月</small></div></div>
+          <div class="m-cell"><div class="mn">サイト・ツール保守</div><div class="mp">1万円〜<small>／月</small></div></div>
+          <div class="m-cell"><div class="mn">AIクローン運用</div><div class="mp">3万円〜<small>／月・1体</small></div></div>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <section class="band" id="menu">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Pick &amp; Choose</span>
+        <h2>必要なところだけ、でも。</h2>
+        <p>サービスの中から、単品でのご依頼も承ります。</p>
+      </div>
+      <div class="menu-grid">
+        <div class="mcol reveal">
+          <div class="mcol-h"><h3>AI導入・活用</h3></div>
+          <div class="mrow"><div class="ml"><b>AI活用診断</b><span>診断レポート＋活用マップ</span></div><span class="mv">5万円</span></div>
+          <div class="mrow"><div class="ml"><b>実践AI研修</b><span>教材＋録画つき</span></div><span class="mv">15万円／回</span></div>
+          <div class="mrow"><div class="ml"><b>AI顧問</b><span>月次MTG＋施策実行</span></div><span class="mv">5万円〜／月</span></div>
+        </div>
+        <div class="mcol reveal">
+          <div class="mcol-h"><h3>業務の省力化</h3></div>
+          <div class="mrow"><div class="ml"><b>業務ツール・自動化</b><span>スプシ／GAS／AI</span></div><span class="mv">20万円〜</span></div>
+          <div class="mrow"><div class="ml"><b>定型業務の仕組み化</b><span>手順の設計＋実装</span></div><span class="mv">20万円〜</span></div>
+          <div class="mrow"><div class="ml"><b>AIクローン</b><span>構築＋育成・運用</span></div><span class="mv">30万円＋3万円／月</span></div>
+        </div>
+        <div class="mcol reveal">
+          <div class="mcol-h"><h3>開発・制作</h3></div>
+          <div class="mrow"><div class="ml"><b>Web・LP制作</b><span>原稿＋公開設定</span></div><span class="mv">30万円〜</span></div>
+          <div class="mrow"><div class="ml"><b>業務システム開発</b><span>要件整理＋構築</span></div><span class="mv">50万円〜</span></div>
+          <div class="mrow"><div class="ml"><b>アプリ開発</b><span>企画〜運用まで</span></div><span class="mv">100万円〜</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band proof" id="proof">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">Track record</span>
+        <h2><span class="l">言うだけじゃなく、</span><span class="l">自分たちでやっている。</span></h2>
+        <p>自社の会社運営そのものを、AIで回している実践者です。</p>
+      </div>
+      <div class="proof-grid">
+        <div class="pf reveal"><span class="n">01</span><p>複数拠点をもつ組織の人事評価・シフト／勤怠を丸ごと自動化し、毎月の運用まで継続支援。</p></div>
+        <div class="pf reveal"><span class="n">02</span><p>自社アプリを企画・開発・審査・運用まで、一貫して自分たちで手がけている。</p></div>
+        <div class="pf reveal"><span class="n">03</span><p>複数のSNSアカウントを運用し、認知・フォロワーを継続的に伸長。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ===== FAQ（静的・クローラブル。details/summaryでJS非依存） ===== */
+    .faqsec{background:linear-gradient(180deg,#070b14,var(--bg))}
+    .faq-lead{max-width:760px; margin:0 auto clamp(30px,4vw,44px); text-align:center; font-size:15px; color:var(--text-2); line-height:1.95}
+    .faq-lead b{color:#fff; font-weight:600}
+    .faq-list{max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:12px}
+    .faq-list details{background:linear-gradient(180deg,var(--panel),var(--panel-2)); border:1px solid var(--hair); border-radius:var(--r-md); overflow:hidden; transition:border-color .2s}
+    .faq-list details[open]{border-color:var(--hair-2)}
+    .faq-list summary{list-style:none; cursor:pointer; padding:20px 24px; font-family:var(--sans); font-size:15.5px; font-weight:600; color:#fff; display:flex; align-items:center; gap:14px; line-height:1.6}
+    .faq-list summary::-webkit-details-marker{display:none}
+    .faq-list summary .q{flex:0 0 auto; width:22px; height:22px; border-radius:6px; background:var(--grad); color:#04122b; font-size:12px; font-weight:800; display:grid; place-items:center}
+    .faq-list summary .mk{margin-left:auto; flex:0 0 auto; color:var(--cyan); transition:transform .2s}
+    .faq-list details[open] summary .mk{transform:rotate(45deg)}
+    .faq-list .a{padding:0 24px 22px 60px; font-size:14.5px; color:var(--text-2); line-height:1.95}
+    @media(max-width:560px){ .faq-list summary{padding:17px 18px; font-size:14.5px} .faq-list .a{padding:0 18px 18px 18px} }
+  </style>
+  <section class="band faqsec" id="faq">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>よくあるご質問</h2>
+      </div>
+      <p class="faq-lead reveal"><b>株式会社タイガーラボは、中小企業向けのAI活用パートナーです。</b>AI導入・活用／業務の省力化／開発・制作を、Light 20万円〜の明確な料金で、全国オンラインで支援します。自社の運営そのものを自社のAI（AI社員）で回している実践者です。料金・進め方・安全性など、よくいただくご質問にお答えします。</p>
+      <div class="faq-list reveal">
+        <details>
+          <summary><span class="q">Q</span>株式会社タイガーラボとはどんな会社ですか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <p class="a">株式会社タイガーラボは、中小企業向けのAI活用パートナーです。ツールを渡して終わりにせず、成果につながる形まで一緒に整えます。自社の運営そのものを自社のAI（AI社員）で回している実践者で、全国オンライン対応です。</p>
+        </details>
+        <details>
+          <summary><span class="q">Q</span>どんなサービスがありますか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <p class="a">支援は大きく3つです。①AI導入・活用（AI活用診断／実践AI研修／AI顧問）、②業務の省力化（スプレッドシート・GAS自動化／定型業務の仕組み化／AIクローン）、③開発・制作（Web・LP／業務システム／アプリ）。何から手をつければという段階からご相談いただけます。</p>
+        </details>
+        <details>
+          <summary><span class="q">Q</span>料金はいくらですか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <p class="a">目的に合わせた3つのパッケージがあります（いずれも税別）。Light 20万円〜（まずは試す）、Standard 60万円〜（ひと通り整える）、Full 120万円〜（まるごと任せる）。パッケージは単発（1回ごと）が基本で長期の縛りはなく、まず1回だけ試せます。詳しいお見積りは無料相談で承ります。</p>
+        </details>
+        <details>
+          <summary><span class="q">Q</span>どのプランを選べばいいですか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <p class="a">目安として、まず試したいならLight、自動化やサイトまで欲しいならStandard、分身AIや開発まで一気に進めたいならFullです。最適なプランはお困りごと次第で変わるため、無料相談で作業を伺い、優先順位をつけてご提案します。</p>
+        </details>
+        <details>
+          <summary><span class="q">Q</span>個人事業主や小規模の会社でも依頼できますか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <p class="a">個人事業主・小規模の会社も歓迎です。人数が少ないほど一人あたりの事務負担は重くなりがちで、AI・自動化の効果を感じやすいです。Lightより小さく始められる「始めやすい価格」の枠もあり、内容と価格は御社の状況に合わせて個別にご相談します。</p>
+        </details>
+        <details>
+          <summary><span class="q">Q</span>自分でChatGPTを使うのと、依頼するのは何が違いますか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <p class="a">ツールを渡すだけならご自身でも始められます。タイガーラボの価値はその先で、①御社の課題を見える化し、②合う使い方・仕組みを設計し、③教材＋使い方の動画まで、ひと通り用意します。自社の運営をAIで回している実践者として、導入したのに形だけになる落とし穴も踏まえて支援します。</p>
+        </details>
+        <details>
+          <summary><span class="q">Q</span>AI導入は失敗しませんか？ちゃんと定着しますか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <p class="a">AI導入がつまずくのは、目的が曖昧・現場を巻き込めていない・最初から完璧を狙う場合が多いです。そこで最初に目的と指標を握り、現場を巻き込み、小さく始めて効果を確かめながら広げます。いきなり作り込まないため、やってみたけれど無駄だった、になりにくい進め方です。</p>
+        </details>
+        <details>
+          <summary><span class="q">Q</span>導入後のサポートはありますか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <p class="a">導入して終わりにはせず、導入後のフォローアップまで対応します。実践AI研修では教材＋使い方の動画をお渡しし、従業員が使いたいけれど使えない状態にならないようにします。使い方や仕組みが手元に残り、困ったときの相談導線もご用意しています。</p>
+        </details>
+        <details>
+          <summary><span class="q">Q</span>どんな流れで進みますか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <p class="a">おおまかに5つのステップで進みます。①ヒアリング→②分析（AIで効率化できる所を見える化）→③提案（合うプランを優先順位つきで）→④導入（設定・構築・研修まで）→⑤フォローアップ。最初のヒアリングは無料相談から承ります。</p>
+        </details>
+        <details>
+          <summary><span class="q">Q</span>入力した情報がAIの学習に使われませんか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <p class="a">業務で使う場合は、入力内容がAIの学習に使われない設定・プランを前提に組み立てます。法人向けの利用では入力内容が学習に回らない形が基本です。そのうえで扱う情報の範囲も一緒に決め、機密情報の扱い・アクセスできる範囲・成果物の管理方法を最初に取り決めてから進めます。</p>
+        </details>
+        <details>
+          <summary><span class="q">Q</span>導入事例や実績はありますか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <p class="a">守秘のため匿名になりますが、複数拠点をもつ組織の人事評価・シフト／勤怠を丸ごと自動化し毎月の運用まで継続支援した実績、自社アプリを企画・開発・審査・運用まで一貫した実績、複数のSNSアカウントを運用し認知・フォロワーを継続的に伸ばした実績があります。</p>
+        </details>
+        <details>
+          <summary><span class="q">Q</span>全国どこでも対応してもらえますか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+          <p class="a">全国オンライン対応です。所在地を問わずご依頼いただけ、ご相談・ヒアリングから研修・導入までオンラインで完結します。移動の負担がないぶん、気軽に始めていただけます。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band final" id="cta">
+    <div class="wrap">
+      <div class="final-box reveal">
+        <h2>「うちの場合、どう使える？」から。</h2>
+        <p>まずは無料相談で、AIで効くところを一緒に見つけましょう。売り込みはしません。</p>
+        <a class="btn btn-primary" id="cta-form-link" href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.5V4Z"/></svg></span>まずは無料で相談する</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div>
+        <svg class="foot-logo" viewBox="0 0 452 104" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TIGERLABO">
+          <defs><linearGradient id="tlf" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7ceaef"/><stop offset="1" stop-color="#3b8cff"/></linearGradient></defs>
+          <g transform="translate(16,20)"><polygon points="0,64 66,0 66,28 100,0 100,64" fill="url(#tlf)"/></g>
+          <text x="140" y="70" font-family="'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-serif" font-weight="800" font-size="46" letter-spacing="0.5" fill="#ffffff">TIGERLABO</text>
+        </svg>
+        <p class="fnote">AIを、“なんとなく”で終わらせない。中小企業のためのAI活用パートナー。<br>株式会社タイガーラボ｜東京都渋谷区広尾1丁目2番地1号 ヒカリビル4階<br>tigerlabo.com</p>
+      </div>
+      <div>
+        <h4>ページ内</h4>
+        <ul>
+          <li><a href="#features">できること</a></li>
+          <li><a href="#pricing">料金</a></li>
+          <li><a href="#proof">実績</a></li>
+          <li><a href="#faq">よくある質問</a></li>
+          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform" target="_blank" rel="noopener">無料相談</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap"><div class="foot-base">最終更新日 2026-07-14 ｜ © 2026 株式会社タイガーラボ</div></div>
+  </footer>
+</div>
+
+<script>
+  (function(){
+    var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.reveal');
+    if(rm || !('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e,i){ e.style.transitionDelay = ((i%3)*80)+'ms'; io.observe(e); });
+  })();
+</script>
+
+<!-- ▼▼▼ FAQ受付ボット ウィジェット（自己完結・LP本体非依存・.tlbot名前空間） ▼▼▼ -->
+<style>
+  .tlbot{position:fixed;right:22px;bottom:22px;z-index:1000;font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic",system-ui,-apple-system,sans-serif;line-height:1.7;color:#202124}
+  .tlbot *{box-sizing:border-box;margin:0;padding:0}
+  .tlbot-launch{width:64px;height:64px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(118deg,#7ceaef,#3b8cff);color:#04122b;box-shadow:0 12px 30px rgba(59,140,255,.5);display:flex;align-items:center;justify-content:center;position:relative;transition:transform .25s, box-shadow .25s}
+  .tlbot-launch:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 16px 36px rgba(59,140,255,.65)}
+  .tlbot-launch svg{width:30px;height:30px}
+  .tlbot-launch .close-ic{display:none}
+  .tlbot.open .tlbot-launch .chat-ic{display:none}
+  .tlbot.open .tlbot-launch .close-ic{display:block}
+  .tlbot-launch .ping{position:absolute;top:-3px;right:-3px;width:20px;height:20px;background:#ff5a5f;color:#fff;border-radius:50%;font-size:.72rem;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid #0b1122}
+  .tlbot.open .tlbot-launch .ping{display:none}
+  .tlbot-teaser{position:absolute;right:0;bottom:76px;width:220px;background:#fff;border-radius:14px 14px 4px 14px;box-shadow:0 20px 60px rgba(15,27,45,.35);padding:14px 16px;font-size:.9rem;color:#202124;line-height:1.6;animation:tlbot-pop .4s ease both}
+  .tlbot-teaser strong{color:#1557b0}
+  .tlbot-teaser .x{position:absolute;top:6px;right:9px;color:#c3ccd8;cursor:pointer;font-size:1rem;line-height:1}
+  .tlbot.open .tlbot-teaser,.tlbot-teaser.hidden{display:none}
+  @keyframes tlbot-pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .tlbot-panel{position:absolute;right:0;bottom:80px;width:376px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 120px);background:#fff;border-radius:20px;overflow:hidden;display:none;flex-direction:column;box-shadow:0 20px 60px rgba(15,27,45,.4);border:1px solid #e7edf5}
+  .tlbot.open .tlbot-panel{display:flex;animation:tlbot-pop .28s ease both}
+  .tlbot-head{background:linear-gradient(135deg,#101a30,#004aad);color:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px}
+  .tlbot-head .ava{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .tlbot-head .ava svg{width:26px;height:24px}
+  .tlbot-head .who{flex:1;min-width:0}
+  .tlbot-head .who .name{font-weight:800;font-size:1rem;line-height:1.2}
+  .tlbot-head .who .stat{font-size:.78rem;opacity:.92;display:flex;align-items:center;gap:6px;margin-top:2px}
+  .tlbot-head .who .dot{width:8px;height:8px;border-radius:50%;background:#5ff0a0;box-shadow:0 0 0 3px rgba(95,240,160,.35)}
+  .tlbot-head .min{background:rgba(255,255,255,.18);border:none;color:#fff;width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:1.1rem;line-height:1}
+  .tlbot-log{flex:1;min-height:0;overflow-y:auto;padding:18px 16px 8px;background:#f7f9fc}
+  .tlbot-log::-webkit-scrollbar{width:7px}
+  .tlbot-log::-webkit-scrollbar-thumb{background:#d3dce8;border-radius:20px}
+  .tlbot .msg{display:flex;margin-bottom:12px;max-width:100%}
+  .tlbot .msg .bubble{padding:11px 15px;border-radius:16px;font-size:.93rem;line-height:1.7;max-width:82%;word-break:break-word}
+  .tlbot .msg.bot .bubble{background:#fff;color:#202124;border:1px solid #e8edf4;border-top-left-radius:5px;box-shadow:0 2px 8px rgba(15,27,45,.05)}
+  .tlbot .msg.user{justify-content:flex-end}
+  .tlbot .msg.user .bubble{background:#1f5fe0;color:#fff;border-top-right-radius:5px}
+  .tlbot .msg .bubble b{font-weight:800}
+  .tlbot .cta-card{background:#fff;border:1px solid #dbe6fa;border-radius:14px;padding:14px 16px;margin:2px 0 12px;box-shadow:0 2px 8px rgba(31,95,224,.08)}
+  .tlbot .cta-card p{font-size:.9rem;color:#5f6368;margin-bottom:10px}
+  .tlbot .cta-card a{display:inline-flex;align-items:center;gap:8px;background:#1f5fe0;color:#fff;font-weight:700;font-size:.9rem;padding:10px 20px;border-radius:50px;text-decoration:none}
+  .tlbot .typing .bubble{display:inline-flex;gap:4px;align-items:center;padding:14px 16px}
+  .tlbot .typing .bubble span{width:7px;height:7px;border-radius:50%;background:#b7c2d2;animation:tlbot-blink 1.2s infinite}
+  .tlbot .typing .bubble span:nth-child(2){animation-delay:.2s}
+  .tlbot .typing .bubble span:nth-child(3){animation-delay:.4s}
+  @keyframes tlbot-blink{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+  .tlbot-chips{padding:4px 14px 10px;background:#f7f9fc;display:flex;flex-wrap:wrap;gap:8px}
+  .tlbot-chips button{background:#fff;border:1px solid #cfe0fb;color:#1557b0;font-size:.83rem;font-weight:600;padding:8px 14px;border-radius:50px;cursor:pointer;font-family:inherit;transition:background .15s,transform .15s}
+  .tlbot-chips button:hover{background:#e8f0fe;transform:translateY(-1px)}
+  .tlbot-input{display:flex;align-items:center;gap:10px;padding:12px 14px;border-top:1px solid #eef1f6;background:#fff}
+  .tlbot-input input{flex:1;border:1px solid #dce3ec;background:#f7f9fc;border-radius:50px;padding:12px 18px;font-size:.92rem;font-family:inherit;outline:none;transition:border .2s,background .2s}
+  .tlbot-input input:focus{border-color:#1f5fe0;background:#fff}
+  .tlbot-input .send{width:44px;height:44px;flex-shrink:0;border-radius:50%;border:none;background:#1f5fe0;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+  .tlbot-input .send:hover{background:#1557b0;transform:scale(1.05)}
+  .tlbot-input .send svg{width:20px;height:20px}
+  .tlbot-foot{text-align:center;font-size:.72rem;color:#aab4c2;padding:0 0 10px;background:#fff}
+  .tlbot-foot b{color:#8b97a7;font-weight:700}
+  @media(max-width:480px){
+    .tlbot{right:14px;bottom:14px}
+    .tlbot-panel{bottom:78px;height:calc(100vh - 110px);border-radius:18px}
+    .tlbot-teaser{width:190px}
+  }
+</style>
+
+<div class="tlbot" id="tlbot">
+  <div class="tlbot-teaser" id="tlbot-teaser">
+    <span class="x" onclick="document.getElementById('tlbot-teaser').classList.add('hidden')">×</span>
+    AI活用のこと、料金のこと、お気軽にご質問ください。
   </div>
-</section>
 
-<!-- プライバシーポリシー -->
-<section class="privacy" id="privacy">
-  <div class="container">
-    <h2>プライバシーポリシー</h2>
-    <p class="lead">株式会社タイガーラボ（以下「当社」）は、お客様の個人情報を以下の方針に基づき適切に取り扱います。</p>
+  <div class="tlbot-panel" id="tlbot-panel" role="dialog" aria-label="タイガーラボ 受付AI">
+    <div class="tlbot-head">
+      <div class="ava">
+        <svg viewBox="0 0 100 64" role="img" aria-label="TIGERLABO">
+          <defs><linearGradient id="tlmark-a" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5DE0E6"/><stop offset="1" stop-color="#004AAD"/></linearGradient></defs>
+          <polygon points="0,64 66,0 66,28 100,0 100,64" fill="url(#tlmark-a)"/>
+        </svg>
+      </div>
+      <div class="who">
+        <div class="name">タイガーラボ 受付AI</div>
+        <div class="stat"><span class="dot"></span>オンライン｜24時間自動応答</div>
+      </div>
+      <button class="min" onclick="TLBot.close()" aria-label="閉じる">－</button>
+    </div>
 
-    <h3>1. 取得する情報</h3>
-    <p>お問い合わせフォーム等を通じて、お名前・会社名・メールアドレス・お問い合わせ内容などをお預かりする場合があります。</p>
+    <div class="tlbot-log" id="tlbot-log" aria-live="polite"></div>
 
-    <h3>2. 利用目的</h3>
-    <ul>
-      <li>お問い合わせやご相談への対応のため</li>
-      <li>サービスのご提供・ご案内のため</li>
-      <li>サービス品質向上のための分析のため</li>
-    </ul>
+    <div class="tlbot-chips" id="tlbot-chips"></div>
 
-    <h3>3. 第三者提供</h3>
-    <p>法令に基づく場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません。</p>
-
-    <h3>4. 外部サービスの利用</h3>
-    <p>お問い合わせ受付にGoogleフォーム等の外部サービスを利用しており、各サービスのプライバシーポリシーが適用されます。また、アクセス解析のためCookieを利用する場合があります。</p>
-
-    <h3>5. 開示・訂正・削除</h3>
-    <p>ご本人からの個人情報の開示・訂正・削除のご請求には、ご本人確認のうえ速やかに対応します。</p>
-
-    <h3>6. お問い合わせ窓口</h3>
-    <p>個人情報の取り扱いに関するお問い合わせ窓口は、現在準備中です。窓口の開設後、本ページに連絡先を掲載いたします。</p>
-
-    <h3>7. 改定</h3>
-    <p>本ポリシーは必要に応じて改定することがあります。最新の内容は本ページに掲載します。</p>
-    <p style="margin-top:14px;font-size:.85rem;">制定日：2026年6月13日</p>
+    <div class="tlbot-input">
+      <input id="tlbot-text" type="text" placeholder="メッセージを入力…" autocomplete="off" aria-label="メッセージ入力">
+      <button class="send" id="tlbot-send" aria-label="送信">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+    <div class="tlbot-foot">Powered by <b>TIGERLABO</b></div>
   </div>
-</section>
 
-<!-- 10. フッター -->
-<footer class="site">
-  <div class="container">
-    <div class="logo">非効率にこそチャンスあり！生成AIでチャンスを広げよう</div>
-    <p>AIコンサルタント Shinya｜中小企業向け生成AI導入支援（全国オンライン対応）</p>
-    <p style="margin-top:10px;"><a href="#privacy">プライバシーポリシー</a>　/　<a href="#contact">お問い合わせ</a></p>
-    <p style="margin-top:14px;">&copy; 2026 非効率にこそチャンスあり！生成AIでチャンスを広げよう. All Rights Reserved.</p>
-  </div>
-</footer>
-
-<div class="fixed-cta">
-  <a class="btn" style="width:100%;justify-content:center;padding:14px;" href="#contact">無料相談はこちら →</a>
+  <button class="tlbot-launch" id="tlbot-launch" aria-label="受付AIを開く">
+    <span class="ping">1</span>
+    <svg class="chat-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 01-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1121 11.5z"/><path d="M8 11h.01M12 11h.01M16 11h.01"/></svg>
+    <svg class="close-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
 </div>
 
 <script>
 (function(){
-  var els = document.querySelectorAll('.reveal');
-  if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('visible');});return;}
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
-  },{threshold:0.12});
-  els.forEach(function(el){io.observe(el);});
-})();
+  "use strict";
 
-(function(){
-  document.querySelectorAll('.faq-item').forEach(function(item){
-    var q = item.querySelector('.faq-q'); var a = item.querySelector('.faq-a');
-    q.addEventListener('click', function(){
-      if(item.classList.contains('open')){item.classList.remove('open');a.style.maxHeight=null;}
-      else{item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  // ===== ナレッジ（想定問答）— 2026-07-11 Shinya確定の価格・サービス・実績に準拠 =====
+  var CONTACT_CTA = {cta:true, text:"詳しい話は、無料相談で直接どうぞ。オンラインで、売り込みはしません。", label:"無料相談へ"};
+
+  var KB = [
+  {
+    "id": "company_about",
+    "keys": [
+      "会社",
+      "タイガーラボ",
+      "どんな会社",
+      "会社概要",
+      "何してる",
+      "事業内容",
+      "御社について",
+      "タグライン",
+      "理念",
+      "何者",
+      "会社情報"
+    ],
+    "answer": [
+      "<b>株式会社タイガーラボ</b>と申します。中小企業さま向けのAI活用パートナーです。",
+      "タグラインは<b>「AIを、\"なんとなく\"で終わらせない。」</b>。ツールを渡して終わりにせず、成果につながる形まで一緒に整えます。",
+      "特徴は、<b>自社の運営そのものを私たち自身のAI（AI社員）で回している実践者</b>であること。\"言うだけでなく自分たちでやっている\"のが強みです。全国オンライン対応です。"
+    ]
+  },
+  {
+    "id": "service_overview",
+    "keys": [
+      "サービス",
+      "何ができる",
+      "サービス内容",
+      "メニュー",
+      "何をしてくれる",
+      "できること",
+      "提供内容",
+      "サービス一覧",
+      "対応範囲",
+      "ラインナップ"
+    ],
+    "answer": [
+      "ご支援は大きく<b>3つ</b>です。",
+      "<b>①AI導入・活用</b>（AI活用診断／実践AI研修／AI顧問）<br><b>②業務の省力化</b>（スプレッドシート・GAS自動化／定型業務の仕組み化／AIクローン）<br><b>③開発・制作</b>（Web・LP／業務システム／アプリ）",
+      "\"何から手をつければ\"という段階でも大丈夫です。まずは御社の作業を一緒に見えるようにするところから始められます。"
+    ]
+  },
+  {
+    "id": "pricing",
+    "keys": [
+      "料金",
+      "値段",
+      "いくら",
+      "費用",
+      "価格",
+      "相場",
+      "プラン",
+      "パッケージ",
+      "コース",
+      "金額",
+      "おいくら",
+      "予算感"
+    ],
+    "forceCta": true,
+    "answer": [
+      "目的に合わせて、3つのパッケージをご用意しています（いずれも税別）。",
+      "<b>Light 20万円〜</b>：まずは試す（AI活用診断＋実践AI研修1回＋90日ロードマップ）<br><b>Standard 60万円〜</b>：Lightすべて＋業務の自動化ツール＋LP・HP1本公開まで<br><b>Full 120万円〜</b>：Standardすべて＋AIクローン初期構築＋システム・アプリ開発＋3か月の伴走サポート",
+      "パッケージは<b>単発（1回ごと）が基本</b>で、長期の縛りはありません。まず1回だけお試しいただけます。詳しいお見積りは無料相談で承ります。"
+    ]
+  },
+  {
+    "id": "single_items",
+    "keys": [
+      "単品",
+      "単発メニュー",
+      "スポット",
+      "1回だけ",
+      "バラで",
+      "個別メニュー",
+      "診断だけ",
+      "研修だけ",
+      "単価",
+      "都度払い"
+    ],
+    "forceCta": true,
+    "answer": [
+      "パッケージ以外に、必要なものだけを選べる<b>単品メニュー</b>もあります（税別）。",
+      "AI活用診断 5万円／実践AI研修 15万円（1回・教材＋録画つき）／AI顧問 5万円〜（月）<br>業務ツール・自動化 20万円〜／定型業務の仕組み化 20万円〜／AIクローン 30万円＋月3万円",
+      "Web・LP制作 30万円〜／業務システム開発 50万円〜／アプリ開発 100万円〜。<br>どれが御社に合うかは、無料相談で一緒に整理いたします。"
+    ]
+  },
+  {
+    "id": "monthly",
+    "keys": [
+      "月額",
+      "毎月",
+      "ランニング",
+      "継続費用",
+      "保守",
+      "顧問料",
+      "月々",
+      "維持費",
+      "運用費",
+      "ずっとかかる"
+    ],
+    "answer": [
+      "毎月かかる費用は、必要な方にだけご用意しています（税別）。",
+      "<b>AI顧問 5万円〜（月）</b>／サイト・ツール保守 1万円〜（月）／AIクローン運用 3万円〜（月・1体）",
+      "パッケージや単品は基本的に単発ですので、\"毎月必ず払い続ける\"必要はありません。続けたい支援だけを選んでいただけます。"
+    ]
+  },
+  {
+    "id": "small_business",
+    "keys": [
+      "個人事業主",
+      "小規模",
+      "一人",
+      "ひとり",
+      "零細",
+      "小さい会社",
+      "フリーランス",
+      "自営業",
+      "少人数",
+      "うちみたいな",
+      "小さくても"
+    ],
+    "forceCta": true,
+    "answer": [
+      "もちろん歓迎いたします。むしろ人数が少ないほど、お一人あたりの事務負担は重くなりがちで、AI・自動化の効果を感じていただきやすいです。",
+      "Lightよりも<b>小さく始められる「始めやすい価格」の枠</b>もご用意しています。内容と価格は御社の状況に合わせて個別にご相談させてください。",
+      "\"うちみたいな規模でも大丈夫かな\"というご不安こそ、無料相談でお聞かせいただければと思います。"
+    ]
+  },
+  {
+    "id": "which_plan",
+    "keys": [
+      "どのプラン",
+      "どれがいい",
+      "おすすめプラン",
+      "プラン選び",
+      "合うプラン",
+      "どのコース",
+      "迷ってる",
+      "どれを選べば",
+      "選び方",
+      "何がいい"
+    ],
+    "forceCta": true,
+    "answer": [
+      "ざっくりの目安です。",
+      "<b>まず試したい</b>→Light（診断＋研修＋ロードマップ）<br><b>自動化やサイトまで欲しい</b>→Standard<br><b>分身AIや開発まで一気に</b>→Full",
+      "ただ、最適なプランは御社のお困りごと次第で変わります。無料相談で作業を伺い、優先順位をつけてご提案しますので、そこで一緒に決めていきましょう。"
+    ]
+  },
+  {
+    "id": "cost_effectiveness",
+    "keys": [
+      "費用対効果",
+      "元が取れる",
+      "元は取れる",
+      "意味ある",
+      "効果あるの",
+      "ペイする",
+      "損しない",
+      "割に合う",
+      "もったいない",
+      "リターン",
+      "高いのでは"
+    ],
+    "forceCta": true,
+    "answer": [
+      "まず、削減できそうな作業時間や定型業務の手間を<b>見える化</b>してから、無理のない範囲でご提案します。",
+      "小さく始めて効果を確かめ、良ければ広げる——という進め方をおすすめしています。いきなり大きく投資していただく必要はありません。",
+      "\"どのくらい楽になりそうか\"の見立ては無料相談でお出しできます。誇張した数字はお約束しませんので、その点はご安心ください。"
+    ]
+  },
+  {
+    "id": "payment",
+    "keys": [
+      "支払い",
+      "支払方法",
+      "分割",
+      "振込",
+      "請求書払い",
+      "クレジット",
+      "後払い",
+      "前払い",
+      "決済",
+      "カード払い"
+    ],
+    "forceCta": true,
+    "answer": [
+      "お支払い条件は、無料相談のなかで御社のご都合に合わせて個別にご案内しています。",
+      "進め方やご予算のご事情もあわせてお聞かせいただければ、無理のない形をご相談させてください。"
+    ]
+  },
+  {
+    "id": "security",
+    "keys": [
+      "セキュリティ",
+      "情報漏洩",
+      "漏れない",
+      "安全性",
+      "機密",
+      "データ守",
+      "個人情報",
+      "情報流出",
+      "守秘",
+      "大丈夫なの",
+      "危なくない"
+    ],
+    "answer": [
+      "大切な点ですね。機密情報の扱い・アクセスできる範囲・成果物の管理方法を、<b>最初に取り決めてから</b>進めます。",
+      "\"どの情報を、どこまで入れてよいか\"という社内ルールづくりも一緒に整理します。",
+      "\"絶対に安全\"と言い切ることは誰にもできませんが、だからこそ取り扱いを事前に明文化し、穴をつくらない設計を心がけています。"
+    ]
+  },
+  {
+    "id": "data_training",
+    "keys": [
+      "学習に使われる",
+      "学習される",
+      "データ学習",
+      "勝手に学習",
+      "入れた内容",
+      "外に出る",
+      "情報が使われる",
+      "入力した内容",
+      "学習データ",
+      "覚えられる"
+    ],
+    "answer": [
+      "業務で使う場合は、<b>入力内容がAIの学習に使われない設定・プラン</b>を前提に組み立てます。",
+      "法人向けの利用では、入力した内容が学習に回らない形が基本です。そのうえで、扱う情報の範囲も一緒に決めていきます。",
+      "\"入れたら外に出てしまうのでは\"というご不安は自然なものです。安心してお使いいただける形からご提案します。"
+    ]
+  },
+  {
+    "id": "vs_chatgpt",
+    "keys": [
+      "ChatGPT",
+      "チャットGPT",
+      "自分で使う",
+      "頼む意味",
+      "わざわざ",
+      "自分でできる",
+      "無料でできる",
+      "依頼する価値",
+      "なぜ頼む",
+      "違いは何"
+    ],
+    "answer": [
+      "ツールを渡すだけなら、たしかにご自身でも始められます。私たちがお手伝いする価値は、その先にあります。",
+      "<b>①御社の課題を見える化</b>し、<b>②合う使い方・仕組みを設計</b>、<b>③\"使いたいのに使えない\"を防ぐ教材＋使い方の動画</b>まで、ひと通りご用意します。",
+      "私たち自身が自社の運営をAIで回している実践者ですので、\"導入したのに形だけ\"になりやすい落とし穴も踏まえてご支援できます。"
+    ]
+  },
+  {
+    "id": "can_cannot",
+    "keys": [
+      "何ができて",
+      "できないこと",
+      "限界",
+      "苦手なこと",
+      "万能",
+      "どこまでできる",
+      "無理なこと",
+      "得意なこと",
+      "丸投げ",
+      "全部やってくれる"
+    ],
+    "answer": [
+      "正直に線引きさせてください。",
+      "<b>得意</b>：定型業務の自動化、下書き・要約・分析、問い合わせの一次対応、業務の仕組み化。<br><b>苦手</b>：完全な無人化や、重要な判断の丸投げ。",
+      "できない部分は\"人が対応する設計\"も含めてご提案します。過度な期待だけをあおって受注する、ということはいたしません。"
+    ]
+  },
+  {
+    "id": "failure",
+    "keys": [
+      "失敗しない",
+      "無駄になる",
+      "うまくいく",
+      "定着しない",
+      "失敗したくない",
+      "使われなくなる",
+      "形だけ",
+      "ちゃんと使える",
+      "成功するか",
+      "続くか"
+    ],
+    "answer": [
+      "ご不安はもっともです。AI導入がつまずきやすいのは、\"目的が曖昧\"\"現場を巻き込めていない\"\"最初から完璧を狙う\"といったところに多いと感じています。",
+      "そこで、<b>最初に目的と指標を握り、現場を巻き込み、小さく始める</b>——この進め方で無駄打ちを防ぎます。",
+      "いきなり大きく作り込まず、効果を確かめながら広げますので、\"やってみたけど無駄だった\"になりにくい形です。"
+    ]
+  },
+  {
+    "id": "subsidy",
+    "keys": [
+      "補助金",
+      "助成金",
+      "支援金",
+      "給付金",
+      "IT導入補助金",
+      "公的支援",
+      "補助",
+      "使える制度",
+      "国の制度",
+      "申請できる"
+    ],
+    "forceCta": true,
+    "answer": [
+      "AI・IT導入にあたっては、<b>IT導入補助金</b>をはじめとする公的な支援制度を活用できる場合があります。",
+      "対象になるかどうかや採択そのものはお約束できませんが、最新の制度条件を確認しながらのご相談は可能です。",
+      "金額を断定することはいたしません。使えそうかどうかも含め、無料相談で一緒に見てみましょう。"
+    ]
+  },
+  {
+    "id": "contract",
+    "keys": [
+      "契約",
+      "解約",
+      "縛り",
+      "やめられる",
+      "途中解約",
+      "期間縛り",
+      "長期契約",
+      "継続義務",
+      "中途解約",
+      "いつでもやめ",
+      "更新"
+    ],
+    "answer": [
+      "ご安心ください。パッケージは<b>単発（1回ごと）が基本</b>で、長期の縛りはありません。",
+      "まず1回だけお試しいただけますし、月額（顧問・保守・クローン運用）は必要な方だけがご利用いただく形です。",
+      "\"合わなかったら続けなくていい\"——この気軽さも大事にしています。"
+    ]
+  },
+  {
+    "id": "support",
+    "keys": [
+      "サポート",
+      "導入後",
+      "アフター",
+      "フォロー",
+      "対応時間",
+      "放置されない",
+      "面倒見て",
+      "その後は",
+      "困ったとき",
+      "相談できる",
+      "知識が残る"
+    ],
+    "answer": [
+      "導入して終わりにはしません。<b>導入後のフォローアップ</b>まで対応します。",
+      "実践AI研修では、<b>教材＋使い方の動画</b>をお渡しし、従業員のみなさまが\"使いたいけれど使えない\"状態にならないようにします。使い方や仕組みが手元に残る形です。",
+      "困ったときのご相談導線もご用意しています。ここから先は担当者とお話しすることも可能です（無料相談へ）。"
+    ]
+  },
+  {
+    "id": "process",
+    "keys": [
+      "流れ",
+      "進め方",
+      "ステップ",
+      "どうやって",
+      "どう進む",
+      "プロセス",
+      "手順",
+      "段取り",
+      "進行",
+      "フロー",
+      "どんなふうに"
+    ],
+    "answer": [
+      "おおまかに<b>5つのステップ</b>で進みます。",
+      "<b>①ヒアリング</b>→<b>②分析</b>（AIで効率化できる所を見える化）→<b>③提案</b>（合うプランを優先順位つきで）→<b>④導入</b>（設定・構築・研修まで）→<b>⑤フォローアップ</b>",
+      "最初のヒアリングは無料相談から。まずは御社のお困りごとをお聞かせください。"
+    ]
+  },
+  {
+    "id": "period",
+    "keys": [
+      "期間",
+      "どれくらいで",
+      "いつから",
+      "納期",
+      "時間かかる",
+      "どのくらいで",
+      "スピード感",
+      "早く始め",
+      "すぐ始められる",
+      "効果が出るまで"
+    ],
+    "answer": [
+      "内容によって変わりますが、<b>小さく試して早めに効果を確認できる形</b>をおすすめしています。",
+      "いきなり全部を作り込むより、効きどころから始めて、確かめながら広げるほうが失敗が少なくなります。",
+      "具体的なスケジュール感は、やりたいことを伺ったうえで無料相談でお出しします。"
+    ]
+  },
+  {
+    "id": "online",
+    "keys": [
+      "オンライン",
+      "全国",
+      "遠方",
+      "地方",
+      "対応エリア",
+      "訪問",
+      "来てくれる",
+      "対面",
+      "リモート",
+      "どこでも",
+      "エリア"
+    ],
+    "answer": [
+      "はい、<b>全国オンライン対応</b>です。所在地を問わずご依頼いただけます。",
+      "ご相談・ヒアリングから研修・導入まで、オンラインで完結できます。移動の負担がないぶん、気軽に始めていただけます。"
+    ]
+  },
+  {
+    "id": "results",
+    "keys": [
+      "実績",
+      "事例",
+      "導入事例",
+      "実例",
+      "成功事例",
+      "他社事例",
+      "使ってる会社",
+      "導入先",
+      "ケース",
+      "お客様の声",
+      "どんな会社が"
+    ],
+    "forceCta": true,
+    "answer": [
+      "守秘のため匿名になりますが、たとえばこのような実績があります。",
+      "・複数拠点をもつ組織の人事評価・シフト／勤怠を丸ごと自動化し、毎月の運用まで継続支援<br>・自社アプリを企画・開発・審査・運用まで一貫<br>・複数のSNSアカウントを運用し、認知・フォロワーを継続的に伸長",
+      "御社に近い規模・業種のお話は、無料相談で詳しくお伝えできます。"
+    ]
+  },
+  {
+    "id": "difference",
+    "keys": [
+      "他社との違い",
+      "差別化",
+      "なぜタイガーラボ",
+      "選ぶ理由",
+      "強み",
+      "特徴",
+      "他と何が違う",
+      "比較",
+      "独自性",
+      "他社と"
+    ],
+    "answer": [
+      "いちばんの違いは、<b>自社の運営そのものを私たち自身のAI（AI社員）で回している実践者</b>だという点です。",
+      "\"言うだけでなく自分たちでやっている\"ので、絵に描いた提案ではなく、実際に回る形でお手伝いできます。",
+      "導入・研修・自動化・制作（Web／システム／アプリ）まで<b>一社で一気通貫</b>、全国オンライン対応、というのも選ばれる理由です。"
+    ]
+  },
+  {
+    "id": "training",
+    "keys": [
+      "研修",
+      "AI研修",
+      "勉強会",
+      "使い方教える",
+      "レクチャー",
+      "セミナー",
+      "トレーニング",
+      "実践AI研修",
+      "社員研修",
+      "教育",
+      "使えるようになる"
+    ],
+    "forceCta": true,
+    "answer": [
+      "<b>実践AI研修</b>は、現場ですぐ使える形をお渡しする研修です（単品15万円・1回／教材＋録画つき）。",
+      "ポイントは、<b>教材＋使い方の動画</b>をお渡しすることで、従業員のみなさまが\"使いたいけれど使えない・使い方がわからない\"状態にならないようにすることです。",
+      "初心者の方が多い職場でも大丈夫です。まずは御社の業務に合わせた内容を無料相談でご相談ください。"
+    ]
+  },
+  {
+    "id": "ai_clone",
+    "keys": [
+      "AIクローン",
+      "分身",
+      "社長の分身",
+      "クローン",
+      "AI社員",
+      "自分のAI",
+      "社長AI",
+      "分身AI",
+      "なりきり",
+      "本人のAI",
+      "属人化"
+    ],
+    "forceCta": true,
+    "answer": [
+      "<b>AIクローン</b>は、社長や熟練スタッフの話し方・考え方・判断の軸を学ばせた\"分身\"です（初期構築30万円＋運用月3万円）。",
+      "\"社長にしか判断できず現場が止まる\"\"相談が一人に集中する\"\"ベテランの知見が引き継がれない\"——こうした属人化のお悩みをやわらげる打ち手です。",
+      "私たち自身も、自社の運営をAI社員で回すなかでこの仕組みを実際に使っています。作り込み方は御社の状況に合わせてご相談させてください。"
+    ]
+  },
+  {
+    "id": "automation_dev",
+    "keys": [
+      "自動化",
+      "GAS",
+      "スプレッドシート",
+      "エクセル自動",
+      "効率化ツール",
+      "システム開発",
+      "アプリ開発",
+      "ホームページ",
+      "HP作成",
+      "LP制作",
+      "ツール作成",
+      "仕組み化",
+      "業務システム"
+    ],
+    "answer": [
+      "\"手作業で時間が溶けている\"部分は、仕組みで軽くできます。",
+      "<b>省力化</b>：スプレッドシート・GASによる自動化、定型業務の仕組み化（見積・請求・報告書の下書きづくりなど）。<br><b>開発・制作</b>：Web・LP、業務システム、アプリ開発まで。",
+      "\"毎回ゼロから作っている\"作業ほど効果が出やすいです。どこから手をつけると楽になるか、無料相談で一緒に見てみましょう。"
+    ]
+  },
+  {
+    "id": "beginner",
+    "keys": [
+      "初心者",
+      "パソコン苦手",
+      "PC苦手",
+      "AI苦手",
+      "わからない",
+      "ついていけない",
+      "難しそう",
+      "機械音痴",
+      "使いこなせるか",
+      "詳しくない",
+      "苦手でも"
+    ],
+    "answer": [
+      "ご心配いりません。<b>初心者の方を前提</b>にご案内しています。",
+      "むずかしい操作は必要なく、まずは<b>日本語で話しかけるだけ</b>の使い方から。教材と使い方の動画でサポートします。",
+      "\"うちのスタッフでも大丈夫かな\"というご不安こそ、無料相談でお聞かせください。"
+    ]
+  },
+  {
+    "id": "this_bot",
+    "keys": [
+      "このボット",
+      "このチャット",
+      "あなたは何",
+      "これAI",
+      "自動応答なの",
+      "ボットなの",
+      "中身",
+      "デモ",
+      "本物のAI",
+      "誰と話してる",
+      "これは何"
+    ],
+    "answer": [
+      "こちらはこのページ上の<b>デモ版</b>で、キーワードに合わせて決まったご案内をお返ししています。",
+      "将来的には自社AI（API）につないで、<b>自由な受け答え</b>にも対応できるよう広げていく予定です。",
+      "\"問い合わせ対応をこうやって自動化できる\"という、実物の見本でもあります。込み入ったご相談は、ここから先は担当者とお話しすることも可能です（無料相談へ）。"
+    ]
+  },
+  {
+    "id": "consult",
+    "keys": [
+      "無料相談",
+      "相談したい",
+      "申し込み",
+      "問い合わせ",
+      "話を聞きたい",
+      "予約したい",
+      "申込方法",
+      "フォーム",
+      "担当者",
+      "人と話したい",
+      "コンタクト",
+      "スマホで相談",
+      "連絡先"
+    ],
+    "forceCta": true,
+    "answer": [
+      "ありがとうございます。最初のご相談は<b>無料</b>です。見るだけ・聞くだけでも大丈夫ですよ。",
+      "このページの<b>相談ボタン（Googleフォーム）</b>から、スマホでもかんたんにお申し込みいただけます。",
+      "ここから先は担当者とお話しすることも可能です（無料相談へ）。お気軽にどうぞ。"
+    ]
+  },
+  {
+    "id": "industry_general",
+    "keys": [
+      "業種",
+      "うちの業種",
+      "うちでも使える",
+      "どんな業種",
+      "業界",
+      "うちの業界",
+      "対応業種",
+      "使えるかな",
+      "うちの仕事",
+      "どの業種でも"
+    ],
+    "forceCta": true,
+    "answer": [
+      "幅広い業種でお使いいただけます。まずは御社の\"あるある手間\"に合わせて、効きどころをお探しします。",
+      "たとえば飲食／美容・サロン／士業／建設・工務店／小売・個人商店／介護など、それぞれに合った打ち手があります。",
+      "業種名（例：飲食、美容、士業、建設、小売、介護）を送っていただければ、具体例をご紹介します。もちろん無料相談で御社の作業を一緒に見えるようにもできます。"
+    ]
+  },
+  {
+    "id": "industry_restaurant",
+    "keys": [
+      "飲食",
+      "飲食店",
+      "レストラン",
+      "居酒屋",
+      "カフェ",
+      "食堂",
+      "飲食業",
+      "ラーメン店",
+      "予約電話",
+      "食材ロス",
+      "仕込み"
+    ],
+    "forceCta": true,
+    "answer": [
+      "飲食店ですと、<b>営業中に鳴る予約電話で手が止まる／勘に頼るシフトが急な欠員で崩れる／仕込み過多で食材を廃棄</b>——このあたりが\"あるある\"ですよね。",
+      "打ち手としては、予約の自動受付、希望休の集約からシフト原案づくり、過去の実績や天候をふまえた発注量の目安づくり、などが考えられます。",
+      "どこから楽にできそうか、無料相談で御社の一日の流れを一緒に見てみましょう。"
+    ]
+  },
+  {
+    "id": "industry_beauty",
+    "keys": [
+      "美容室",
+      "美容院",
+      "サロン",
+      "ヘアサロン",
+      "ネイル",
+      "エステ",
+      "理容",
+      "美容師",
+      "施術中",
+      "口コミ返信",
+      "ホットペッパー"
+    ],
+    "forceCta": true,
+    "answer": [
+      "美容室・サロンさまですと、<b>施術中は手が塞がって予約電話やDMに出られない／口コミ返信やSNSが後回しになる</b>——このあたりが多いですね。",
+      "24時間の自動予約受付で取りこぼしを防ぎ、口コミ返信やSNS投稿の下書きをAIが用意して、施術の合間に確認するだけ、という形にできます。",
+      "\"施術以外の時間\"をどれだけ空けられるか、無料相談で一緒に見てみましょう。"
+    ]
+  },
+  {
+    "id": "industry_shigyo",
+    "keys": [
+      "士業",
+      "税理士",
+      "社労士",
+      "行政書士",
+      "会計事務所",
+      "司法書士",
+      "弁護士",
+      "事務所",
+      "申告書",
+      "就業規則",
+      "記帳",
+      "申請書"
+    ],
+    "forceCta": true,
+    "answer": [
+      "士業の先生方ですと、<b>記帳や申告書・就業規則・各種申請書をゼロから起こす手間</b>が大きいと伺います。",
+      "AIで初稿（たたき台）を用意し、<b>先生が最終確認をして仕上げる</b>——という分担で、下書きにかかる時間を軽くできます。正確性の最終責任は人が担保する形です。",
+      "どの書類から試すと効くか、無料相談でご相談ください。"
+    ]
+  },
+  {
+    "id": "industry_construction",
+    "keys": [
+      "建設",
+      "工務店",
+      "建築",
+      "現場",
+      "職人",
+      "施工",
+      "建設業",
+      "積算",
+      "見積拾い",
+      "日報",
+      "安全書類",
+      "図面"
+    ],
+    "forceCta": true,
+    "answer": [
+      "建設・工務店さまですと、<b>図面からの手拾い積算／現場後の日報・安全書類／\"あの案件どこだっけ\"の探し出し</b>が手間になりがちです。",
+      "見積・書類の下書きづくりや、過去の資料をすぐ引き出せる形にすることで、<b>今いる人数のまま事務を軽く</b>できます。",
+      "御社の書類まわりのどこから始めるか、無料相談で一緒に整理しましょう。"
+    ]
+  },
+  {
+    "id": "industry_retail",
+    "keys": [
+      "小売",
+      "商店",
+      "個人商店",
+      "店舗運営",
+      "物販",
+      "販売店",
+      "在庫",
+      "発注",
+      "欠品",
+      "売れ残り",
+      "仕入れ",
+      "ショップ"
+    ],
+    "forceCta": true,
+    "answer": [
+      "小売・個人商店さまですと、<b>発注が勘頼りで、欠品と売れ残りが同時に起きる</b>——このお悩みが多いです。",
+      "販売実績や天候などをふまえて発注量の目安を出す、といった形で、仕入れの負担と無駄を減らせます。",
+      "まずは御社の発注の流れを、無料相談で一緒に見てみましょう。"
+    ]
+  },
+  {
+    "id": "industry_care",
+    "keys": [
+      "介護",
+      "介護施設",
+      "デイサービス",
+      "訪問介護",
+      "ケアプラン",
+      "介護記録",
+      "福祉",
+      "老人ホーム",
+      "ヘルパー",
+      "記録二度手間",
+      "担当者会議"
+    ],
+    "forceCta": true,
+    "answer": [
+      "介護事業所さまですと、<b>記録の二度手間／ケアプラン原案づくり／崩れやすいシフト</b>が大きな負担ですね。",
+      "記録の入力を楽にする、アセスメントからケアプランの原案（たたき台）を用意する、シフト案を複数出す、といった打ち手が考えられます。最終的な判断・仕上げは職員のみなさまが担う形です。",
+      "人手が足りない現場ほど効きます。御社の記録・シフトの流れを、無料相談で一緒に見てみましょう。"
+    ]
+  }
+];
+
+  var CHIPS = [{"label": "サービス内容", "q": "どんなサービスがありますか？"}, {"label": "料金を知りたい", "q": "料金はいくらくらいですか？"}, {"label": "うちの業種でも使える？", "q": "うちの業種でもAIは使えますか？"}, {"label": "実践AI研修とは", "q": "実践AI研修とはどんなものですか？"}, {"label": "AIクローンとは", "q": "AIクローン（社長の分身）とは何ですか？"}, {"label": "進め方", "q": "どんな流れで進みますか？"}, {"label": "実績はある？", "q": "導入事例や実績はありますか？"}, {"label": "無料相談したい", "q": "無料相談を申し込みたいです"}];
+
+  var logEl, chipsEl, textEl, rootEl, greeted=false;
+
+  function el(id){ return document.getElementById(id); }
+
+  function scrollDown(){
+    logEl.scrollTop = logEl.scrollHeight;
+    requestAnimationFrame(function(){ logEl.scrollTop = logEl.scrollHeight; });
+  }
+
+  function addMsg(role, html){
+    var m = document.createElement('div');
+    m.className = 'msg ' + role;
+    m.innerHTML = '<div class="bubble">'+html+'</div>';
+    logEl.appendChild(m);
+    scrollDown();
+    return m;
+  }
+
+  function addCta(text, label){
+    var c = document.createElement('div');
+    c.className = 'cta-card';
+    c.innerHTML = '<p>'+text+'</p><a href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform" target="_blank" rel="noopener" onclick="TLBot.close()">'+ (label||'無料相談へ') +' →</a>';
+    logEl.appendChild(c);
+    scrollDown();
+  }
+
+  function typing(){
+    var t = document.createElement('div');
+    t.className = 'msg bot typing';
+    t.id = 'tlbot-typing';
+    t.innerHTML = '<div class="bubble"><span></span><span></span><span></span></div>';
+    logEl.appendChild(t);
+    scrollDown();
+  }
+  function stopTyping(){ var t = el('tlbot-typing'); if(t) t.remove(); }
+
+  function botSay(lines, opts){
+    opts = opts || {};
+    var i = 0;
+    function step(){
+      if(i >= lines.length){
+        if(opts.cta) addCta(opts.ctaText || CONTACT_CTA.text, opts.ctaLabel || CONTACT_CTA.label);
+        renderChips();
+        scrollDown();
+        return;
+      }
+      typing();
+      var delay = Math.min(260 + lines[i].length*14, 900);
+      setTimeout(function(){
+        stopTyping();
+        addMsg('bot', lines[i]);
+        i++;
+        setTimeout(step, 180);
+      }, delay);
+    }
+    step();
+  }
+
+  function match(text){
+    var q = text.toLowerCase().replace(/\s/g,'');
+    var best=null, bestScore=0;
+    KB.forEach(function(item){
+      var score=0;
+      item.keys.forEach(function(k){
+        if(q.indexOf(k.toLowerCase())>-1){ score += k.length>=3 ? 2 : 1; }
+      });
+      if(score>bestScore){ bestScore=score; best=item; }
     });
+    return bestScore>0 ? best : null;
+  }
+
+  function handle(text){
+    addMsg('user', escapeHtml(text));
+    chipsEl.innerHTML='';
+    var hit = match(text);
+    if(hit){
+      botSay(hit.answer.slice(), {cta: !!hit.forceCta});
+    }else{
+      botSay(
+        ["うーん、そこはこの場で正確にお答えしきれないかもしれません🙏 でも大丈夫、下のどれかなら詳しくお話しできます。",
+         "もしくは、担当者に直接つなぐこともできますよ。"],
+        {cta:true, ctaText:"具体的な話は、無料相談で聞かせてください。オンラインで、売り込みはしません。", ctaLabel:"無料相談へ"}
+      );
+    }
+  }
+
+  function renderChips(){
+    chipsEl.innerHTML='';
+    CHIPS.forEach(function(c){
+      var b=document.createElement('button');
+      b.textContent=c.label;
+      b.onclick=function(){ handle(c.q); };
+      chipsEl.appendChild(b);
+    });
+  }
+
+  function escapeHtml(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function greet(){
+    if(greeted) return; greeted=true;
+    botSay(["こんにちは。株式会社タイガーラボのご相談窓口です。<b>「AIを、\"なんとなく\"で終わらせない。」</b>——中小企業さまのAI活用を、導入から研修・自動化・制作までまるごとお手伝いしています。", "料金やサービス内容、\"うちの業種でも使える？\"といったご質問に、この場でお答えします。下のボタンからお気軽にどうぞ。"]);
+  }
+
+  window.TLBot = {
+    open:function(){
+      rootEl.classList.add('open');
+      el('tlbot-teaser').classList.add('hidden');
+      setTimeout(function(){ textEl && textEl.focus(); }, 250);
+      greet();
+    },
+    close:function(){ rootEl.classList.remove('open'); },
+    toggle:function(){ rootEl.classList.contains('open') ? this.close() : this.open(); },
+    contact:function(){
+      // 無料相談セクション（Googleフォーム導線）へ誘導してボットを閉じる
+      TLBot.close();
+      var cta = document.getElementById('cta');
+      if(cta){ cta.scrollIntoView({behavior:'smooth'}); return false; }
+      return true;
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    logEl = el('tlbot-log');
+    chipsEl = el('tlbot-chips');
+    textEl = el('tlbot-text');
+    rootEl = el('tlbot');
+
+    el('tlbot-launch').addEventListener('click', function(){ TLBot.toggle(); });
+    el('tlbot-send').addEventListener('click', send);
+    // IMEガード: 日本語変換確定のEnterを送信と誤検知しない
+    textEl.addEventListener('keydown', function(e){
+      if(e.key==='Enter' && !e.isComposing && e.keyCode!==229){ send(); }
+    });
+
+    function send(){
+      var v = textEl.value.trim();
+      if(!v) return;
+      textEl.value='';
+      handle(v);
+    }
   });
 })();
 </script>
+<!-- ▲▲▲ FAQ受付ボット ウィジェット ここまで ▲▲▲ -->
+
+<!-- 無料相談フォームURLは各ボタンに静的hrefで直書き済み（別タブ・プラン別プレフィル）。変更時は各<a>のhrefを差し替える。 -->
 
 </body>
 </html>

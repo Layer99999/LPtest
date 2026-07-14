@@ -1,6 +1,32 @@
+# 株式会社タイガーラボ — robots.txt（公開時に本番ルートへ設置。CDNのボット対策が上書きブロックしていないか要確認）
+# 方針: 検索・RAG系／ユーザー取得系ボットは許可（拒否するとAI回答から消える）。
+
+# --- AI検索・RAG・ユーザー取得系（許可）---
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+# --- 学習系（許可＝長期のAI学習知識にも入れる方針。方針変更時はここをDisallowに）---
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: CCBot
+Allow: /
+
+# --- 全ボット共通 ---
 User-agent: *
 Allow: /
 
-# 公開URL（例：https://ユーザー名.github.io/リポジトリ名/）が確定したら、
-# 下行のコメントを外して実URLに差し替えてください。
-# Sitemap: https://あなたの公開URL/sitemap.xml
+Sitemap: https://tigerlabo.com/sitemap.xml
