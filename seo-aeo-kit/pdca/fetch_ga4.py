@@ -7,20 +7,25 @@
 出力:
     data/ga4_YYYY-MM-DD.json  … {summary: {...}, channels: [...], events: [...], period: {...}}
 
+認証: common.load_credentials()（GOOGLE_SERVICE_ACCOUNT_JSON か GOOGLE_APPLICATION_CREDENTIALS）
+設定: プロパティIDは config.json / 環境変数 GA4_PROPERTY_ID
 前提: setup-ga4-gsc.md のセットアップ（サービスアカウント＋GA4閲覧者権限）が完了していること。
 """
 import argparse
 import datetime
 import json
-import os
 import sys
 from pathlib import Path
 
-from dotenv import load_dotenv
-from google.analytics.data_v1beta import BetaAnalyticsDataClient
-from google.analytics.data_v1beta.types import DateRange, Dimension, Metric, RunReportRequest
+sys.path.insert(0, str(Path(__file__).parent))
+import common  # noqa: E402
+
+from dotenv import load_dotenv  # noqa: E402
+from google.analytics.data_v1beta import BetaAnalyticsDataClient  # noqa: E402
+from google.analytics.data_v1beta.types import DateRange, Dimension, Metric, RunReportRequest  # noqa: E402
 
 DATA_DIR = Path(__file__).parent / "data"
+SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]
 CV_EVENT = "generate_lead"  # head テンプレのCTAクリックイベントと揃える
 
 
@@ -46,15 +51,11 @@ def main():
     args = parser.parse_args()
 
     load_dotenv(Path(__file__).parent / ".env")
-    prop = os.environ.get("GA4_PROPERTY_ID")
-    if not prop or not prop.isdigit():
-        sys.exit("ERROR: GA4_PROPERTY_ID が未設定です（数字のプロパティID。測定ID G-XXXX ではない）")
-    if not os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"):
-        sys.exit("ERROR: GOOGLE_APPLICATION_CREDENTIALS が未設定です（.env を確認）")
+    prop = common.get_property_id()
 
     end = datetime.date.today() - datetime.timedelta(days=1)
     start = end - datetime.timedelta(days=args.days - 1)
-    client = BetaAnalyticsDataClient()
+    client = BetaAnalyticsDataClient(credentials=common.load_credentials(SCOPES))
 
     summary_rows = run(client, prop, [], ["activeUsers", "newUsers", "sessions", "averageSessionDuration", "engagementRate"], start, end)
     channels = run(client, prop, ["sessionDefaultChannelGroup"], ["sessions", "activeUsers", "engagementRate"], start, end)

@@ -7,18 +7,21 @@
 出力:
     data/gsc_YYYY-MM-DD.json  … {queries: [...], pages: [...], period: {...}}
 
+認証: common.load_credentials()（GOOGLE_SERVICE_ACCOUNT_JSON か GOOGLE_APPLICATION_CREDENTIALS）
+設定: サイトURLは config.json / 環境変数 GSC_SITE_URL
 前提: setup-ga4-gsc.md のセットアップ（サービスアカウント＋GSC権限付与）が完了していること。
 """
 import argparse
 import datetime
 import json
-import os
 import sys
 from pathlib import Path
 
-from dotenv import load_dotenv
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
+sys.path.insert(0, str(Path(__file__).parent))
+import common  # noqa: E402
+
+from dotenv import load_dotenv  # noqa: E402
+from googleapiclient.discovery import build  # noqa: E402
 
 SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly"]
 DATA_DIR = Path(__file__).parent / "data"
@@ -26,10 +29,7 @@ ROW_LIMIT = 250  # LP1枚の運用では十分。増やしたければ最大2500
 
 
 def get_service():
-    creds_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-    if not creds_path or not Path(creds_path).exists():
-        sys.exit("ERROR: GOOGLE_APPLICATION_CREDENTIALS が未設定か、鍵ファイルが見つかりません（.env を確認）")
-    creds = service_account.Credentials.from_service_account_file(creds_path, scopes=SCOPES)
+    creds = common.load_credentials(SCOPES)
     return build("searchconsole", "v1", credentials=creds)
 
 
@@ -59,9 +59,7 @@ def main():
     args = parser.parse_args()
 
     load_dotenv(Path(__file__).parent / ".env")
-    site_url = os.environ.get("GSC_SITE_URL")
-    if not site_url:
-        sys.exit("ERROR: GSC_SITE_URL が未設定です（.env を確認）")
+    site_url = common.get_site_url()
 
     # GSCのデータは最大2日遅れるため、終端は2日前
     end = datetime.date.today() - datetime.timedelta(days=2)

@@ -34,24 +34,48 @@
 
 ## 4. 実行環境の設定
 
+サイトURLとGA4プロパティIDは **config.json に記載済み**（tigerlabo は設定済み）。用意するのは**鍵だけ**。
+
+### 【推奨】クラウド運用（Claude Code の環境）
+Claude Code環境の環境変数は `.env` 形式（1行1組・改行不可）。鍵JSONは複数行なので、**Base64（1行）に変換**して入れる。
+
+1. 鍵をBase64化（Macのターミナルで1回・結果がクリップボードに入る）:
+   ```bash
+   base64 -i ~/Downloads/tigerlabo-seo-pdca-*.json | tr -d '\n' | pbcopy
+   ```
+2. 環境の設定 → **環境変数** に1行追加（値はクォートで囲まない）:
+   ```
+   GOOGLE_SERVICE_ACCOUNT_JSON_B64=（上でコピーしたBase64文字列を貼り付け）
+   ```
+   - ※チャットやリポジトリには貼らない。環境変数にだけ入れる。
+   - 開き方: 画面上の「環境名が出ているクラウドアイコン」をクリック → 環境にマウスを乗せ → 右に出る歯車（設定）アイコン。
+3. 依存は毎回 `bash seo-aeo-kit/pdca/bootstrap.sh` が用意する（Routineの中で自動実行）。
+
+> 注意: Claude Code環境には現状「専用のシークレット保管庫」が無く、環境変数は環境を編集できる人に見えます。
+> 個人環境なら実質あなただけ。鍵はGSC/GA4の**読み取り専用**なので影響は限定的です。
+
+### ローカル運用（自分のPCで回す場合）
 ```bash
 cd seo-aeo-kit/pdca
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+bash bootstrap.sh
 cp .env.example .env
-# .env を編集して以下を設定:
+# .env に鍵ファイルの絶対パスを設定:
 #   GOOGLE_APPLICATION_CREDENTIALS=/絶対パス/service-account.json
-#   GSC_SITE_URL=https://tigerlabo.com/        ← GSCのプロパティ表記と完全一致（ドメインプロパティなら sc-domain:tigerlabo.com）
-#   GA4_PROPERTY_ID=123456789
 ```
+別サイトに使い回すときは config.json の gsc_site_url / ga4_property_id を書き換える
+（ドメインプロパティなら gsc_site_url は `sc-domain:example.com`）。
 
 ## 5. 疎通確認
 
 ```bash
-python fetch_search_console.py   # → data/gsc_YYYY-MM-DD.json ができ、クエリ一覧が表示されればOK
-python fetch_ga4.py              # → data/ga4_YYYY-MM-DD.json ができればOK
-python analyze.py                # → data/insights_YYYY-MM-DD.md（改善候補レポート）が生成されればOK
+cd seo-aeo-kit/pdca
+python3 fetch_search_console.py   # → data/gsc_YYYY-MM-DD.json ができ、クエリ一覧が表示されればOK
+python3 fetch_ga4.py              # → data/ga4_YYYY-MM-DD.json ができればOK
+python3 analyze.py                # → data/insights_YYYY-MM-DD.md（改善候補レポート）が生成されればOK
 ```
+
+※ サイトを登録したばかりの時期は、GSCにデータが溜まるまで（目安1〜2週間）クエリは0件のことがある。
+　その場合でもスクリプトはエラーにならず「該当なし」で正常終了する（配管の確認はこれでOK）。
 
 エラー時の典型:
 - `403 PERMISSION_DENIED` → 手順2/3の権限付与漏れ、またはプロパティID/サイトURLの表記違い
