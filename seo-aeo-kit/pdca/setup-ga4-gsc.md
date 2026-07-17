@@ -37,11 +37,22 @@
 サイトURLとGA4プロパティIDは **config.json に記載済み**（tigerlabo は設定済み）。用意するのは**鍵だけ**。
 
 ### 【推奨】クラウド運用（Claude Code の環境）
-1. Claude Code の環境設定で、**シークレット環境変数** を1つ追加:
-   - 名前: `GOOGLE_SERVICE_ACCOUNT_JSON`
-   - 値: ダウンロードした鍵JSONファイルの**中身を丸ごと貼り付け**（`{ "type": "service_account", ... }` 全体）
-   - ※チャットやリポジトリには貼らない。環境のシークレットにだけ入れる。
-2. 依存は毎回 `bash seo-aeo-kit/pdca/bootstrap.sh` が用意する（Routineの中で自動実行）。
+Claude Code環境の環境変数は `.env` 形式（1行1組・改行不可）。鍵JSONは複数行なので、**Base64（1行）に変換**して入れる。
+
+1. 鍵をBase64化（Macのターミナルで1回・結果がクリップボードに入る）:
+   ```bash
+   base64 -i ~/Downloads/tigerlabo-seo-pdca-*.json | tr -d '\n' | pbcopy
+   ```
+2. 環境の設定 → **環境変数** に1行追加（値はクォートで囲まない）:
+   ```
+   GOOGLE_SERVICE_ACCOUNT_JSON_B64=（上でコピーしたBase64文字列を貼り付け）
+   ```
+   - ※チャットやリポジトリには貼らない。環境変数にだけ入れる。
+   - 開き方: 画面上の「環境名が出ているクラウドアイコン」をクリック → 環境にマウスを乗せ → 右に出る歯車（設定）アイコン。
+3. 依存は毎回 `bash seo-aeo-kit/pdca/bootstrap.sh` が用意する（Routineの中で自動実行）。
+
+> 注意: Claude Code環境には現状「専用のシークレット保管庫」が無く、環境変数は環境を編集できる人に見えます。
+> 個人環境なら実質あなただけ。鍵はGSC/GA4の**読み取り専用**なので影響は限定的です。
 
 ### ローカル運用（自分のPCで回す場合）
 ```bash
