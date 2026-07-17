@@ -17,8 +17,10 @@ GSC/GA4のデータを毎日取得し、Claude Code が改善候補を分析し�
 Claude Code のスケジュール実行（Routine）に以下を登録する:
 
 ```
-seo-aeo-kit/pdca で以下を実行してください。
-1. `python fetch_search_console.py && python fetch_ga4.py && python analyze.py` を実行
+SEO/AEOの毎日改善を実行してください。
+0. `bash seo-aeo-kit/pdca/bootstrap.sh` で依存を用意（数十秒）
+1. `cd seo-aeo-kit/pdca && python3 fetch_search_console.py && python3 fetch_ga4.py && python3 analyze.py` を実行
+   （認証は環境変数 GOOGLE_SERVICE_ACCOUNT_JSON、サイト/プロパティは config.json から自動で読まれる）
 2. 生成された data/insights_*.md（最新）を読む
 3. 「今日の改善候補」から最大2件だけ選び、index.html / llms.txt に反映する。
    守るルール:
