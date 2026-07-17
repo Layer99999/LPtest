@@ -6,6 +6,19 @@
 <title>タイガーラボ ｜ AIを、“なんとなく”で終わらせない。</title>
 <meta name="description" content="中小企業のためのAI活用パートナー。AI導入・活用、業務の省力化、開発・制作を、Light 20万円〜の明確な料金で支援。自社も“AI社員”で動かす実践者が伴走します。">
 <link rel="canonical" href="https://tigerlabo.com/">
+<!-- GA4（無料相談フォームへのクリック＝generate_lead をキーイベントに設定） -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8K4H98JX4Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8K4H98JX4Q');
+  // CV計測: 無料相談フォーム（Googleフォーム）への全リンクをクリック委譲で一括捕捉（チャットボット内の動的リンク含む）
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="docs.google.com/forms"]');
+    if (a) gtag('event', 'generate_lead', { cta_id: a.id || 'form-link', cta_text: (a.textContent || '').trim().slice(0, 40) });
+  }, true);
+</script>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tigerlabo.com/">
 <meta property="og:title" content="タイガーラボ ｜ AIを、“なんとなく”で終わらせない。">
@@ -53,17 +66,29 @@
       "worksFor": { "@id": "https://tigerlabo.com/#org" }
     },
     {
+      "@type": "WebSite",
+      "@id": "https://tigerlabo.com/#website",
+      "url": "https://tigerlabo.com/",
+      "name": "株式会社タイガーラボ",
+      "inLanguage": "ja",
+      "publisher": { "@id": "https://tigerlabo.com/#org" }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://tigerlabo.com/#webpage",
       "url": "https://tigerlabo.com/",
       "name": "タイガーラボ ｜ AIを、“なんとなく”で終わらせない。",
       "inLanguage": "ja",
       "datePublished": "2026-07-15",
-      "dateModified": "2026-07-15",
-      "isPartOf": { "@id": "https://tigerlabo.com/#org" },
+      "dateModified": "2026-07-16",
+      "isPartOf": { "@id": "https://tigerlabo.com/#website" },
       "about": { "@id": "https://tigerlabo.com/#org" },
       "author": { "@id": "https://tigerlabo.com/#founder" },
-      "publisher": { "@id": "https://tigerlabo.com/#org" }
+      "publisher": { "@id": "https://tigerlabo.com/#org" },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", ".hero-title"]
+      }
     },
     {
       "@type": "BreadcrumbList",

@@ -1,0 +1,7 @@
+# PDCA用の認証情報・取得データ（鍵は絶対にコミットしない）
+seo-aeo-kit/pdca/.env
+seo-aeo-kit/pdca/service-account.json
+seo-aeo-kit/pdca/*.json.key
+seo-aeo-kit/pdca/.venv/
+seo-aeo-kit/pdca/data/
+__pycache__/

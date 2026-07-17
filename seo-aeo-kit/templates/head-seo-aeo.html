@@ -1,0 +1,125 @@
+<!--
+  ============================================================
+  LP用 <head> SEO/AEO テンプレート（seo-aeo-kit）
+  使い方: {{...}} を全て実際の値に置換して <head> 内に配置する。
+  検査: node seo-aeo-kit/scripts/validate-seo.mjs index.html
+  ============================================================
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ═══ 基本SEO ═══ -->
+<!-- title: 32文字前後。固有名詞＋提供価値。検索結果とAI回答の両方で「何者か」が一目で分かる形に -->
+<title>{{SITE_NAME}} ｜ {{TAGLINE}}</title>
+<!-- description: 80〜120文字。誰向け・何を・いくらで、を具体的に -->
+<meta name="description" content="{{DESCRIPTION}}">
+<link rel="canonical" href="{{URL}}">
+
+<!-- ═══ Google Search Console 所有権確認 ═══ -->
+<!-- GSCの「プロパティ追加→HTMLタグ」で発行されるcontent値に置換。DNS認証を使う場合はこの行ごと削除可 -->
+<meta name="google-site-verification" content="{{GSC_VERIFICATION_CODE}}">
+
+<!-- ═══ OGP（SNSシェア・AI回答のプレビューにも使われる）═══ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{URL}}">
+<meta property="og:title" content="{{SITE_NAME}} ｜ {{TAGLINE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:site_name" content="{{COMPANY_NAME}}">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="{{URL}}assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{SITE_NAME}} ｜ {{TAGLINE}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{URL}}assets/og-image.png">
+
+<!-- ═══ GA4（計測＝PDCAの土台。必ず入れる）═══ -->
+<!-- 測定IDはGA4管理画面 > データストリーム から。CVはCTAクリックで generate_lead を送る（下の実装例） -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{GA4_MEASUREMENT_ID}}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{GA4_MEASUREMENT_ID}}');
+  // CVイベント実装例: CTAボタン（無料相談等）のクリックを generate_lead として送信。
+  // GA4側で generate_lead を「キーイベント」に設定すること（管理 > イベント）。
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-cv]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        gtag('event', 'generate_lead', { cta_id: el.id || el.getAttribute('data-cv') || 'cta' });
+      });
+    });
+  });
+</script>
+<!-- ↑ CTAリンク/ボタン側には data-cv 属性を付ける: <a href="..." data-cv="free-consult">無料相談</a> -->
+
+<!-- ═══ 構造化データ（JSON-LD @graph 一体型）═══ -->
+<!-- AEOの核。AI回答エンジンは構造化データを強く参照する。事実のみ書く（誇張・未確定情報は禁止） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{URL}}#org",
+      "name": "{{COMPANY_NAME}}",
+      "alternateName": ["{{COMPANY_ALT_1}}", "{{COMPANY_ALT_2}}"],
+      "url": "{{URL}}",
+      "slogan": "{{TAGLINE}}",
+      "description": "{{DESCRIPTION}}",
+      "areaServed": "JP",
+      "sameAs": ["{{SNS_URL_1}}"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{URL}}#website",
+      "url": "{{URL}}",
+      "name": "{{SITE_NAME}}",
+      "inLanguage": "ja",
+      "publisher": { "@id": "{{URL}}#org" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{URL}}#webpage",
+      "url": "{{URL}}",
+      "name": "{{SITE_NAME}} ｜ {{TAGLINE}}",
+      "inLanguage": "ja",
+      "datePublished": "{{DATE_PUBLISHED}}",
+      "dateModified": "{{DATE_MODIFIED}}",
+      "isPartOf": { "@id": "{{URL}}#website" },
+      "about": { "@id": "{{URL}}#org" },
+      "publisher": { "@id": "{{URL}}#org" },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", ".hero-lead"]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{URL}}#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "{{URL}}" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "{{URL}}#faq",
+      "isPartOf": { "@id": "{{URL}}#webpage" },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "{{FAQ_Q1（自然文の質問。ユーザーがAIに聞く言い回しで）}}",
+          "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A1（結論→根拠→次アクションの順。1〜3文）}}" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!--
+  FAQ設計のコツ（AEO）:
+  - 「〇〇とはどんな会社？」「料金はいくら？」「他社と何が違う？」「対応エリアは？」など、
+    AIに実際に聞かれる形の質問を8〜15個。
+  - 回答は事実ベースで具体的（価格・期間・範囲を数字で）。曖昧な宣伝文はAIに引用されない。
+  - ページ本文にも同じFAQを見える形で置く（JSON-LDだけの隠しFAQはNG）。
+-->

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- lastmod は index.html の dateModified と一致させること（正直な申告）。実更新日以外に動かさない。 -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{URL}}</loc>
+    <lastmod>{{YYYY-MM-DD}}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
