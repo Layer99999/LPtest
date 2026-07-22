@@ -4,4 +4,9 @@ seo-aeo-kit/pdca/service-account.json
 seo-aeo-kit/pdca/*.json.key
 seo-aeo-kit/pdca/.venv/
 seo-aeo-kit/pdca/data/
+
+# コンテンツパイプライン用のAPIキー・取得データ
+seo-aeo-kit/content-pipeline/.env
+seo-aeo-kit/content-pipeline/data/
+
 __pycache__/

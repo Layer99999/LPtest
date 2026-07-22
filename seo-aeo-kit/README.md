@@ -35,6 +35,11 @@ seo-aeo-kit/
 │   ├── analyze.py               ← データ→改善候補の自動抽出
 │   ├── requirements.txt
 │   └── .env.example             ← 認証情報テンプレ（実物の鍵はコミット禁止）
+├── content-pipeline/             ← ★AIEO記事量産パイプライン（発掘→執筆→引用）
+│   ├── README.md
+│   ├── keyword-discovery.py      ← Ubersuggest CSV/APIからキーワード候補を優先度つきで抽出
+│   ├── article-template.md       ← AIEO記事テンプレート＋執筆ルール＋JSON-LD雛形
+│   └── validate-article.mjs      ← 記事の書き方をAIEO観点で静的検査
 └── scripts/
     └── validate-seo.mjs         ← LPのSEO/AEO要素を静的検査（node scripts/validate-seo.mjs <html>）
 ```
@@ -72,3 +77,16 @@ seo-aeo-kit/
 ```
 
 詳細は `pdca/daily-improve.md` を参照。
+
+## コンテンツパイプラインの全体像（AIEO記事量産・発掘→執筆→引用）
+
+LP1枚のPDCAとは別に、AIの回答に引用されるブログ記事を計画的に増やす仕組み。
+
+```
+① 発掘   keyword-discovery.py（Ubersuggest CSV/API）でキーワード候補に優先度をつける
+② 執筆   article-template.md に沿って質問形見出し＋結論ファーストで書く
+③ 引用   公開後、aeo-checklist.md「E. 検証」でAIに聞いて引用有無を記録する
+```
+
+Google広告との連携（検索語句レポートからのネタ出し／引用増加に応じた広告費削減）は現時点では対象外。
+詳細は `content-pipeline/README.md` を参照。

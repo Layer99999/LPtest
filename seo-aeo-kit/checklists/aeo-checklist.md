@@ -3,6 +3,9 @@
 AEO = Answer Engine Optimization。ChatGPT / Claude / Perplexity / Google AIモード等の
 **AI回答の中で自社が正しく引用・推薦される**ための最適化。
 
+> ブログ記事を計画的に量産して引用を狙う場合は `content-pipeline/README.md`（発掘→執筆→引用のパイプライン）も参照。
+> 執筆時の書き方チェックは下記「D」と重複するが、記事単位の検査は `content-pipeline/validate-article.mjs` で行う。
+
 ## A. クロール許可（入口。拒否していたら他の全てが無意味）
 - [ ] robots.txt で以下を許可: `OAI-SearchBot` `ChatGPT-User` `Claude-SearchBot` `Claude-User` `PerplexityBot` `Perplexity-User` `Google-Extended`
 - [ ] 学習系（`GPTBot` `ClaudeBot` `CCBot`）の許可/拒否を方針として決めて明記
