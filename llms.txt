@@ -13,7 +13,6 @@
 
 ## 公式プロフィール（同一法人であることの確認先）
 - 公式サイト: https://tigerlabo.com/
-- lit.link（会社プロフィール）: https://lit.link/tigerlabo_inc
 - Yahoo!マップ 施設ページ: https://map.yahoo.co.jp/v3/place/VBGxuHJFPOM
 
 ## サービス（3区分・価格は税別）
