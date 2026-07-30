@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>グラフ型プレゼン｜検証デモ｜株式会社タイガーラボ</title>
+<style>
+/* ==========================================================================
+   グラフ型プレゼン 検証デモ
+   ノード（情報）とエッジ（関係）を先に定義し、スライド番号に応じて
+   「グラフの状態」を変化させる。ページをめくるのではなく、状態が動く。
+   ========================================================================== */
+
+:root{
+  /* --- 既存LPのトークンを継承 --- */
+  --bg:#080d18;
+  --panel:#101a30;
+  --hair:rgba(255,255,255,.08);
+  --text:#eef3fc;
+  --muted:#8fa3c4;              /* 紺に寄せたグレー */
+  --cyan:#6fe6ec;
+  --blue:#3b8cff;
+  --blue-deep:#004aad;
+  --grad:linear-gradient(118deg,#7ceaef 0%,#3b8cff 52%,#1f5fe0 100%);
+  --serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP",Georgia,serif;
+  --sans:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic",system-ui,-apple-system,"Segoe UI",sans-serif;
+
+  /* --- 意味の色：左（課題）は暖色、右（打ち手）は寒色 --- */
+  --c-problem:#ff9d8a;
+  --c-cause:#ffc46b;
+  --c-service:#6fe6ec;
+  --c-menu:#3b8cff;
+  --c-package:#ffffff;
+  --c-flow:#8fa3c4;
+
+  --ease:cubic-bezier(.65,0,.35,1);
+  --t-cam:900ms;
+  --t-node:620ms;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* 淡いグラデーションの地 */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(900px 620px at 18% 12%, rgba(59,140,255,.10), transparent 62%),
+    radial-gradient(760px 560px at 86% 84%, rgba(124,234,239,.07), transparent 64%);
+}
+
+.app{
+  position:relative;z-index:1;height:100%;
+  display:grid;
+  grid-template-columns:1fr 300px;
+  grid-template-rows:auto 1fr auto;
+  grid-template-areas:"hud hud" "stage inspector" "controls controls";
+}
+
+/* ---------- ヘッダ ---------- */
+.hud{
+  grid-area:hud;
+  display:flex;align-items:flex-start;gap:28px;
+  padding:22px 30px 16px;
+  border-bottom:1px solid var(--hair);
+}
+.brand{
+  font-family:var(--serif);
+  font-size:13px;letter-spacing:.30em;
+  color:var(--muted);
+  padding-top:6px;white-space:nowrap;
+}
+.brand b{color:var(--cyan);font-weight:400}
+.titles{min-width:0}
+.eyebrow{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:7px;
+  font-variant-numeric:tabular-nums;
+}
+.titles h1{
+  font-family:var(--serif);
+  font-size:clamp(19px,2.5vw,29px);
+  font-weight:600;line-height:1.3;text-wrap:balance;
+  letter-spacing:.01em;
+}
+.titles .sub{
+  margin-top:6px;font-size:12.5px;color:var(--muted);line-height:1.6;
+}
+
+/* ---------- ステージ（グラフ描画面） ---------- */
+.stage{
+  grid-area:stage;
+  position:relative;overflow:hidden;
+  cursor:default;
+}
+.camera{
+  position:absolute;left:0;top:0;
+  width:1560px;height:1010px;
+  transform-origin:0 0;
+  transition:transform var(--t-cam) var(--ease);
+  --comp:1;      /* ノードの逆スケール補正（文字を読める大きさに保つ） */
+}
+.edges{
+  position:absolute;left:0;top:0;
+  width:1560px;height:1010px;overflow:visible;
+  pointer-events:none;
+}
+.edges path{
+  fill:none;
+  stroke-linecap:round;
+  transition:opacity 520ms var(--ease), stroke-dashoffset 640ms var(--ease);
+}
+.edges .elabel{
+  font-family:var(--sans);
+  font-size:11px;
+  fill:var(--muted);
+  text-anchor:middle;
+  paint-order:stroke;
+  stroke:var(--bg);stroke-width:4px;stroke-linejoin:round;
+  transition:opacity 420ms var(--ease);
+}
+
+/* ---------- ノード ---------- */
+.node{
+  position:absolute;
+  transform-origin:50% 50%;
+  transform:translate(-50%,-50%) scale(calc(var(--k) * var(--comp)));
+  transition:
+    left var(--t-node) var(--ease),
+    top var(--t-node) var(--ease),
+    transform var(--t-node) var(--ease),
+    opacity 520ms var(--ease);
+  will-change:transform,opacity;
+}
+.node .chip{
+  display:flex;flex-direction:column;gap:3px;
+  padding:11px 17px;
+  border-radius:13px;
+  background:var(--panel);
+  border:1px solid var(--hair);
+  box-shadow:0 18px 40px -22px rgba(0,0,0,.9);
+  white-space:nowrap;
+  cursor:pointer;
+  transition:border-color 300ms ease, box-shadow 300ms ease, background 300ms ease;
+}
+.node .cat{
+  font-size:9.5px;letter-spacing:.16em;
+  color:var(--muted);
+}
+.node .label{
+  font-size:15.5px;line-height:1.25;font-weight:600;
+  color:var(--text);
+}
+.node .meta{
+  font-size:10.5px;color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+
+/* カテゴリ別の色 —— 左（課題）暖色 → 右（打ち手）寒色 */
+.node[data-cat="課題"]     .chip{border-color:rgba(255,157,138,.34)}
+.node[data-cat="課題"]     .cat{color:var(--c-problem)}
+.node[data-cat="原因"]     .chip{border-color:rgba(255,196,107,.32)}
+.node[data-cat="原因"]     .cat{color:var(--c-cause)}
+.node[data-cat="サービス"] .chip{border-color:rgba(111,230,236,.40)}
+.node[data-cat="サービス"] .cat{color:var(--c-service)}
+.node[data-cat="メニュー"] .chip{border-color:rgba(59,140,255,.34)}
+.node[data-cat="メニュー"] .cat{color:var(--c-menu)}
+.node[data-cat="パッケージ"] .chip{
+  background:var(--grad);
+  border-color:transparent;
+  box-shadow:0 22px 50px -24px rgba(59,140,255,.85);
+}
+.node[data-cat="パッケージ"] .cat,
+.node[data-cat="パッケージ"] .meta{color:rgba(6,18,40,.72)}
+.node[data-cat="パッケージ"] .label{color:#06122a}
+.node[data-cat="進め方"]   .chip{border-color:rgba(143,163,196,.30)}
+.node[data-cat="進め方"]   .cat{color:var(--c-flow)}
+
+/* 強調状態 */
+.node.emphasized .chip{
+  border-color:rgba(124,234,239,.85);
+  box-shadow:0 0 0 1px rgba(124,234,239,.35), 0 26px 60px -24px rgba(59,140,255,.9);
+}
+.node[data-cat="パッケージ"].emphasized .chip{
+  box-shadow:0 0 0 2px rgba(255,255,255,.5), 0 26px 60px -20px rgba(59,140,255,1);
+}
+/* 非表示（＝外側へ退避して薄くする） */
+.node.hidden{opacity:0;pointer-events:none}
+/* クリック選択時、関係のないノードを沈める */
+.node.dimmed{opacity:.16}
+.node .chip:hover{border-color:rgba(124,234,239,.6)}
+.node .chip:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+
+/* ---------- 状態インスペクタ ---------- */
+.inspector{
+  grid-area:inspector;
+  border-left:1px solid var(--hair);
+  padding:20px 20px 24px;
+  overflow-y:auto;
+  background:rgba(16,26,48,.32);
+  display:flex;flex-direction:column;gap:18px;
+}
+.insp-h{
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);
+  padding-bottom:8px;border-bottom:1px solid var(--hair);
+}
+.stat-row{display:flex;flex-direction:column;gap:9px}
+.stat{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:12px}
+.stat span{color:var(--muted)}
+.stat b{font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.stat b.plus{color:var(--cyan)}
+.stat b.minus{color:var(--c-problem)}
+
+.pipeline{list-style:none;display:flex;flex-direction:column;gap:7px}
+.pipeline li{
+  font-size:11.5px;color:var(--muted);line-height:1.45;
+  padding-left:20px;position:relative;
+  font-variant-numeric:tabular-nums;
+}
+.pipeline li::before{
+  content:counter(step);counter-increment:step;
+  position:absolute;left:0;top:1px;
+  width:14px;height:14px;border-radius:50%;
+  background:rgba(59,140,255,.16);color:var(--cyan);
+  font-size:9px;display:grid;place-items:center;
+}
+.pipeline{counter-reset:step}
+.pipeline li.fired{color:var(--text)}
+.pipeline li.fired::before{background:var(--cyan);color:#06122a}
+
+.codebox{
+  background:#060a13;
+  border:1px solid var(--hair);
+  border-radius:10px;
+  padding:12px 13px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:10.5px;line-height:1.65;
+  color:var(--muted);
+  overflow-x:auto;white-space:pre;
+}
+.codebox .k{color:var(--blue)}
+.codebox .s{color:var(--cyan)}
+.codebox .n{color:#ffc46b}
+
+/* ---------- コントロール ---------- */
+.controls{
+  grid-area:controls;
+  display:flex;align-items:center;gap:16px;
+  padding:14px 30px 18px;
+  border-top:1px solid var(--hair);
+}
+.btn{
+  font-family:var(--sans);font-size:12px;
+  color:var(--text);background:var(--panel);
+  border:1px solid var(--hair);border-radius:999px;
+  padding:9px 17px;cursor:pointer;
+  transition:border-color 220ms ease,color 220ms ease;
+}
+.btn:hover:not(:disabled){border-color:rgba(124,234,239,.55);color:var(--cyan)}
+.btn:disabled{opacity:.3;cursor:default}
+.btn:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.dots{display:flex;gap:5px;flex:1;min-width:0}
+.dot{
+  flex:1;min-width:0;height:34px;
+  background:transparent;border:0;border-top:2px solid var(--hair);
+  color:var(--muted);font-family:var(--sans);font-size:10.5px;
+  cursor:pointer;text-align:left;padding:8px 4px 0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  transition:color 240ms ease,border-color 240ms ease;
+}
+.dot:hover{color:var(--text)}
+.dot[aria-current="true"]{color:var(--cyan);border-top-color:var(--cyan)}
+.dot:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.hint{font-size:10.5px;color:var(--muted);white-space:nowrap}
+
+/* ---------- レスポンシブ ---------- */
+@media (max-width:960px){
+  .app{grid-template-columns:1fr;grid-template-areas:"hud" "stage" "controls"}
+  .inspector{display:none}
+  .hint{display:none}
+  .dots .dot{font-size:0;height:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  .camera,.node,.edges path,.edges .elabel{transition-duration:1ms !important}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header class="hud">
+    <div class="brand">TIGER<b>LABO</b></div>
+    <div class="titles">
+      <p class="eyebrow" id="eyebrow">STATE 01 / 07</p>
+      <h1 id="title">—</h1>
+      <p class="sub" id="sub">—</p>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <div class="camera" id="camera">
+      <svg class="edges" id="edges" aria-hidden="true"></svg>
+      <div id="nodes"></div>
+    </div>
+  </main>
+
+  <aside class="inspector">
+    <div>
+      <p class="insp-h">いま、内部で起きていること</p>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><span>表示ノード</span><b id="s-nodes">0 / 0</b></div>
+      <div class="stat"><span>表示エッジ</span><b id="s-edges">0 / 0</b></div>
+      <div class="stat"><span>新しく出た（フェードイン）</span><b class="plus" id="s-in">+0</b></div>
+      <div class="stat"><span>外へ退避した（薄く）</span><b class="minus" id="s-out">−0</b></div>
+      <div class="stat"><span>拡大した（強調）</span><b id="s-emph">0</b></div>
+    </div>
+
+    <div>
+      <p class="insp-h" style="margin-bottom:11px">切替時に走る5つの処理</p>
+      <ul class="pipeline" id="pipeline">
+        <li>表示対象を中央へ移動</li>
+        <li>非表示対象を外側へ退避</li>
+        <li>重要ノードだけ拡大</li>
+        <li>関係線を段階的に表示</li>
+        <li>全体が収まるようカメラを調整</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="insp-h" style="margin-bottom:11px">ノード1件の中身</p>
+      <div class="codebox" id="codebox">—</div>
+    </div>
+  </aside>
+
+  <footer class="controls">
+    <button class="btn" id="prev" aria-label="前の状態へ">← 戻る</button>
+    <div class="dots" id="dots" role="tablist" aria-label="プレゼンの状態"></div>
+    <button class="btn" id="next" aria-label="次の状態へ">進む →</button>
+    <span class="hint">← → キーで移動／ノードをクリックで関係だけ抽出</span>
+  </footer>
+</div>
+
+<script>
+"use strict";
+
+/* ===========================================================================
+   1. データ ── 「ページ」ではなく「ノードと関係」を先に定義する
+   ---------------------------------------------------------------------------
+   プロパティ名は元記事の設計にそのまま合わせている：
+     ノード: id / label / category / slideNumbers / parentId / importance / x / y
+     エッジ: from(接続元) / to(接続先) / relation(関係性) / lineStyle(線の種類)
+             / importance(重要度) / slideNumbers(表示するスライド番号)
+   =========================================================================== */
+
+const NODES = [
+  // 課題
+  {id:'p1', label:'人手が足りない',   category:'課題', meta:'現場の声',   slideNumbers:[0,1,2,6], parentId:null, importance:2, x:150,  y:210},
+  {id:'p2', label:'業務が属人化',     category:'課題', meta:'現場の声',   slideNumbers:[0,1,2,6], parentId:null, importance:2, x:150,  y:450},
+  {id:'p3', label:'社長の時間がない', category:'課題', meta:'現場の声',   slideNumbers:[0,1,2,6], parentId:null, importance:2, x:150,  y:690},
+
+  // 原因
+  {id:'c1', label:'手作業が多い',     category:'原因', meta:'',           slideNumbers:[1,2,6],   parentId:'p1', importance:2, x:430,  y:180},
+  {id:'c2', label:'手順が頭の中',     category:'原因', meta:'',           slideNumbers:[1,2,6],   parentId:'p2', importance:2, x:430,  y:420},
+  {id:'c3', label:'社長が全部やる',   category:'原因', meta:'',           slideNumbers:[1,2,6],   parentId:'p3', importance:2, x:430,  y:660},
+
+  // サービス（3区分）
+  {id:'s1', label:'AI導入・活用',     category:'サービス', meta:'診断・研修・顧問', slideNumbers:[2,3,4,6], parentId:null, importance:3, x:740, y:200},
+  {id:'s2', label:'業務の省力化',     category:'サービス', meta:'自動化・仕組み化', slideNumbers:[2,3,4,6], parentId:null, importance:3, x:740, y:440},
+  {id:'s3', label:'開発・制作',       category:'サービス', meta:'LP・システム・アプリ', slideNumbers:[2,3,4,6], parentId:null, importance:3, x:740, y:680},
+
+  // メニュー
+  {id:'m1', label:'AI活用診断',           category:'メニュー', meta:'無料〜5万円',  slideNumbers:[3,4,6], parentId:'s1', importance:1, x:1030, y:90},
+  {id:'m2', label:'実践AI研修',           category:'メニュー', meta:'15万円',       slideNumbers:[3,4,6], parentId:'s1', importance:1, x:1030, y:190},
+  {id:'m3', label:'AI顧問',               category:'メニュー', meta:'月5万円〜',    slideNumbers:[3,4,6], parentId:'s1', importance:1, x:1030, y:290},
+  {id:'m4', label:'業務ツール・自動化',   category:'メニュー', meta:'20万円〜',     slideNumbers:[3,4,6], parentId:'s2', importance:1, x:1030, y:390},
+  {id:'m5', label:'定型業務の仕組み化',   category:'メニュー', meta:'20万円〜',     slideNumbers:[3,4,6], parentId:'s2', importance:1, x:1030, y:480},
+  {id:'m6', label:'AI社長',               category:'メニュー', meta:'15万円〜',     slideNumbers:[3,4,6], parentId:'s2', importance:1, x:1030, y:570},
+  {id:'m7', label:'Web・LP制作',          category:'メニュー', meta:'30万円〜',     slideNumbers:[3,4,6], parentId:'s3', importance:1, x:1030, y:670},
+  {id:'m8', label:'業務システム開発',     category:'メニュー', meta:'50万円〜',     slideNumbers:[3,4,6], parentId:'s3', importance:1, x:1030, y:760},
+  {id:'m9', label:'アプリ開発',           category:'メニュー', meta:'100万円〜',    slideNumbers:[3,4,6], parentId:'s3', importance:1, x:1030, y:850},
+
+  // パッケージ
+  {id:'k1', label:'Light',    category:'パッケージ', meta:'20万円〜  まずは試す',   slideNumbers:[4,6], parentId:null, importance:3, x:1370, y:230},
+  {id:'k2', label:'Standard', category:'パッケージ', meta:'60万円〜  ひと通り整える', slideNumbers:[4,6], parentId:null, importance:3, x:1370, y:450},
+  {id:'k3', label:'Full',     category:'パッケージ', meta:'120万円〜 まるごと任せる', slideNumbers:[4,6], parentId:null, importance:3, x:1370, y:670},
+
+  // 進め方
+  {id:'f1', label:'ヒアリング',   category:'進め方', meta:'無料相談', slideNumbers:[5,6], parentId:null, importance:1, x:200,  y:955},
+  {id:'f2', label:'分析',         category:'進め方', meta:'',         slideNumbers:[5,6], parentId:null, importance:1, x:440,  y:955},
+  {id:'f3', label:'提案',         category:'進め方', meta:'',         slideNumbers:[5,6], parentId:null, importance:1, x:680,  y:955},
+  {id:'f4', label:'導入',         category:'進め方', meta:'',         slideNumbers:[5,6], parentId:null, importance:1, x:920,  y:955},
+  {id:'f5', label:'フォローアップ', category:'進め方', meta:'',       slideNumbers:[5,6], parentId:null, importance:1, x:1160, y:955},
+];
+
+const EDGES = [
+  // 課題 → 原因
+  {from:'p1', to:'c1', relation:'原因', lineStyle:'dashed', importance:2, slideNumbers:[1,2,6]},
+  {from:'p2', to:'c2', relation:'原因', lineStyle:'dashed', importance:2, slideNumbers:[1,2,6]},
+  {from:'p3', to:'c3', relation:'原因', lineStyle:'dashed', importance:2, slideNumbers:[1,2,6]},
+
+  // 原因 → サービス
+  {from:'c1', to:'s2', relation:'解決', lineStyle:'solid', importance:3, slideNumbers:[2,6]},
+  {from:'c1', to:'s3', relation:'解決', lineStyle:'solid', importance:2, slideNumbers:[2,6]},
+  {from:'c2', to:'s2', relation:'解決', lineStyle:'solid', importance:3, slideNumbers:[2,6]},
+  {from:'c2', to:'s1', relation:'解決', lineStyle:'solid', importance:2, slideNumbers:[2,6]},
+  {from:'c3', to:'s1', relation:'解決', lineStyle:'solid', importance:3, slideNumbers:[2,6]},
+  {from:'c3', to:'s2', relation:'解決', lineStyle:'solid', importance:2, slideNumbers:[2,6]},
+
+  // サービス → メニュー（内訳）
+  {from:'s1', to:'m1', relation:'内訳', lineStyle:'solid', importance:1, slideNumbers:[3,4,6]},
+  {from:'s1', to:'m2', relation:'内訳', lineStyle:'solid', importance:1, slideNumbers:[3,4,6]},
+  {from:'s1', to:'m3', relation:'内訳', lineStyle:'solid', importance:1, slideNumbers:[3,4,6]},
+  {from:'s2', to:'m4', relation:'内訳', lineStyle:'solid', importance:1, slideNumbers:[3,4,6]},
+  {from:'s2', to:'m5', relation:'内訳', lineStyle:'solid', importance:1, slideNumbers:[3,4,6]},
+  {from:'s2', to:'m6', relation:'内訳', lineStyle:'solid', importance:1, slideNumbers:[3,4,6]},
+  {from:'s3', to:'m7', relation:'内訳', lineStyle:'solid', importance:1, slideNumbers:[3,4,6]},
+  {from:'s3', to:'m8', relation:'内訳', lineStyle:'solid', importance:1, slideNumbers:[3,4,6]},
+  {from:'s3', to:'m9', relation:'内訳', lineStyle:'solid', importance:1, slideNumbers:[3,4,6]},
+
+  // メニュー → パッケージ
+  {from:'m1', to:'k1', relation:'含む', lineStyle:'solid', importance:2, slideNumbers:[4,6]},
+  {from:'m2', to:'k1', relation:'含む', lineStyle:'solid', importance:2, slideNumbers:[4,6]},
+  {from:'m4', to:'k2', relation:'含む', lineStyle:'solid', importance:2, slideNumbers:[4,6]},
+  {from:'m7', to:'k2', relation:'含む', lineStyle:'solid', importance:2, slideNumbers:[4,6]},
+  {from:'m6', to:'k3', relation:'含む', lineStyle:'solid', importance:2, slideNumbers:[4,6]},
+  {from:'m8', to:'k3', relation:'含む', lineStyle:'solid', importance:2, slideNumbers:[4,6]},
+  {from:'k1', to:'k2', relation:'内包', lineStyle:'bold',  importance:3, slideNumbers:[4,6]},
+  {from:'k2', to:'k3', relation:'内包', lineStyle:'bold',  importance:3, slideNumbers:[4,6]},
+
+  // 進め方（順序）
+  {from:'f1', to:'f2', relation:'次へ', lineStyle:'solid', importance:2, slideNumbers:[5,6]},
+  {from:'f2', to:'f3', relation:'次へ', lineStyle:'solid', importance:2, slideNumbers:[5,6]},
+  {from:'f3', to:'f4', relation:'次へ', lineStyle:'solid', importance:2, slideNumbers:[5,6]},
+  {from:'f4', to:'f5', relation:'次へ', lineStyle:'solid', importance:2, slideNumbers:[5,6]},
+];
+
+/* 「スライド」＝ページではなく、グラフに与える“状態”の指示書 */
+const SLIDES = [
+  {tab:'課題',     title:'「人手が足りない」の正体',        sub:'中小企業でよく聞く、3つの詰まり。',                       focus:['p1','p2','p3']},
+  {tab:'原因',     title:'症状ではなく、原因に手を打つ',    sub:'詰まりを1段だけ分解すると、打ち手が見えてくる。',         focus:['c1','c2','c3']},
+  {tab:'3つの柱',  title:'できることは、3つ。',             sub:'原因ごとに、どの柱で受けるかが決まる。',                   focus:['s1','s2','s3']},
+  {tab:'メニュー', title:'柱を、具体的なメニューへ',        sub:'9つのメニューから、必要なものだけを選ぶ。',                focus:['s1','s2','s3']},
+  {tab:'パッケージ', title:'まずは、パッケージで。',        sub:'メニューをまとめると、3つの型になる。',                    focus:['k1','k2','k3']},
+  {tab:'進め方',   title:'進め方は、5ステップ',             sub:'最初のヒアリングは、無料相談から。',                       focus:['f1','f5']},
+  {tab:'全体像',   title:'これが、全体像。',                sub:'ここまでの説明が、すべて1枚のグラフに入っている。',        focus:['s1','s2','s3']},
+];
+
+/* ===========================================================================
+   2. 実装 ── 中心は「状態管理」
+   =========================================================================== */
+
+const WORLD = {w:1560, h:1010};
+const CENTER = {x:WORLD.w/2, y:WORLD.h/2};
+
+const el = {
+  stage:    document.getElementById('stage'),
+  camera:   document.getElementById('camera'),
+  edges:    document.getElementById('edges'),
+  nodes:    document.getElementById('nodes'),
+  eyebrow:  document.getElementById('eyebrow'),
+  title:    document.getElementById('title'),
+  sub:      document.getElementById('sub'),
+  dots:     document.getElementById('dots'),
+  prev:     document.getElementById('prev'),
+  next:     document.getElementById('next'),
+  pipeline: document.getElementById('pipeline'),
+  codebox:  document.getElementById('codebox'),
+};
+
+const nodeById = new Map(NODES.map(n => [n.id, n]));
+const domNode  = new Map();   // id -> HTMLElement
+const domEdge  = [];          // { edge, path, label }
+
+let slide = 0;
+let prevVisible = new Set();
+let selectedId = null;
+
+/* --- 2-1. 一度だけ DOM を作る（以降は状態を切り替えるだけ） --- */
+function build(){
+  const SVGNS = 'http://www.w3.org/2000/svg';
+
+  EDGES.forEach(edge => {
+    const path = document.createElementNS(SVGNS, 'path');
+    path.setAttribute('d', edgePath(edge));
+    path.setAttribute('stroke', edgeColor(edge));
+    path.setAttribute('stroke-width', edge.lineStyle === 'bold' ? 3.4 : (edge.importance >= 3 ? 2.2 : 1.5));
+    if (edge.lineStyle === 'dashed') path.setAttribute('stroke-dasharray', '6 7');
+    path.style.opacity = '0';
+
+    const label = document.createElementNS(SVGNS, 'text');
+    label.setAttribute('class', 'elabel');
+    const mid = edgeMid(edge);
+    label.setAttribute('x', mid.x);
+    label.setAttribute('y', mid.y - 7);
+    label.textContent = edge.relation;
+    label.style.opacity = '0';
+
+    el.edges.appendChild(path);
+    el.edges.appendChild(label);
+    domEdge.push({edge, path, label});
+  });
+
+  NODES.forEach(n => {
+    const d = document.createElement('div');
+    d.className = 'node hidden';
+    d.dataset.cat = n.category;
+    d.dataset.id  = n.id;
+    d.style.setProperty('--k', 1);
+    d.innerHTML =
+      '<div class="chip" tabindex="0" role="button">' +
+        '<span class="cat">' + n.category + '</span>' +
+        '<span class="label">' + n.label + '</span>' +
+        (n.meta ? '<span class="meta">' + n.meta + '</span>' : '') +
+      '</div>';
+
+    const toggle = (ev) => { ev.stopPropagation(); select(selectedId === n.id ? null : n.id); };
+    d.querySelector('.chip').addEventListener('click', toggle);
+    d.querySelector('.chip').addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(ev); }
+    });
+
+    el.nodes.appendChild(d);
+    domNode.set(n.id, d);
+  });
+
+  SLIDES.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.className = 'dot';
+    b.type = 'button';
+    b.setAttribute('role', 'tab');
+    b.textContent = String(i + 1).padStart(2, '0') + '  ' + s.tab;
+    b.addEventListener('click', () => go(i));
+    el.dots.appendChild(b);
+  });
+}
+
+function edgePath(edge){
+  const a = nodeById.get(edge.from), b = nodeById.get(edge.to);
+  // わずかに湾曲させる（直線の束より関係が読み取りやすい）
+  const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+  const dx = b.x - a.x, dy = b.y - a.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const bow = Math.min(len * 0.07, 34);
+  const cx = mx - (dy / len) * bow, cy = my + (dx / len) * bow;
+  return `M ${a.x} ${a.y} Q ${cx} ${cy} ${b.x} ${b.y}`;
+}
+function edgeMid(edge){
+  const a = nodeById.get(edge.from), b = nodeById.get(edge.to);
+  return {x:(a.x + b.x) / 2, y:(a.y + b.y) / 2};
+}
+function edgeColor(edge){
+  if (edge.relation === '原因') return 'rgba(255,196,107,.75)';
+  if (edge.relation === '解決') return 'rgba(111,230,236,.85)';
+  if (edge.relation === '内包') return 'rgba(59,140,255,.9)';
+  return 'rgba(143,163,196,.55)';
+}
+
+/* --- 2-2. 5つの処理 ------------------------------------------------------ */
+
+// ① 表示対象を中央へ移動（＝定位置に戻す）
+function centerVisible(visible){
+  visible.forEach(id => {
+    const n = nodeById.get(id), d = domNode.get(id);
+    d.style.left = n.x + 'px';
+    d.style.top  = n.y + 'px';
+    d.classList.remove('hidden');
+  });
+}
+
+// ② 非表示対象を外側へ退避（＋薄くする）
+function parkHidden(visible){
+  NODES.forEach(n => {
+    if (visible.has(n.id)) return;
+    const d = domNode.get(n.id);
+    d.style.left = (CENTER.x + (n.x - CENTER.x) * 1.45) + 'px';
+    d.style.top  = (CENTER.y + (n.y - CENTER.y) * 1.45) + 'px';
+    d.classList.add('hidden');
+  });
+}
+
+// ③ 重要ノードだけ拡大
+function scaleImportant(visible, focus){
+  let count = 0;
+  visible.forEach(id => {
+    const n = nodeById.get(id), d = domNode.get(id);
+    const base = n.importance >= 3 ? 1.12 : (n.importance === 2 ? 1.0 : 0.9);
+    const emph = focus.includes(id);
+    if (emph) count++;
+    d.style.setProperty('--k', (emph ? base * 1.16 : base).toFixed(3));
+    d.classList.toggle('emphasized', emph);
+  });
+  return count;
+}
+
+// ④ 関係線を段階的に表示
+function stageEdges(current, visible){
+  let shown = 0, order = 0;
+  // 線が多すぎるときは関係名を省く（全体像スライドでは線そのものを見せる）
+  const showLabels = domEdge.filter(x => x.edge.slideNumbers.includes(current)).length <= 20;
+
+  domEdge.forEach(({edge, path, label}) => {
+    const on = edge.slideNumbers.includes(current)
+            && visible.has(edge.from) && visible.has(edge.to);
+    // 段階表示は「出るとき」だけ。消えるものは待たせず即座に引く。
+    const delay = on ? (order++ * 45) : 0;
+    if (on) shown++;
+
+    const len = path.getTotalLength ? path.getTotalLength() : 400;
+    path.style.transitionDelay = delay + 'ms';
+    if (edge.lineStyle !== 'dashed'){
+      path.style.strokeDasharray  = len;
+      path.style.strokeDashoffset = on ? 0 : len;
+    }
+    path.style.opacity = on ? 1 : 0;
+
+    const labelOn = on && showLabels;
+    label.style.transitionDelay = labelOn ? (delay + 240) + 'ms' : '0ms';
+    label.style.opacity = labelOn ? 1 : 0;
+  });
+  return shown;
+}
+
+// ⑤ 全体が収まるようカメラを調整
+function fitCamera(visible){
+  const pts = [...visible].map(id => nodeById.get(id));
+  if (!pts.length) return;
+
+  const pad = 165;
+  let minX = Math.min(...pts.map(p => p.x)) - pad;
+  let maxX = Math.max(...pts.map(p => p.x)) + pad;
+  let minY = Math.min(...pts.map(p => p.y)) - pad;
+  let maxY = Math.max(...pts.map(p => p.y)) + pad;
+
+  const bw = Math.max(maxX - minX, 520);
+  const bh = Math.max(maxY - minY, 420);
+  const vw = el.stage.clientWidth, vh = el.stage.clientHeight;
+
+  const scale = Math.min(Math.max(Math.min(vw / bw, vh / bh), 0.34), 1.15);
+  const tx = vw / 2 - (minX + bw / 2) * scale;
+  const ty = vh / 2 - (minY + bh / 2) * scale;
+
+  el.camera.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+  // ズームアウトしても文字が読めるよう、ノードだけ緩やかに逆補正する
+  el.camera.style.setProperty('--comp', Math.pow(scale, -0.45).toFixed(3));
+}
+
+/* --- 2-3. 状態の切り替え ------------------------------------------------- */
+function render(){
+  const s = SLIDES[slide];
+  const visible = new Set(NODES.filter(n => n.slideNumbers.includes(slide)).map(n => n.id));
+
+  // 前の状態と次の状態を比較する（＝アニメーションの根拠）
+  const entering = [...visible].filter(id => !prevVisible.has(id));
+  const exiting  = [...prevVisible].filter(id => !visible.has(id));
+
+  centerVisible(visible);
+  parkHidden(visible);
+  const emphCount = scaleImportant(visible, s.focus);
+  const edgeCount = stageEdges(slide, visible);
+  fitCamera(visible);
+
+  select(null, {silent:true});
+
+  el.eyebrow.textContent = 'STATE ' + String(slide + 1).padStart(2, '0') + ' / ' + String(SLIDES.length).padStart(2, '0');
+  el.title.textContent = s.title;
+  el.sub.textContent   = s.sub;
+
+  [...el.dots.children].forEach((b, i) => b.setAttribute('aria-current', String(i === slide)));
+  el.prev.disabled = slide === 0;
+  el.next.disabled = slide === SLIDES.length - 1;
+
+  // インスペクタ
+  document.getElementById('s-nodes').textContent = visible.size + ' / ' + NODES.length;
+  document.getElementById('s-edges').textContent = edgeCount + ' / ' + EDGES.length;
+  document.getElementById('s-in').textContent    = '+' + entering.length;
+  document.getElementById('s-out').textContent   = '−' + exiting.length;
+  document.getElementById('s-emph').textContent  = emphCount;
+
+  [...el.pipeline.children].forEach((li, i) => {
+    li.classList.remove('fired');
+    setTimeout(() => li.classList.add('fired'), 90 + i * 110);
+  });
+
+  showCode(nodeById.get(s.focus[0]), visible);
+  prevVisible = visible;
+}
+
+function showCode(n, visible){
+  if (!n) return;
+  const q = (v) => typeof v === 'string' ? `<span class="s">'${v}'</span>`
+          : v === null ? `<span class="k">null</span>`
+          : `<span class="n">${v}</span>`;
+  el.codebox.innerHTML =
+`{
+  <span class="k">id</span>: ${q(n.id)},
+  <span class="k">label</span>: ${q(n.label)},
+  <span class="k">category</span>: ${q(n.category)},
+  <span class="k">slideNumbers</span>: [<span class="n">${n.slideNumbers.join(', ')}</span>],
+  <span class="k">parentId</span>: ${q(n.parentId)},
+  <span class="k">importance</span>: ${q(n.importance)},
+  <span class="k">x</span>: ${q(n.x)}, <span class="k">y</span>: ${q(n.y)},
+  <span class="k">visible</span>: <span class="n">${visible.has(n.id)}</span>,
+  <span class="k">emphasized</span>: <span class="n">${SLIDES[slide].focus.includes(n.id)}</span>
+}`;
+}
+
+/* --- 2-4. クリックで関係だけ抽出する（体験型の部分） --------------------- */
+function select(id, {silent = false} = {}){
+  selectedId = id;
+
+  if (!id){
+    domNode.forEach(d => d.classList.remove('dimmed'));
+    domEdge.forEach(({path, label}) => { path.style.filter = ''; label.style.filter = ''; });
+    if (!silent) showCode(nodeById.get(SLIDES[slide].focus[0]), prevVisible);
+    return;
+  }
+
+  const keep = new Set([id]);
+  EDGES.forEach(e => {
+    if (e.from === id) keep.add(e.to);
+    if (e.to === id)   keep.add(e.from);
+  });
+
+  domNode.forEach((d, nid) => {
+    if (d.classList.contains('hidden')) return;
+    d.classList.toggle('dimmed', !keep.has(nid));
+  });
+  domEdge.forEach(({edge, path, label}) => {
+    const on = edge.from === id || edge.to === id;
+    path.style.filter = on ? '' : 'opacity(.18)';
+    label.style.filter = on ? '' : 'opacity(.18)';
+  });
+
+  showCode(nodeById.get(id), prevVisible);
+}
+
+/* --- 2-5. 操作 ----------------------------------------------------------- */
+function go(i){
+  const next = Math.max(0, Math.min(SLIDES.length - 1, i));
+  if (next === slide) return;
+  slide = next;
+  render();
+}
+
+el.prev.addEventListener('click', () => go(slide - 1));
+el.next.addEventListener('click', () => go(slide + 1));
+el.stage.addEventListener('click', () => select(null));
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); go(slide + 1); }
+  if (e.key === 'ArrowLeft'  || e.key === 'PageUp')   { e.preventDefault(); go(slide - 1); }
+  if (e.key === 'Escape') select(null);
+});
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => fitCamera(prevVisible), 120);
+});
+
+build();
+render();
+</script>
+</body>
+</html>
