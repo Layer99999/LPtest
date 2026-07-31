@@ -71,7 +71,7 @@
       "name": "タイガーラボ ｜ AIを、“なんとなく”で終わらせない。",
       "inLanguage": "ja",
       "datePublished": "2026-07-15",
-      "dateModified": "2026-07-28",
+      "dateModified": "2026-07-31",
       "isPartOf": { "@id": "https://tigerlabo.com/#org" },
       "about": { "@id": "https://tigerlabo.com/#org" },
       "author": { "@id": "https://tigerlabo.com/#founder" },
@@ -130,7 +130,7 @@
         {
           "@type": "Question",
           "name": "料金はいくらですか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "目的に合わせた3つのパッケージがあります（いずれも税別）。Light 20万円〜（まずは試す）、Standard 60万円〜（ひと通り整える）、Full 120万円〜（まるごと任せる）。パッケージは単発（1回ごと）が基本で長期の縛りはなく、まず1回だけ試せます。詳しいお見積りは無料相談で承ります。" }
+          "acceptedAnswer": { "@type": "Answer", "text": "目的に合わせた3つのパッケージがあります（いずれも税別）。Light 20万円〜（まずは試す）、Standard 60万円〜（ひと通り整える）、Full 120万円〜（まるごと任せる）。パッケージは単発（1回ごと）が基本で長期の縛りはなく、まず1回だけ試せます。個人事業主・小規模の会社の方は、掲載の料金に合わせていただく必要はありません。ご予算を伺って、その中でできることを一緒に決めます。詳しいお見積りは無料相談で承ります。" }
         },
         {
           "@type": "Question",
@@ -140,7 +140,7 @@
         {
           "@type": "Question",
           "name": "個人事業主や小規模の会社でも依頼できますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "個人事業主・小規模の会社も歓迎です。人数が少ないほど一人あたりの事務負担は重くなりがちで、AI・自動化の効果を感じやすいです。パッケージのようにまとめて整えるのではなく、AI社員を1体だけから小さく始める枠（初期15万円＋月3万円）もあり、社長おひとりでも始められます。内容は御社の状況に合わせて個別にご相談します。" }
+          "acceptedAnswer": { "@type": "Answer", "text": "個人事業主・小規模の会社も歓迎です。人数が少ないほど一人あたりの事務負担は重くなりがちで、AI・自動化の効果を感じやすいです。ご相談はAI社員に限らず、AI導入・活用／業務の省力化／開発・制作のどれでも、いま一番困っているところ1つから承ります。費用も掲載の料金に合わせていただく必要はなく、ご予算を伺って、その中でできることを一緒に決めます（例：AI社員を1体だけなら初期15万円＋月3万円から）。" }
         },
         {
           "@type": "Question",
@@ -308,8 +308,9 @@
   .lowprice>*{position:relative; z-index:1}
   .lp-body{flex:1 1 360px}
   .lp-badge{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--cyan); background:var(--grad-soft); border:1px solid var(--hair-2); border-radius:var(--r-pill); padding:5px 15px; margin-bottom:16px}
-  .lp-body b{font-family:var(--serif); font-weight:600; color:#fff; letter-spacing:.03em}
+  .lp-body > b{font-family:var(--serif); font-weight:600; color:#fff; letter-spacing:.03em}
   .lp-body p{margin:12px 0 0; font-size:14.5px; color:var(--text-2); line-height:1.9}
+  .lp-body p b{color:#fff; font-weight:700; white-space:nowrap}
   .lp-body em{font-style:normal; color:var(--cyan); font-weight:600}
   .lp-act{flex:0 0 auto; display:flex; flex-direction:column; gap:12px; align-items:flex-start}
   .lowprice .lp-cta{padding:16px 30px; font-size:15.5px}
@@ -380,10 +381,10 @@
   .final-box p { text-wrap:balance; }
   /* 低価格枠：見出しは意味の切れ目で均等改行し「方へ」の孤立を防止／強調語を分断しない */
   .lowprice .lp-body { word-break:auto-phrase; line-break:strict; }
-  .lp-body b { display:block; font-size:clamp(22px,2.6vw,27px); line-height:1.4; text-wrap:balance; }
+  .lp-body > b { display:block; font-size:clamp(22px,2.6vw,27px); line-height:1.4; text-wrap:balance; }
   .lp-body em { white-space:nowrap; }
   /* 文節inline-block（span間に空白・改行を入れない） */
-  .tier-for .ph, .lp-body b .ph, .proof .sec-head h2 .l { display:inline-block; }
+  .tier-for .ph, .lp-body > b .ph, .proof .sec-head h2 .l { display:inline-block; }
   .tier-for { line-break:strict; }
   .tier li, .fcard li { text-wrap:pretty; line-break:strict; }
   /* ピル・金額の崩れ止め */
@@ -554,7 +555,8 @@
         <div class="lp-body">
           <span class="lp-badge">まずは、ここから</span>
           <b>個人事業主・小規模の会社の方へ</b>
-          <p>Light・Standard・Full のようにまとめて整えるのではなく、<em>AI社員を1体だけ</em>、小さく始める入口です。<b>初期15万円＋月3万円</b>。社長おひとりで始めて、必要になったら広げられます。</p>
+          <p>ご相談は<em>AI社員</em>に限らず、<em>AI導入・活用</em>／<em>業務の省力化</em>／<em>開発・制作</em>のどれでも、いま一番困っているところ1つからお受けします。</p>
+          <p>費用も、掲載の料金に合わせていただく必要はありません。ご予算を伺って、その中でできることを一緒に決めます（例：AI社員を1体だけなら<b>初期15万円＋月3万円</b>から）。</p>
         </div>
         <div class="lp-act">
           <a class="btn btn-primary lp-cta" id="lp-cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform?usp=pp_url&entry.1359052033=%E5%80%8B%E4%BA%BA%E4%BA%8B%E6%A5%AD%E4%B8%BB%E3%83%BB%E5%B0%8F%E8%A6%8F%E6%A8%A1%E5%90%91%E3%81%91%EF%BC%88%E5%A7%8B%E3%82%81%E3%82%84%E3%81%99%E3%81%84%E4%BE%A1%E6%A0%BC%E3%81%8B%E3%82%89%EF%BC%89" target="_blank" rel="noopener">小さくはじめる相談をする</a>
@@ -656,7 +658,7 @@
         </details>
         <details>
           <summary><span class="q">Q</span>料金はいくらですか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
-          <p class="a">目的に合わせた3つのパッケージがあります（いずれも税別）。Light 20万円〜（まずは試す）、Standard 60万円〜（ひと通り整える）、Full 120万円〜（まるごと任せる）。パッケージは単発（1回ごと）が基本で長期の縛りはなく、まず1回だけ試せます。詳しいお見積りは無料相談で承ります。</p>
+          <p class="a">目的に合わせた3つのパッケージがあります（いずれも税別）。Light 20万円〜（まずは試す）、Standard 60万円〜（ひと通り整える）、Full 120万円〜（まるごと任せる）。パッケージは単発（1回ごと）が基本で長期の縛りはなく、まず1回だけ試せます。個人事業主・小規模の会社の方は、掲載の料金に合わせていただく必要はありません。ご予算を伺って、その中でできることを一緒に決めます。詳しいお見積りは無料相談で承ります。</p>
         </details>
         <details>
           <summary><span class="q">Q</span>どのプランを選べばいいですか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
@@ -664,7 +666,7 @@
         </details>
         <details>
           <summary><span class="q">Q</span>個人事業主や小規模の会社でも依頼できますか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
-          <p class="a">個人事業主・小規模の会社も歓迎です。人数が少ないほど一人あたりの事務負担は重くなりがちで、AI・自動化の効果を感じやすいです。パッケージのようにまとめて整えるのではなく、AI社員を1体だけから小さく始める枠（初期15万円＋月3万円）もあり、社長おひとりでも始められます。内容は御社の状況に合わせて個別にご相談します。</p>
+          <p class="a">個人事業主・小規模の会社も歓迎です。人数が少ないほど一人あたりの事務負担は重くなりがちで、AI・自動化の効果を感じやすいです。ご相談はAI社員に限らず、AI導入・活用／業務の省力化／開発・制作のどれでも、いま一番困っているところ1つから承ります。費用も掲載の料金に合わせていただく必要はなく、ご予算を伺って、その中でできることを一緒に決めます（例：AI社員を1体だけなら初期15万円＋月3万円から）。</p>
         </details>
         <details>
           <summary><span class="q">Q</span>自分でChatGPTを使うのと、依頼するのは何が違いますか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
@@ -733,7 +735,7 @@
         </ul>
       </div>
     </div>
-    <div class="wrap"><div class="foot-base">最終更新日 2026-07-28 ｜ © 2026 TIGERLABO Inc.</div></div>
+    <div class="wrap"><div class="foot-base">最終更新日 2026-07-31 ｜ © 2026 TIGERLABO Inc.</div></div>
   </footer>
 </div>
 
@@ -921,7 +923,8 @@
     "answer": [
       "目的に合わせて、3つのパッケージをご用意しています（いずれも税別）。",
       "<b>Light 20万円〜</b>：まずは試す（AI活用診断＋実践AI研修1回＋90日ロードマップ）<br><b>Standard 60万円〜</b>：Lightすべて＋業務の自動化ツール＋LP・HP1本公開まで<br><b>Full 120万円〜</b>：Standardすべて＋AI社長 初期構築＋システム・アプリ開発＋3か月の伴走サポート",
-      "パッケージは<b>単発（1回ごと）が基本</b>で、長期の縛りはありません。まず1回だけお試しいただけます。詳しいお見積りは無料相談で承ります。"
+      "パッケージは<b>単発（1回ごと）が基本</b>で、長期の縛りはありません。まず1回だけお試しいただけます。",
+      "個人事業主・小規模の会社の方は、<b>掲載の料金に合わせていただく必要はありません</b>。ご予算を伺って、その中でできることを一緒に決めます。詳しいお見積りは無料相談で承ります。"
     ]
   },
   {
@@ -983,7 +986,8 @@
     "forceCta": true,
     "answer": [
       "もちろん歓迎いたします。むしろ人数が少ないほど、お一人あたりの事務負担は重くなりがちで、AI・自動化の効果を感じていただきやすいです。",
-      "パッケージのようにまとめて整えるのではなく、<b>AI社員を1体だけから小さく始める枠</b>（初期15万円＋月3万円）もご用意しています。社長おひとりでも始められます。詳しくは御社の状況に合わせて個別にご相談させてください。",
+      "ご相談は<b>AI社員に限らず</b>、AI導入・活用／業務の省力化／開発・制作のどれでも、いま一番困っているところ1つから承ります（例：AI社員を1体だけなら初期15万円＋月3万円から）。",
+      "費用も、<b>掲載の料金に合わせていただく必要はありません</b>。ご予算を伺って、その中でできることを一緒に決めますので、金額のことも遠慮なくお聞かせください。",
       "\"うちみたいな規模でも大丈夫かな\"というご不安こそ、無料相談でお聞かせいただければと思います。"
     ]
   },
