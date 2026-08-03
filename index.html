@@ -71,7 +71,7 @@
       "name": "タイガーラボ ｜ AIを、“なんとなく”で終わらせない。",
       "inLanguage": "ja",
       "datePublished": "2026-07-15",
-      "dateModified": "2026-07-31",
+      "dateModified": "2026-08-03",
       "isPartOf": { "@id": "https://tigerlabo.com/#org" },
       "about": { "@id": "https://tigerlabo.com/#org" },
       "author": { "@id": "https://tigerlabo.com/#founder" },
@@ -170,7 +170,7 @@
         {
           "@type": "Question",
           "name": "導入事例や実績はありますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "守秘のため匿名になりますが、複数拠点をもつ組織の人事評価・シフト／勤怠を丸ごと自動化し毎月の運用まで継続支援した実績、自社アプリを企画・開発・審査・運用まで一貫した実績、複数のSNSアカウントを運用し認知・フォロワーを継続的に伸ばした実績があります。" }
+          "acceptedAnswer": { "@type": "Answer", "text": "守秘のため一部は匿名になりますが、たとえば次のような実績があります。自社開発アプリを、制作開始から56日でApp Storeに公開し、いまも配信中です（企画・ストア掲載文・審査のやりとり・公開後の運用まで社内で対応）。複数の拠点をもつ組織では、雇用契約まわりの書類を1,500通以上まとめて自動作成し、人事評価・シフト／勤怠の自動化と毎月の運用まで続けて支援しています。自社の運営そのものも、役割ごとの手順書を持つAI担当47体で回しています。" }
         },
         {
           "@type": "Question",
@@ -234,14 +234,16 @@
   .ribbon b{color:var(--cyan)}
 
   .nav{position:sticky; top:0; z-index:60; background:rgba(8,13,24,.72); backdrop-filter:saturate(160%) blur(18px); -webkit-backdrop-filter:saturate(160%) blur(18px); border-bottom:1px solid var(--hair)}
-  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:76px; gap:20px}
-  .nav-logo{height:28px; width:auto; display:block}
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:88px; gap:20px}
+  .nav-logo{height:52px; width:auto; display:block}
   .nav-links{display:flex; gap:34px; font-size:14px; font-weight:600; color:var(--text-2); letter-spacing:.04em}
   .nav-links a{transition:color .16s} .nav-links a:hover{color:#fff}
   .nav-cta{display:flex; gap:12px}
   .nav-cta .btn{padding:10px 20px; font-size:13px}
   @media(max-width:960px){ .nav-links{display:none} }
-  @media(max-width:560px){ .nav-cta .btn-line{display:none} }
+  @media(max-width:560px){ .nav-cta .btn-line{display:none} .nav .wrap{height:74px} .nav-logo{height:40px} }
+  /* 固定ヘッダーの下に見出しが潜らないようにする（アンカー着地位置の補正） */
+  section[id], header[id]{scroll-margin-top:100px}
 
   .hero{padding:clamp(70px,10vw,132px) 0 clamp(72px,10vw,124px); position:relative; overflow:hidden}
   .hero-grid{display:grid; grid-template-columns:1.08fr .92fr; gap:clamp(32px,5vw,72px); align-items:center}
@@ -292,7 +294,7 @@
   .tier.feat .tier-price .amt{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent}
   .tier-price .man{font-family:var(--serif); font-size:19px; font-weight:600; color:var(--text); align-self:flex-end; margin-bottom:5px; letter-spacing:.04em}
   .tier-price .tilde{font-size:15px; font-weight:500; color:var(--text-3); align-self:flex-end; margin-bottom:6px; font-family:var(--num)}
-  .tier-note{font-size:11px; color:var(--text-3); letter-spacing:.06em; margin-bottom:26px}
+  .tier-note{font-size:12.5px; color:var(--text-2); letter-spacing:.04em; margin-bottom:26px}
   .tier hr{border:none; border-top:1px solid var(--hair); margin:0 0 24px}
   .tier ul{list-style:none; margin:0 0 30px; padding:0; display:flex; flex-direction:column; gap:14px; flex:1}
   .tier li{font-size:14px; color:var(--text-2); display:flex; align-items:flex-start; gap:11px}
@@ -345,6 +347,10 @@
   .pf{background:rgba(255,255,255,.025); border:1px solid var(--hair); border-radius:var(--r-md); padding:28px 30px; display:flex; gap:18px; align-items:flex-start}
   .pf .n{font-family:var(--num); font-weight:500; font-size:30px; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; flex:0 0 auto; line-height:1}
   .pf p{margin:0; font-size:14.5px; color:var(--text-2); line-height:1.85}
+  .pf b{display:block; font-family:var(--serif); font-weight:600; font-size:18px; color:#fff; line-height:1.5; letter-spacing:.02em; margin-bottom:9px; text-wrap:balance; word-break:auto-phrase; line-break:strict}
+  .pf a{display:inline-block; margin-top:10px; font-size:13.5px; font-weight:600; color:var(--cyan); text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(111,230,236,.45)}
+  .pf a:hover{text-decoration-color:var(--cyan)}
+  .proof-note{margin:18px 0 0; font-size:12px; color:var(--text-3); line-height:1.8; text-align:center}
 
   .final .wrap{text-align:center}
   .final-box{border:1px solid var(--hair-2); border-radius:clamp(22px,3vw,34px); padding:clamp(52px,7vw,92px) 28px; position:relative; overflow:hidden; background:linear-gradient(160deg,var(--panel),#070b14)}
@@ -391,8 +397,9 @@
   .hero-badge { white-space:nowrap; }
   .m-cell .mp, .m-cell .mp small { white-space:nowrap; }
   @media(max-width:560px){ .m-grid{ grid-template-columns:1fr; } }
-  /* 実績3枚を均等3列に（半端バランス解消。モバイル1列は既存ルールで担保） */
-  .proof-grid { grid-template-columns:repeat(3,1fr); }
+  /* 実績3枚を均等3列に（半端バランス解消）。※このルールは後ろにあるため、
+     min-width で囲わないと上の max-width:900px の1列指定を打ち消してモバイルで横あふれする */
+  @media(min-width:901px){ .proof-grid { grid-template-columns:repeat(3,1fr); } }
   /* 社内メモ帯（公開ビルドで BUILD:REMOVE により削除される） */
   .foot-memo{ margin-top:28px; border:1px dashed var(--hair-2); border-radius:var(--r-md); padding:14px 18px; font-size:11.5px; color:var(--text-3); line-height:1.85 }
   .foot-memo b{ display:block; color:#c9a227; margin-bottom:4px; letter-spacing:.04em }
@@ -412,15 +419,14 @@
   <nav class="nav">
     <div class="wrap">
       <a href="#" aria-label="TIGERLABO">
-        <svg class="nav-logo" viewBox="0 0 452 104" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TIGERLABO">
-          <defs><linearGradient id="tl" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7ceaef"/><stop offset="1" stop-color="#3b8cff"/></linearGradient></defs>
+        <svg class="nav-logo" viewBox="0 0 486 104" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TIGERLABO">
+          <defs><linearGradient id="tl" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5DE0E6"/><stop offset="1" stop-color="#004AAD"/></linearGradient></defs>
           <g transform="translate(16,20)"><polygon points="0,64 66,0 66,28 100,0 100,64" fill="url(#tl)"/></g>
           <text x="140" y="70" font-family="'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-serif" font-weight="800" font-size="46" letter-spacing="0.5" fill="#ffffff">TIGERLABO</text>
         </svg>
       </a>
       <div class="nav-links">
-        <a href="#features">できること</a>
-        <a href="#pricing">料金</a>
+        <a href="#features">サービス</a>
         <a href="#proof">実績</a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform" target="_blank" rel="noopener">お問い合わせ</a>
       </div>
@@ -438,7 +444,7 @@
           <span class="hero-badge"><span class="pulse"></span>中小企業の、AI活用パートナー</span>
           <h1 class="hero-title">AIを、<span class="grad">“なんとなく”</span><br class="brpc">で終わらせない。</h1>
           <p class="hero-sub">AIで、“人手”と“手間”を減らす。自社も“AI社員”で動かす実践者が、社長の「やってみたい」を、ちゃんと使える形にします。</p>
-          <p class="hero-answer"><b>株式会社タイガーラボは、中小企業向けのAI活用パートナーです。</b>AIの導入・活用、業務の省力化、開発・制作を、Light 20万円〜の明確な料金で全国オンライン支援します。自社の運営そのものを自社のAI（AI社員）で回している実践者が、最初の一歩から伴走します。</p>
+          <p class="hero-answer"><b>株式会社タイガーラボは、中小企業向けのAI活用パートナーです。</b>AIの導入・活用、業務の省力化、開発・制作を、20万円〜の明確な料金で全国オンライン支援します。自社の運営そのものを自社のAI（AI社員）で回している実践者が、最初の一歩から伴走します。</p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.5V4Z"/></svg></span>まずは無料相談</a>
             <a class="btn btn-line" href="#pricing"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4h4M14 3l6 6v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h9Z"/></svg></span>料金・サービスを見る</a>
@@ -448,7 +454,7 @@
           <div class="hv-ring"></div>
           <div class="hv-glow"></div>
           <div class="hv-card hv-1"></div>
-          <div class="hv-card hv-2"><svg viewBox="0 0 100 64"><defs><linearGradient id="tlv" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7ceaef"/><stop offset="1" stop-color="#3b8cff"/></linearGradient></defs><polygon points="0,64 66,0 66,28 100,0 100,64" fill="url(#tlv)"/></svg></div>
+          <div class="hv-card hv-2"><svg viewBox="0 0 100 64"><defs><linearGradient id="tlv" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5DE0E6"/><stop offset="1" stop-color="#004AAD"/></linearGradient></defs><polygon points="0,64 66,0 66,28 100,0 100,64" fill="url(#tlv)"/></svg></div>
           <div class="hv-card hv-3"><span><i>AI</i>で動かす</span></div>
         </div>
       </div>
@@ -507,7 +513,7 @@
           <div class="tier-tag">まずは試す</div>
           <div class="tier-for"><span class="ph">AIを触ってみたいが、</span><span class="ph">何からか分からない</span></div>
           <div class="tier-price"><span class="amt">20</span><span class="man">万円</span><span class="tilde">〜</span></div>
-          <div class="tier-note">税別</div>
+          <div class="tier-note">税別／お支払いは1回ごと</div>
           <hr>
           <ul>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>AI活用診断（棚卸し＋活用マップ）</li>
@@ -523,7 +529,7 @@
           <div class="tier-tag">ひと通り整える</div>
           <div class="tier-for"><span class="ph">AIも仕組み化も、</span><span class="ph">まとめて立ち上げたい</span></div>
           <div class="tier-price"><span class="amt">60</span><span class="man">万円</span><span class="tilde">〜</span></div>
-          <div class="tier-note">税別</div>
+          <div class="tier-note">税別／お支払いは1回ごと</div>
           <hr>
           <ul>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Light の内容すべて</li>
@@ -538,7 +544,7 @@
           <div class="tier-tag">まるごと任せる</div>
           <div class="tier-for"><span class="ph">社長の右腕として、</span><span class="ph">丸ごと任せたい</span></div>
           <div class="tier-price"><span class="amt">120</span><span class="man">万円</span><span class="tilde">〜</span></div>
-          <div class="tier-note">税別</div>
+          <div class="tier-note">税別／お支払いは1回ごと</div>
           <hr>
           <ul>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Standard の内容すべて</li>
@@ -565,7 +571,7 @@
       </div>
 
       <div class="monthly reveal">
-        <div class="monthly-h"><h3>続けたい方へ</h3><span class="tagm">Monthly</span></div>
+        <div class="monthly-h"><h3>続けたい方へ</h3><span class="tagm">月額</span></div>
         <p class="monthly-desc">パッケージのあと、伴走を続けたい会社向け。必要になったら、で大丈夫です（価格は税別）。</p>
         <div class="m-grid">
           <div class="m-cell"><div class="mn">AI顧問（伴走）</div><div class="mp">5万円〜<small>／月</small></div></div>
@@ -613,13 +619,24 @@
       <div class="sec-head center reveal">
         <span class="eyebrow">Track record</span>
         <h2><span class="l">言うだけじゃなく、</span><span class="l">自分たちでやっている。</span></h2>
-        <p>自社の会社運営そのものを、AIで回している実践者です。</p>
+        <p>自社の会社運営そのものを、AIで回している実践者です。ご自身で確かめられるものだけを載せています。</p>
       </div>
       <div class="proof-grid">
-        <div class="pf reveal"><span class="n">01</span><p>複数拠点をもつ組織の人事評価・シフト／勤怠を丸ごと自動化し、毎月の運用まで継続支援。</p></div>
-        <div class="pf reveal"><span class="n">02</span><p>自社アプリを企画・開発・審査・運用まで、一貫して自分たちで手がけている。</p></div>
-        <div class="pf reveal"><span class="n">03</span><p>複数のSNSアカウントを運用し、認知・フォロワーを継続的に伸長。</p></div>
+        <div class="pf reveal"><span class="n">01</span><div>
+          <b>制作開始から56日で、App Storeに公開</b>
+          <p>自社開発アプリを、制作開始から56日後にApp Storeで公開しました。企画も、ストアの掲載文も、審査のやりとりも、全て社内で手を動かしています。</p>
+          <a href="https://apps.apple.com/jp/app/id6782561944" target="_blank" rel="noopener">App Storeで実物を見る</a>
+        </div></div>
+        <div class="pf reveal"><span class="n">02</span><div>
+          <b>社内で働くAIは、47体</b>
+          <p>役割ごとの手順書を持つAI担当が社内に47体。経理も、調べものも、この会社サイトの更新も、同じ仕組みで動かしています。最後に決めるのは人、その手前を任せる形です。</p>
+        </div></div>
+        <div class="pf reveal"><span class="n">03</span><div>
+          <b>書類1,500通超を、まとめて自動作成</b>
+          <p>複数の拠点をもつ組織で、雇用契約まわりの書類を1,500通以上、まとめて自動作成しました。人が増えたときの追加分も、その都度自動で揃います。人事評価・シフト／勤怠の自動化と毎月の運用も、続けて支援しています。</p>
+        </div></div>
       </div>
+      <p class="proof-note reveal">01は自社アプリでの実績です。ご依頼いただく案件の期間をお約束するものではありません。03はお客様との守秘契約のため、社名・規模は伏せています。AI担当の体数は2026年8月3日時点の自社集計です。</p>
     </div>
   </section>
 
@@ -639,7 +656,81 @@
     .faq-list .a{padding:0 24px 22px 60px; font-size:14.5px; color:var(--text-2); line-height:1.95}
     .faq-list .a a{color:var(--cyan); text-decoration:underline; text-underline-offset:2px; text-decoration-color:rgba(111,230,236,.5)}
     @media(max-width:560px){ .faq-list summary{padding:17px 18px; font-size:14.5px} .faq-list .a{padding:0 18px 18px 18px} }
-  </style>
+
+
+    /* ===== Light palette variant: CSS-only override ===== */
+    /* ============================================================
+       配色スキーム（2026-08-03 Shinya確定）
+         濃紺グラデーション … ヘッダー／最上部／サービス／料金／単品メニュー／最終の申し込み
+         明トーン（白）     … 実績／よくある質問／フッター
+       元の濃紺トーンを土台にしたまま、明トーンにする区間だけを上書きする。
+       （元に戻すときは、このブロックを丸ごと外せば従来の濃紺一色に復帰する）
+       ============================================================ */
+
+    /* --- ヘッダーのロゴ: 大きく出しても字が野暮ったくならない字組みにする --- */
+    .nav-logo text{font-weight:700; letter-spacing:2.6}
+
+    /* --- 「なんとなく」の下線をグラデーションにする --- */
+    h1.hero-title .grad{position:relative; padding-bottom:.05em}
+    h1.hero-title .grad::after{
+      content:""; position:absolute; left:0; right:0; bottom:0;
+      height:.055em; border-radius:99px; background:var(--grad);
+    }
+
+    /* ============ 明トーン区間: 実績・よくある質問・フッター ============ */
+    /* 全面にかかる淡い光の膜より前に出して、白が青く濁らないようにする */
+    .proof,.faqsec,.foot{position:relative; z-index:1}
+    .proof,.faqsec{background:#F7F9FC}
+    .proof::before{display:none}
+    .foot{background:#FFFFFF; border-top-color:#DCE3EC}
+
+    /* 濃紺 → 白 のつなぎ（実績セクションの上端） */
+    .proof{padding-top:clamp(150px,17vw,214px); overflow:hidden}
+    .proof::after{
+      content:""; position:absolute; left:0; right:0; top:0; z-index:0;
+      height:clamp(76px,9vw,116px); pointer-events:none;
+      background:linear-gradient(180deg,#080D18 0%,#101A30 30%,#9FAEBF 70%,#F7F9FC 100%);
+    }
+    .proof .wrap{position:relative; z-index:2}
+
+    /* 明トーン区間の文字と枠 */
+    .proof .sec-head h2,.pf b,.faqsec .sec-head h2,.faq-lead b,.faq-list summary{color:#10151C}
+    .proof .sec-head p,.pf p,.proof-note,.faqsec .sec-head p,.faq-lead,.faq-list .a{color:#5F6B7A}
+    .proof .eyebrow,.faqsec .eyebrow{color:#145FBA; background:#EAF2FD; border-color:#B9D3F7}
+    .pf,.faq-list details{background:#FFFFFF; border-color:#DCE3EC; box-shadow:none}
+    .pf .n{background:none;-webkit-background-clip:initial;background-clip:initial;color:#1A73E8}
+    .pf a,.faq-list .a a{color:#145FBA; text-decoration-color:#145FBA}
+    .faq-list details[open]{border-color:#AEB9C6}
+    .faq-list summary .q{background:#1A73E8; color:#FFFFFF}
+    .faq-list summary .mk{color:#145FBA}
+
+    /* フッター */
+    .foot-logo text{fill:#10151C}
+    .fnote,.foot li,.foot-base,.foot h4{color:#5F6B7A}
+    .foot li b{color:#10151C}
+    .foot li::before{color:#145FBA}
+    .foot a{color:#5F6B7A}
+    .foot a:hover{color:#1A73E8}
+    .foot .wrap>*{position:relative; z-index:2}
+
+    /* ============ 濃紺グラデ区間: 最終の申し込み ============ */
+    /* 白 → 濃紺 のつなぎ（最終セクションの上端） */
+    .final{position:relative; padding-top:clamp(150px,17vw,214px); overflow:hidden}
+    .final::before{
+      content:""; position:absolute; left:0; right:0; top:0; z-index:0;
+      height:clamp(76px,9vw,116px); pointer-events:none;
+      background:linear-gradient(180deg,#F7F9FC 0%,#9FAEBF 30%,#101A30 70%,#080D18 100%);
+    }
+    .final .wrap{position:relative; z-index:2}
+
+    /* 濃紺 → 白 のつなぎ（フッターの上端） */
+    .foot{position:relative; padding-top:clamp(96px,11vw,140px)}
+    .foot::before{
+      content:""; position:absolute; left:0; right:0; top:0; z-index:0;
+      height:clamp(64px,7vw,96px); pointer-events:none;
+      background:linear-gradient(180deg,#080D18 0%,#101A30 28%,#9FAEBF 70%,#FFFFFF 100%);
+    }
+</style>
   <section class="band faqsec" id="faq">
     <div class="wrap">
       <div class="sec-head center reveal">
@@ -690,7 +781,7 @@
         </details>
         <details>
           <summary><span class="q">Q</span>導入事例や実績はありますか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
-          <p class="a">守秘のため匿名になりますが、複数拠点をもつ組織の人事評価・シフト／勤怠を丸ごと自動化し毎月の運用まで継続支援した実績、自社アプリを企画・開発・審査・運用まで一貫した実績、複数のSNSアカウントを運用し認知・フォロワーを継続的に伸ばした実績があります。</p>
+          <p class="a">守秘のため一部は匿名になりますが、たとえば次のような実績があります。自社開発アプリを、制作開始から56日でApp Storeに公開し、いまも配信中です（企画・ストア掲載文・審査のやりとり・公開後の運用まで社内で対応）。複数の拠点をもつ組織では、雇用契約まわりの書類を1,500通以上まとめて自動作成し、人事評価・シフト／勤怠の自動化と毎月の運用まで続けて支援しています。自社の運営そのものも、役割ごとの手順書を持つAI担当47体で回しています。</p>
         </details>
         <details>
           <summary><span class="q">Q</span>全国どこでも対応してもらえますか？<svg class="mk" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
@@ -718,7 +809,7 @@
     <div class="wrap">
       <div>
         <svg class="foot-logo" viewBox="0 0 452 104" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TIGERLABO">
-          <defs><linearGradient id="tlf" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7ceaef"/><stop offset="1" stop-color="#3b8cff"/></linearGradient></defs>
+          <defs><linearGradient id="tlf" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#5DE0E6"/><stop offset="1" stop-color="#004AAD"/></linearGradient></defs>
           <g transform="translate(16,20)"><polygon points="0,64 66,0 66,28 100,0 100,64" fill="url(#tlf)"/></g>
           <text x="140" y="70" font-family="'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-serif" font-weight="800" font-size="46" letter-spacing="0.5" fill="#ffffff">TIGERLABO</text>
         </svg>
@@ -727,7 +818,7 @@
       <div>
         <h4>ページ内</h4>
         <ul>
-          <li><a href="#features">できること</a></li>
+          <li><a href="#features">サービス</a></li>
           <li><a href="#pricing">料金</a></li>
           <li><a href="#proof">実績</a></li>
           <li><a href="#faq">よくある質問</a></li>
@@ -735,7 +826,7 @@
         </ul>
       </div>
     </div>
-    <div class="wrap"><div class="foot-base">最終更新日 2026-07-31 ｜ © 2026 TIGERLABO Inc.</div></div>
+    <div class="wrap"><div class="foot-base">最終更新日 2026-08-03 ｜ © 2026 TIGERLABO Inc.</div></div>
   </footer>
 </div>
 
@@ -1297,7 +1388,7 @@
     "forceCta": true,
     "answer": [
       "守秘のため匿名になりますが、たとえばこのような実績があります。",
-      "・複数拠点をもつ組織の人事評価・シフト／勤怠を丸ごと自動化し、毎月の運用まで継続支援<br>・自社アプリを企画・開発・審査・運用まで一貫<br>・複数のSNSアカウントを運用し、認知・フォロワーを継続的に伸長",
+      "・自社開発アプリを、制作開始から<b>56日でApp Storeに公開</b>（いまも配信中）<br>・複数の拠点をもつ組織で、雇用契約まわりの<b>書類1,500通超</b>をまとめて自動作成。人事評価・シフト／勤怠の自動化と毎月の運用も継続支援<br>・自社の運営そのものを、役割ごとの手順書を持つ<b>AI担当47体</b>で運用",
       "御社に近い規模・業種のお話は、無料相談で詳しくお伝えできます。"
     ]
   },
