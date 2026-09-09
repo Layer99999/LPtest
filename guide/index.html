@@ -37,12 +37,52 @@
       "url": "https://tigerlabo.com/guide/",
       "name": "中小企業のAI活用ガイド",
       "inLanguage": "ja",
-      "isPartOf": { "@id": "https://tigerlabo.com/#org" },
-      "about": { "@id": "https://tigerlabo.com/#org" }
+      "isPartOf": { "@id": "https://tigerlabo.com/#organization" },
+      "about": { "@id": "https://tigerlabo.com/#organization" },
+      "datePublished": "2026-07-20",
+      "dateModified": "2026-09-01"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://tigerlabo.com/guide/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "AI活用支援会社は何を基準に選べばいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ツールを渡して終わりにせず、課題の見える化・自社に合う仕組みの設計・導入後のフォローまで担えるかを見ます。中小企業のAI活用支援会社の選び方では、費用相場・会社のタイプ別比較・よくある失敗とあわせて7つのチェックポイントを解説しています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "中小企業のAI導入は何から始めればいいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "4つのステップで進めます。①業務を聞く（困っていることと今の進め方を確認）、②範囲を決める（対象業務・成果物・費用・確認方法を整理し、ご納得いただいてから契約）、③試して、確かめる（合意した範囲で実装・検証し、使えた点と人の手が必要な点を共有）、④続け方を決める（運用への引き継ぎや追加改善を相談）。最初から作り込まず、確かめられる大きさの仕事から始めます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "中小企業のAI導入の費用はどれくらいかかりますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "株式会社タイガーラボの場合は、対象業務の数、連携するシステム、実装の難易度、支援範囲を確認したうえでの個別見積りです。目安として、まず試す規模なら数十万円から始められます。支援費用と、外部AI・クラウド等の利用料は分けてご案内します。初回相談は無料で、個人事業主・小規模の会社も、困っているところ1つからご相談いただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "AI導入に使える補助金はありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "国の「デジタル化・AI導入補助金」（旧・IT導入補助金）などの公的な補助制度を利用できる場合があります。対象・補助率・募集の時期は年度ごとに変わるため、最新は運営元（独立行政法人中小企業基盤整備機構）の公式サイトで確認してください。"
+          }
+        }
+      ]
     },
     {
       "@type": "Organization",
-      "@id": "https://tigerlabo.com/#org",
+      "@id": "https://tigerlabo.com/#organization",
       "name": "株式会社タイガーラボ",
       "alternateName": ["TIGERLABO", "タイガーラボ", "TigerLabo", "Tiger Labo", "tigerlabo"],
       "url": "https://tigerlabo.com/",
@@ -122,6 +162,21 @@
   .card h2{font-family:var(--serif); font-size:22px; font-weight:600; color:#fff; margin:10px 0 8px; line-height:1.4}
   .card p{font-size:14px; color:var(--text-2); margin:0}
   .card .more{display:inline-block; margin-top:14px; font-size:13.5px; font-weight:700; color:var(--cyan)}
+  .answer{background:var(--panel); border:1px solid var(--hair-2); border-left:3px solid var(--cyan); border-radius:0 var(--r-md) var(--r-md) 0; padding:18px 20px; margin:20px 0 0; max-width:660px}
+  .answer p{margin:0; font-size:15px; color:#e6eefc; line-height:1.9}
+  .block{margin:38px 0 0}
+  .block h2{font-family:var(--serif); font-size:22px; font-weight:600; color:#fff; margin:0 0 10px; line-height:1.4}
+  .lead-s{font-size:14.5px; color:var(--text-2); margin:0 0 14px}
+  .steps{margin:0; padding-left:1.35em; color:var(--text-2); font-size:14.5px}
+  .steps li{margin:8px 0}
+  .steps strong{color:#fff}
+  .block details{border-top:1px solid var(--hair); padding:14px 0 6px}
+  .block details:first-of-type{border-top:none}
+  .block summary{font-weight:700; font-size:15px; color:#fff; cursor:pointer; list-style:none}
+  .block summary::-webkit-details-marker{display:none}
+  .block summary::after{content:"＋"; float:right; color:var(--cyan)}
+  .block details[open] summary::after{content:"－"}
+  .block details p{margin:10px 0 0; font-size:14.5px; color:var(--text-2)}
   .cta{background:var(--grad-soft); border:1px solid var(--hair-2); border-radius:var(--r-lg); padding:26px 24px; margin:34px 0; text-align:center}
   .cta p{margin:0 0 16px; color:#eaf1ff; font-size:15.5px}
   .foot{border-top:1px solid var(--hair); margin-top:20px; padding:44px 0 40px; background:var(--bg-2)}
@@ -142,9 +197,9 @@
         </svg>
       </a>
       <div class="nav-links">
-        <a href="https://tigerlabo.com/#features">できること</a>
+        <a href="https://tigerlabo.com/#services">できること</a>
         <a href="https://tigerlabo.com/#pricing">料金</a>
-        <a href="https://tigerlabo.com/#proof">実績</a>
+        <a href="https://tigerlabo.com/#lab">実践実験室</a>
         <a href="https://tigerlabo.com/#faq">よくある質問</a>
       </div>
       <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform" target="_blank" rel="noopener">無料相談</a>
@@ -160,7 +215,21 @@
       <span class="eyebrow">中小企業のためのAI活用ガイド</span>
       <h1>中小企業のAI活用ガイド</h1>
       <p class="sub">AIを“なんとなく”で終わらせないための実践的なガイドをまとめています。自社の業務をAIで回している実践者の視点で、選び方・進め方・続け方をお届けします。</p>
+      <div class="answer">
+        <p>中小企業がAI活用でつまずく主な原因は、目的が曖昧なこと・現場を巻き込めていないこと・最初から完璧を狙うことの3つです。本ガイドでは、支援会社を選ぶときの7つのチェックポイントと、自社をAIで運営して分かった「形だけで終わらせない進め方」を、実践者の記録としてまとめています。</p>
+      </div>
     </div>
+
+    <section class="block" id="steps">
+      <h2>AI導入の進め方（4ステップ）</h2>
+      <p class="lead-s">タイガーラボがご支援するときの標準的な流れです。いきなり作り込まず、確かめられる大きさの仕事から始めます。</p>
+      <ol class="steps">
+        <li><strong>業務を聞く</strong> ― 困っていることと今の進め方を確認します（無料相談から）。AIを使わない選択肢も含めて考えます</li>
+        <li><strong>範囲を決める</strong> ― 対象業務・成果物・費用・確認方法を整理し、ご納得いただいてから契約します</li>
+        <li><strong>試して、確かめる</strong> ― 合意した範囲で実装・検証し、使えた点とまだ人の手が必要な点を共有します</li>
+        <li><strong>続け方を決める</strong> ― 運用への引き継ぎや追加改善を相談し、次の範囲を判断します</li>
+      </ol>
+    </section>
 
     <div class="cards">
       <a class="card" href="https://tigerlabo.com/guide/ai-shien-kaisha-erabikata/">
@@ -177,6 +246,26 @@
       </a>
     </div>
 
+    <section class="block" id="faq">
+      <h2>よくある質問</h2>
+      <details>
+        <summary>AI活用支援会社は何を基準に選べばいいですか？</summary>
+        <p>ツールを渡して終わりにせず、課題の見える化・自社に合う仕組みの設計・導入後のフォローまで担えるかを見ます。<a href="https://tigerlabo.com/guide/ai-shien-kaisha-erabikata/">中小企業のAI活用支援会社の選び方</a>では、費用相場・会社のタイプ別比較・よくある失敗とあわせて7つのチェックポイントを解説しています。</p>
+      </details>
+      <details>
+        <summary>中小企業のAI導入は何から始めればいいですか？</summary>
+        <p>4つのステップで進めます。①業務を聞く（困っていることと今の進め方を確認）、②範囲を決める（対象業務・成果物・費用・確認方法を整理し、ご納得いただいてから契約）、③試して、確かめる（合意した範囲で実装・検証し、使えた点と人の手が必要な点を共有）、④続け方を決める（運用への引き継ぎや追加改善を相談）。最初から作り込まず、確かめられる大きさの仕事から始めます。</p>
+      </details>
+      <details>
+        <summary>中小企業のAI導入の費用はどれくらいかかりますか？</summary>
+        <p>株式会社タイガーラボの場合は、対象業務の数、連携するシステム、実装の難易度、支援範囲を確認したうえでの個別見積りです。目安として、まず試す規模なら数十万円から始められます。支援費用と、外部AI・クラウド等の利用料は分けてご案内します。初回相談は無料で、個人事業主・小規模の会社も、困っているところ1つからご相談いただけます。</p>
+      </details>
+      <details>
+        <summary>AI導入に使える補助金はありますか？</summary>
+        <p>国の「デジタル化・AI導入補助金」（旧・IT導入補助金）などの公的な補助制度を利用できる場合があります。対象・補助率・募集の時期は年度ごとに変わるため、最新は運営元（独立行政法人中小企業基盤整備機構）の<a href="https://it-shien.smrj.go.jp/" target="_blank" rel="noopener">公式サイト</a>で確認してください。</p>
+      </details>
+    </section>
+
     <div class="cta">
       <p>「うちの場合はどこから始めればいい？」を、無料相談で一緒に整理します。</p>
       <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScQ3bFeijM21k7dCguxOoW7xkSOWw47UOlOvoEvL0xQ7wwFkQ/viewform" target="_blank" rel="noopener">まずは無料相談</a>
@@ -191,7 +280,7 @@
         <text x="140" y="70" font-family="'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-serif" font-weight="800" font-size="46" letter-spacing="0.5" fill="#ffffff">TIGERLABO</text>
       </svg>
       <p class="fnote">AIを、“なんとなく”で終わらせない。中小企業のためのAI活用パートナー。<br>株式会社タイガーラボ｜東京都渋谷区広尾1丁目2番地1号 ヒカリビル4階｜tigerlabo.com</p>
-      <div class="foot-base">最終更新日 2026-07-20 ｜ © 2026 TIGERLABO Inc.</div>
+      <div class="foot-base">公開日 2026-07-20 ｜ 最終更新日 2026-09-01 ｜ © 2026 TIGERLABO Inc.</div>
     </div>
   </footer>
 </div>
