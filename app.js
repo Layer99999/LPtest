@@ -64,6 +64,19 @@ const helpTopics = [
   ['faq-scope', ['業務', '仕事', '営業', 'アプリ', '動画', '開発', '支援', '制作', '医療', '病院', 'クリニック', 'シフト', '経営分析', '研修', 'フリーランス', '個人事業', 'lp', 'ホームページ', 'youtube', '運用代行']],
   ['faq-start', ['未定', '決まって', '初めて', '相談', '何から']],
 ];
+// Count predefined actions only; never send helper input, link queries, or page text.
+const kpiTopicIds = new Set(['start', 'custom', 'team', 'timeline', 'scope', 'price', 'fees', 'data', 'public', 'results']);
+const kpiTopic = value => {
+  const id = String(value || '').replace(/^faq-/, '');
+  return kpiTopicIds.has(id) ? id : 'unknown';
+};
+const trackSiteAction = name => {
+  if (!['tigerlabo.com', 'www.tigerlabo.com'].includes(window.location.hostname)) return;
+  try {
+    if (typeof window.gtag === 'function') window.gtag('event', name, { send_to: 'G-8K4H98JX4Q' });
+  } catch { /* Measurement must never interrupt navigation or the helper. */ }
+};
+
 const closeHelp = (restoreFocus = false) => {
   helpPanel.hidden = true;
   helpToggle.setAttribute('aria-expanded', 'false');
@@ -79,6 +92,7 @@ const showAnswer = id => {
     contact.href = '#contact'; contact.textContent = '個別に相談する';
     contact.addEventListener('click', () => closeHelp());
     helpResult.append(message, contact);
+    trackSiteAction('tl_help_answer_unmatched');
     return;
   }
   const title = document.createElement('h3');
@@ -92,19 +106,25 @@ const showAnswer = id => {
     faq.querySelector('summary').focus({ preventScroll: true });
   });
   helpResult.append(title, answer, link);
+  trackSiteAction('tl_help_answer_' + kpiTopic(id));
 };
 helpToggle.addEventListener('click', () => {
   const open = helpPanel.hidden;
   helpPanel.hidden = !open;
   helpToggle.setAttribute('aria-expanded', String(open));
-  if (open) helpClose.focus();
+  if (open) { helpClose.focus(); trackSiteAction('tl_help_open'); }
+  else trackSiteAction('tl_help_close');
 });
-helpClose.addEventListener('click', () => closeHelp(true));
+helpClose.addEventListener('click', () => { trackSiteAction('tl_help_close'); closeHelp(true); });
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && !helpPanel.hidden) closeHelp(true); });
 document.addEventListener('click', event => { if (!helpWidget.contains(event.target)) closeHelp(); });
-document.querySelectorAll('[data-faq]').forEach(button => button.addEventListener('click', () => showAnswer(button.dataset.faq)));
+document.querySelectorAll('[data-faq]').forEach(button => button.addEventListener('click', () => {
+  trackSiteAction('tl_help_topic_' + kpiTopic(button.dataset.faq));
+  showAnswer(button.dataset.faq);
+}));
 helpForm.addEventListener('submit', event => {
   event.preventDefault();
+  trackSiteAction('tl_help_search');
   const query = helpQuery.value.normalize('NFKC').trim().toLowerCase();
   const match = query ? helpTopics.find(([, keywords]) => keywords.some(word => query.includes(word))) : undefined;
   showAnswer(match?.[0]);
@@ -122,3 +142,36 @@ if (['tigerlabo.com', 'www.tigerlabo.com'].includes(window.location.hostname)) {
   analytics.src = 'https://www.googletagmanager.com/gtag/js?id=G-8K4H98JX4Q';
   document.head.append(analytics);
 }
+
+// One tl_btn_* event per link action, separate from GA4 enhanced-measurement click.
+(() => {
+  const sections = new Set(['contact', 'plan', 'cases', 'services', 'reasons', 'process', 'faq', 'top', 'main', 'problems', 'custom']);
+  const area = el => {
+    if (el.closest('.help-widget')) return 'help';
+    if (el.closest('.sticky-cta')) return 'sticky';
+    if (el.closest('header')) return 'header';
+    if (el.closest('footer')) return 'footer';
+    const section = el.closest('section[id]')?.id;
+    return section === 'top' ? 'hero' : sections.has(section) ? section : 'body';
+  };
+  document.addEventListener('click', event => {
+    const el = event.target.closest?.('a[href]');
+    if (!el) return;
+    let url;
+    try { url = new URL(el.getAttribute('href'), window.location.href); } catch { return; }
+    if (!['http:', 'https:'].includes(url.protocol)) return;
+    let destination;
+    if (el.hasAttribute('download') || /\.(pdf|zip|xlsx|docx|pptx)$/i.test(url.pathname)) destination = 'file';
+    else if ((url.hostname === 'docs.google.com' && url.pathname.startsWith('/forms/')) || url.hostname === 'forms.gle') destination = 'form';
+    else if (['x.com', 'twitter.com', 'www.x.com', 'www.twitter.com'].includes(url.hostname)) destination = 'x';
+    else if (url.origin === window.location.origin && url.pathname.startsWith('/guide/')) destination = 'guide';
+    else if (url.origin === window.location.origin && sections.has(url.hash.slice(1))) destination = el.matches('.brand') ? 'brand' : url.hash.slice(1);
+    else if (url.origin === window.location.origin && /^#faq-/.test(url.hash)) destination = 'faq_' + kpiTopic(url.hash.slice(1));
+    else if (url.origin !== window.location.origin) destination = 'external';
+    else destination = 'page';
+    trackSiteAction('tl_btn_' + area(el) + '_' + destination);
+  });
+  document.querySelectorAll('#faq details[id^="faq-"]').forEach(el => el.addEventListener('toggle', () => {
+    if (el.open) trackSiteAction('tl_faq_open_' + kpiTopic(el.id));
+  }));
+})();
