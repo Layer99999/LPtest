@@ -175,3 +175,61 @@ if (['tigerlabo.com', 'www.tigerlabo.com'].includes(window.location.hostname)) {
     if (el.open) trackSiteAction('tl_faq_open_' + kpiTopic(el.id));
   }));
 })();
+
+/* TIGERLABO question logging */
+/* The deployment script substitutes the verified write-only Apps Script URL. */
+(() => {
+  const endpoint = 'https://script.google.com/macros/s/AKfycbze-2xXSe68CRQ7cJaUQxefaCmvtI6qHvkQoV33sRrwtwFkWxRQmY3-zT7ZIvYqvPIiaA/exec';
+  if (!['tigerlabo.com','www.tigerlabo.com'].includes(window.location.hostname)) return;
+  const allowedTopics = new Set(['start','custom','team','timeline','scope','price','fees','data','public','results']);
+  const uuid = () => crypto.randomUUID();
+  const current = new URL(window.location.href);
+  const classify = (source,medium) => {
+    if (['x','twitter','t.co','x.com','www.x.com','twitter.com','www.twitter.com','l.twitter.com'].includes(source.toLowerCase())) return 'X';
+    return medium.toLowerCase()==='organic'?'検索':'それ以外';
+  };
+  function firstEntry() {
+    const sourceParam=current.searchParams.get('utm_source');
+    const mediumParam=current.searchParams.get('utm_medium');
+    let source=sourceParam||'(direct)',medium=mediumParam||'(none)';
+    if (!sourceParam && document.referrer) {
+      try {
+        const ref=new URL(document.referrer);
+        if(!['tigerlabo.com','www.tigerlabo.com'].includes(ref.hostname)) {
+          source=ref.hostname;
+          medium=/(^|\.)(google\.[a-z.]+|bing\.com|search\.yahoo\.co\.jp|duckduckgo\.com)$/.test(source)?'organic':'referral';
+        }
+      } catch {}
+    }
+    return {id:uuid(),source,medium,campaign:current.searchParams.get('utm_campaign')||'',landing:current.pathname,group:classify(source,medium)};
+  }
+  let entry;
+  try {
+    const stored=JSON.parse(sessionStorage.getItem('tl_question_entry')||'null');
+    entry=stored&&stored.id&&Date.now()-stored.savedAt<1800000?stored:firstEntry();
+    sessionStorage.setItem('tl_question_entry',JSON.stringify({...entry,savedAt:Date.now()}));
+  } catch {entry=firstEntry()}
+  // Store only session-level acquisition data. Question text is never stored in the browser.
+  let lastSubmit=0,lastQuestion='';
+  function send(question,input,answer) {
+    if(!endpoint.startsWith('https://script.google.com/macros/s/'))return;
+    const text=String(question||'').trim();
+    if(!text || text.length>80 || (lastQuestion===text && Date.now()-lastSubmit<1000))return;
+    lastSubmit=Date.now();lastQuestion=text;
+    const payload={version:1,id:uuid(),session:entry.id,question:text,input,answer:allowedTopics.has(answer)?answer:'unmatched',group:entry.group,source:entry.source,medium:entry.medium,campaign:entry.campaign,landing:entry.landing,page:current.pathname,test:current.searchParams.get('tl_test')==='1'};
+    const body=JSON.stringify(payload);
+    // The endpoint exposes no read route. Normal operation never downloads other questions.
+    if(navigator.sendBeacon && navigator.sendBeacon(endpoint,new Blob([body],{type:'text/plain;charset=UTF-8'})))return;
+    fetch(endpoint,{method:'POST',mode:'no-cors',credentials:'omit',headers:{'Content-Type':'text/plain;charset=UTF-8'},body,keepalive:true}).catch(()=>{});
+  }
+  document.querySelectorAll('[data-faq]').forEach(button=>button.addEventListener('click',()=>{
+    send(button.textContent,'質問ボタン',button.dataset.faq.replace(/^faq-/,''));
+  }));
+  document.querySelector('#help-form')?.addEventListener('submit',()=>{
+    const raw=document.querySelector('#help-query')?.value||'';
+    // Use the existing helper's chosen result; keep the original question text unchanged.
+    const heading=document.querySelector('.help-result h3')?.textContent;
+    const faq=heading&&[...document.querySelectorAll('#faq details')].find(el=>el.querySelector('summary')?.textContent===heading);
+    send(raw,'検索',faq?.id.replace(/^faq-/,''));
+  });
+})();
