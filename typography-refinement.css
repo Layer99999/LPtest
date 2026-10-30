@@ -1,0 +1,17 @@
+/* AI導入実績LPの readability-refinement.css に合わせた本文の文字組みです。 */
+:root{--copy-ink:#304b63;--copy-secondary:#38546c}
+body{font-weight:500;color:#172334}
+:is(.hero,.problem-intro,.faq-intro,.page-hero) .lead,.section-head>p{font-size:15px;font-weight:500;line-height:1.85;color:var(--copy-ink)}
+.problem-item p,.reason-card>p,.custom-copy p,.month-body>p,.case-copy p,.service-card>p,.stage-card p,.process-card p,.company-story p,.activity p,.faq-item>p{font-size:15px;font-weight:500;line-height:1.85;color:var(--copy-ink)}
+.service-list li,.check-list li,.company-facts dd,.detail-list p,.fact-box p,.report-route p,.case-index-grid .case-copy p{font-size:14px;font-weight:500;line-height:1.85;color:var(--copy-ink)}
+.article-section>p{font-size:16px;font-weight:500;line-height:1.9;color:var(--copy-ink)}
+.month-example,.stage-caption,.process-output,.card-caption,.company-facts dt{font-size:13px!important;font-weight:600;line-height:1.8;color:var(--copy-secondary)!important}
+.hero-note,.proof-item small,.plan-note p,.scope-note,.case-comparison .fine,.contact-note,.guide-privacy,.article-main .fine{font-size:12px;font-weight:500;line-height:1.8;color:#42596c}
+.guide-description,.help-result p{font-weight:500;color:var(--copy-ink);line-height:1.85}
+.contact-box p{color:#f0f6ff;font-size:15px;font-weight:500;line-height:1.9}
+.contact-box .contact-note{color:#dbe8f5;font-size:13px;font-weight:500;line-height:1.85;border-top-color:#b5cbe25c}
+.compare-panel h4,.problem-item h3{font-weight:700;color:#172334}
+.reason-card h3,.service-card h3{font-weight:700;line-height:1.55;letter-spacing:.015em}
+.flow span,.compare-summary .legend{font-size:11px;font-weight:600;color:#38546c}
+@media(max-width:1080px) and (min-width:761px){.reason-grid,.service-grid{gap:18px}.reason-card,.service-card{padding-inline:20px}.process-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.process-card+.process-card:before{display:none}}
+@media(max-width:760px){.problem-item p,.reason-card>p,.custom-copy p,.month-body>p,.case-copy p,.service-card>p,.stage-card p,.process-card p,.company-story p,.activity p,.faq-item>p{font-size:14px;line-height:1.85}.article-section>p{font-size:15px}.process-steps{grid-template-columns:1fr}.process-card{padding:25px}.process-card h3{font-size:20px}.process-card img{width:91px;height:78px}.process-output{margin-top:17px}.hero .lead{font-size:14px}.flow span{font-size:10px}.case-comparison .fine{font-size:11px}.contact-box p{font-size:14px}.contact-box .contact-note{font-size:12px}}

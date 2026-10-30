@@ -1,10 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- 公開時に本番 sitemap.xml へ統合。lastmod は index.html の dateModified と一致させること（正直な申告＝A3）。 -->
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tigerlabo.com/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tigerlabo.com/cases/index.html</loc>
+    <lastmod>2026-10-31</lastmod>
+  </url>
+  <url>
+    <loc>https://tigerlabo.com/cases/shift.html</loc>
+    <lastmod>2026-10-31</lastmod>
+  </url>
+  <url>
+    <loc>https://tigerlabo.com/cases/reports.html</loc>
+    <lastmod>2026-10-31</lastmod>
+  </url>
+  <url>
+    <loc>https://tigerlabo.com/cases/training.html</loc>
+    <lastmod>2026-10-31</lastmod>
   </url>
 </urlset>
