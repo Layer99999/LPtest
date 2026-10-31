@@ -1,0 +1,15 @@
+<svg viewBox="0 0 452 104" width="452" height="104" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="株式会社タイガーラボ ロゴ（白地・公式pptx由来の正確な形状）">
+  <!-- ブランド: タイガーラボ本体 / 用途: 会社ロゴ 正（白地） -->
+  <!-- 出典: 公式デッキ 株式会社TIGERLABO.pptx（slide1）のベクター図形＋実測。マーク形状・色はこれが正。 -->
+  <!-- マーク多角形 points="0,64 66,0 66,28 100,0 100,64"。グラデ #5DE0E6→#004AAD。入稿時アウトライン化。 -->
+  <defs>
+    <linearGradient id="tlmark" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#5DE0E6"/>
+      <stop offset="1" stop-color="#004AAD"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(16,20)">
+    <polygon points="0,64 66,0 66,28 100,0 100,64" fill="url(#tlmark)"/>
+  </g>
+  <text x="140" y="70" font-family="'Noto Sans JP','Hiragino Sans',sans-serif" font-weight="800" font-size="46" letter-spacing="0.5" fill="#111111">TIGERLABO</text>
+</svg>
